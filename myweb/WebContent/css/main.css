@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+body{
+    background-color: #1D2316;
+    font-family: '맑은 고딕';
+}
+/* issue
+.login{
+    margin-left:78em;
+}
+*/
+
+.item{
+    position: absolute;
+    top: 27%;
+    left: 50%;
+    margin-top: -51px;
+    margin-left: -415px;
+    background-color: #1D2316;
+    width: 1000px;
+    height: 250px;
+
+}
+.col-sm-3{
+    display:inline-table;
+    float: left;
+    width: 175px;
+    height: 250px;
+    margin-right: 4px;
+}
+#text{
+    color: white;
+    text-align: center;
+    margin-top: 2em;
+    font-size: 18px;
+    font-family: '나눔스퀘어_ac';
+    margin-bottom: 0;
+    
+}
+#hr{
+    color: white;
+    display: block;
+    width: 100px;
+    margin-top: 0.4em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 0.5px;
+    
+}
+#text2{
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    font-family: '나눔스퀘어_ac';
+    margin-top: 16.5em;
+    margin-bottom: 0;
+    
+}
+#hr2{
+    color: white;
+    display: block;
+    width: 100px;
+    margin-top: 0.4em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 0.5px;  
+}
+.item2{
+    position: absolute;
+    top: 72.3%;
+    left: 50%;
+    margin-top: -51px;
+    margin-left: -415px;
+    background-color: #1D2316;
+    width: 1000px;
+    height: 250px;
+
+}
+.col-sm-4{
+    display:inline-table;
+    float: left;
+    width: 175px;
+    height: 250px;
+    margin-right: 4px;
+}
+#hr3{
+    color: grey;
+    margin-top : -1px;
+    border-style: inset;
+    border-width: 0.8px;
+}
+
+#text3{
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    font-family: '나눔스퀘어_ac';
+    margin-top: 14.5em;
+}
+#hr4{
+    color: white;
+    display: block;
+    width: 100px;
+    margin-top: 0.4em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 0.5px;  
+}
+
+.item3{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-top: 80px;
+    margin-left: -370px;
+    background-color:#1D2316;
+    width: 783px;
+    height: 250px;
+
+}
+.col-sm-5{
+    display:inline-table;
+    float: left;
+    width: 175px;
+    height: 250px;
+    margin-right: 20px;
+
+}
+
+.footer{
+    background-color: #f8f8fa;
+    width: 100%;
+    top: 100%;
+    margin-top: 35em;
+    height: 100px;
+}
