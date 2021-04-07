@@ -18,6 +18,8 @@ public class MemberVO {
 		this.user_id = user_id;
 	}
 	
+	public MemberVO() {}
+
 	public String getUserId() {
 		return user_id;
 	}

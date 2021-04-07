@@ -8,8 +8,8 @@
 	<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/static/bootstrap-4.6.0/css/bootstrap.min.css">
 	<script type="text/javascript" src="<%=request.getContextPath() %>/static/jquery/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath() %>/static/bootstrap-4.6.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/register.css">
 	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/main.css">
-	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/join.css">
 	<%@ include file="/WEB-INF/module/css_js.jsp" %>
 	<%@ include file="/script/join_script.jsp" %>
 </head>
@@ -17,7 +17,7 @@
 	<header>
 		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
 	</header>
-	<section class="join">
+	<section class="register">
 		<form action="./register" method="post">
 		<h1 class="title">회원가입</h1>
 		<hr>
@@ -25,7 +25,7 @@
 			<div>
 				<input type="text" placeholder="아이디를 입력해주세요." class="id" name="userid" required>
 				<div class="check_font" id="check_id"></div>
-				<button type="button" class="id_but" onclick="idcheck()">중복확인</button>
+				<button type="button" class="bnt" onclick="idcheck()">중복확인</button>
 			</div>
 			<div><lable>비밀번호</lable><p>10자 이상 입력해주세요.</p></div>
 			<div>
@@ -50,14 +50,14 @@
 			<div><lable>본인확인</lable><p>핸드폰 번호를 입력해주세요.</p></div>
 			<div>
 				<input type="text" placeholder="핸드폰번호" name="userPhone" onKeyup="inputPhoneNumber(this);" maxlength="13" class="phone_number">
-				<button class="phone_but">본인인증</button>
+				<button class="bnt">본인인증</button>
 			</div>
 			<div><lable>이메일</lable><p>이메일을 입력해주세요.</p></div>
 			<div>
 				<input type="email" placeholder="이메일" class="email" name="userEmail" required>
-				<button class="email_but" onclick="emailCheck()">이메일 인증</button>
+				<button class="bnt" onclick="emailCheck()">이메일 인증</button>
 			</div>
-			<button class="join_but" type="submit">가입하기</button>
+			<button class="register-bnt" type="submit">가입하기</button>
 		</form>
 	</section>
 	<footer>

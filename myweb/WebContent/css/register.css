@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-section.join{
+section.register{
 	margin:20px auto;
 	background-color: white;
     border: 3px solid #1D2316;
@@ -17,7 +17,7 @@ input{
 	width: 350px; height: 30px
 }
 div{ margin: 10px 20px; }
-button.id_but , .phone_but, .email_but{
+button.bnt{
 	margin: 0px 10px;
 	padding: 5px;
 	border: 2px solid #1D2316;
@@ -29,7 +29,7 @@ button.id_but , .phone_but, .email_but{
 .brith_date { width: 150px; height: 30px; }
 .phone_number , .email{ width: 200px; height: 30px; }
 select{ width: 100px; }
-.join_but{
+button.register-bnt , button.login-bnt{
 	background-color: #1D2316;
 	border-radius: 5px;
 	color: white; font-weight: bold;
@@ -39,7 +39,7 @@ select{ width: 100px; }
 }
 .code{ width: 100px; height: 30px;}
 
-section.joinres
+section.registerres
 {
 	margin:20px auto;
 	background-color: white;
@@ -61,3 +61,14 @@ input.userid{margin: 20px 20px;}
 h3 { color: white; text-align: center; margin: 10px;}
 .labelid{text-align: center; font-weight: bold;}
 .id_but_check{ margin: 0px 100px;}
+
+section.login
+{
+	width: 500px; height: 330px;
+	border: 2px solid #1D2316; border-radius: 5px;
+	margin: 20px auto;
+}
+
+.loginid , .loginpw{ margin: 10px auto; padding: 15px;}
+.remember-box{ width: 50px; height: 20px; margin: 0 10px; display: inline; line-height: 20px;}
+.remember-label{ width: 90px; height: 20px; text-align: right;}

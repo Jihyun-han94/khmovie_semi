@@ -21,7 +21,7 @@
 				<a class="nav-link" href="./login">로그인</a>
 				</li>
 				<li class="join">
-				<a class="nav-link" href="./join">회원가입</a>
+				<a class="nav-link" href="./register">회원가입</a>
 				</li>
 			</ul>
 		</div>

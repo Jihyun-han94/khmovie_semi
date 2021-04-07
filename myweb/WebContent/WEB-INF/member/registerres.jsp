@@ -9,14 +9,14 @@
 	<script type="text/javascript" src="<%=request.getContextPath() %>/static/jquery/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath() %>/static/bootstrap-4.6.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/main.css">
-	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/join.css">
+	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/register.css">
 	<%@ include file="/WEB-INF/module/css_js.jsp" %>
 </head>
 <body>
 	<header>
 		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
 	</header>
-	<section class="joinres">
+	<section class="registerres">
 		<h1 class="success"><%=request.getAttribute("userid") %>님 회원가입에 <%=request.getAttribute("msg") %> 하였습니다.</h1>
 	</section>
 </body>

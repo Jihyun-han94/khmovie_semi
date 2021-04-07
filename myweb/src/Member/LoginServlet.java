@@ -33,28 +33,27 @@ public class LoginServlet extends HttpServlet {
 		dp.forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		String userid = request.getParameter("userid");
+		String userpw = request.getParameter("userpw");
 		String remember = request.getParameter("remember");
 		
-		// member_t 테이블에 저장되어 있는 username, password 가 있는지 확인하는 절차
 		MemberDAO member = new MemberDAO();
-		MemberVO data = member.login(username, password); // 계정 정보가 DB 에 있는지 검색
+		MemberVO data = member.login(userid, userpw);
 		HttpSession session = request.getSession();
 		
 		if(data.getUserId() != null) {
 			session.setAttribute("login", "true");
-			session.setAttribute("username", data.getUserId());
+			session.setAttribute("userid", data.getUserId());
 			
 			Cookie[] cookies = request.getCookies();
 			
 			if(remember != null) {
-				Cookie cookie = new Cookie("username", username);
+				Cookie cookie = new Cookie("userid", userid);
 				cookie.setMaxAge(60*60*24);
 				response.addCookie(cookie);
 			} else {
 				for(Cookie c: cookies) {
-					if(c.getName().equals("username")) {
+					if(c.getName().equals("userid")) {
 						c.setMaxAge(0);
 						response.addCookie(c);
 						break;
