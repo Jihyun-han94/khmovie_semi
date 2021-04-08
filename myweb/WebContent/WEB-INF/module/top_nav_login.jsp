@@ -1,6 +1,6 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,10 +18,10 @@
               <a class="nav-link" href="#">관람후기</a>
             </li>
             <li class="login">
-              <a class="nav-link" href="#">로그인</a>
+              <a class="nav-link" href="#">로그아웃</a>
             </li>
-            <li class="join">
-              <a class="nav-link" href="#">회원가입</a>
+             <li class="login">
+              <a class="nav-link" href="#">마이페이지</a>
             </li>
           </ul>
         </div>
