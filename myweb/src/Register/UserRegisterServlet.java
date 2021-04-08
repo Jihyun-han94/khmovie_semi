@@ -1,6 +1,7 @@
-package Member;
+package Register;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +18,7 @@ public class UserRegisterServlet extends HttpServlet {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/member/register.jsp");
+		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/register/register.jsp");
 		dp.forward(request, response);
 	}
 
@@ -34,37 +35,20 @@ public class UserRegisterServlet extends HttpServlet {
 		String userEmail = request.getParameter("userEmail");
 		
 		MemberDAO dao = new MemberDAO();
-		
-		int idcheck = dao.registerCheck(userid);
-		
-		if(idcheck == 1) {
-			request.setAttribute("userid", userid);
-			request.setAttribute("msg", "가입 가능한 아이디");
-			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/member/registerres.jsp");
-			dp.forward(request, response);
-		}
-		else {
-			request.setAttribute("userid", userid);
-			request.setAttribute("msg", "가입 불가능한 아이디");
-			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/member/registerres.jsp");
-			dp.forward(request, response);
-		}
-		
 		int result = dao.register(userid, userpw1, username, usergender, userEmail, userPhone, BrithDate);
 		
 		if(result == 1) {
 			request.setAttribute("userid", userid);
 			request.setAttribute("msg", "성공");
-			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/member/registerres.jsp");
+			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/register/registerres.jsp");
 			dp.forward(request, response);
 		}
 		else {
 			request.setAttribute("userid", userid);
 			request.setAttribute("msg", "실패");
-			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/member/registerres.jsp");
+			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/register/registerres.jsp");
 			dp.forward(request, response);
 		}
-		
 	}
 
 }

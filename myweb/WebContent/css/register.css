@@ -53,7 +53,7 @@ h1.success{ text-align: center; font-size: 20pt; margin: 50px;}
 
 header.idcheck
 {
-	width: 400px; height: 50px;
+	width: 300px; height: 50px;
 	border: 2px solid #1D2316;
 	background-color: #1D2316;
 }
@@ -61,6 +61,8 @@ input.userid{margin: 20px 20px;}
 h3 { color: white; text-align: center; margin: 10px;}
 .labelid{text-align: center; font-weight: bold;}
 .id_but_check{ margin: 0px 100px;}
+
+section.idcheck { background-color: white; }
 
 section.login
 {

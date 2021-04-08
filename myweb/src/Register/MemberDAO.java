@@ -1,4 +1,4 @@
-package Member;
+package Register;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -79,6 +79,29 @@ public class MemberDAO {
 	public MemberVO login(String username, String password) {
 		
 		return null;
+	}
+
+	public ArrayList<MemberVO> getAll() {
+		String sql = "SELECT * FROM " + table;
+		sql += " ORDER BY USER_ID DESC";
+		ArrayList<MemberVO> records = new ArrayList<MemberVO>();
+		
+		try {
+			this.pstat = this.conn.prepareStatement(sql);
+			ResultSet res = this.pstat.executeQuery();
+			while(res.next()) {
+				records.add(new MemberVO(
+					res.getString("user_id"), res.getString("user_pw"), res.getString("user_name"),
+					res.getString("email"), res.getString("phone_number"), res.getString("brith_date"),
+					res.getInt("gender"), res.getInt("purchase"), res.getInt("grande")
+				));
+			}
+			res.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return records;
 	}
 
 }

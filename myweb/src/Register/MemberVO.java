@@ -1,4 +1,4 @@
-package Member;
+package Register;
 
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -19,6 +19,19 @@ public class MemberVO {
 	}
 	
 	public MemberVO() {}
+
+	public MemberVO(String user_id, String user_pw, String user_name, String email, String phone_number, String birth_date,
+			int gender, int purchase, int grande) {
+		this.user_id = user_id;
+		this.user_pw = user_pw;
+		this.user_name = user_name;
+		this.email = email;
+		this.phone_number = phone_number;
+		this.birth_date = birth_date;
+		this.gender = gender;
+		this.purchase = purchase;
+		this.grande = grande;
+	}
 
 	public String getUserId() {
 		return user_id;

@@ -1,4 +1,4 @@
-package Member;
+package Register;
 
 import java.io.IOException;
 
