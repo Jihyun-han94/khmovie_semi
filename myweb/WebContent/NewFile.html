@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery</title>
+  <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<style>
+	@media only screen and (min-width: 640px) {
+	    .grid-layout {
+	        display: grid;
+	        column-gap: 5px; row-gap: 5px;
+	        grid-template-areas:
+	            "o s t f";
+	        background-color:rgba(95, 158, 160, 0.397);
+	    }
+	}
+	
+	.grid-first {
+	    padding: 6px;
+	    border: 1px solid black;
+	    background-color: rgba(156, 160, 95, 0.397);
+	    grid-area: o;
+	}
+	.grid-second {
+	    padding: 6px;
+	    border: 1px solid black;
+	    background-color: rgba(132, 160, 95, 0.397);
+	    grid-area: s;
+	}
+	.grid-third {
+	    padding: 6px;
+	    border: 1px solid black;
+	    background-color: rgba(132, 160, 95, 0.397);
+	    grid-area: t;
+	}
+	.grid-fourth {
+	    padding: 6px;
+	    border: 1px solid black;
+	    background-color: rgba(132, 160, 95, 0.397);
+	    grid-area: f;
+	}
+</style>
+<body>
+	<section>
+       <h2>그리드로 레이아웃 만들기</h2>
+       <div class="grid-layout">
+           <section class="grid-first">첫 번째 컨텐츠</section>
+           <section class="grid-second">두 번째 컨텐츠</section>
+           <section class="grid-third">세 번째 컨텐츠</section>
+           <section class="grid-fourth">네 번째 컨텐츠</section>
+       </div>
+	</section>
+</body>
+</html>
