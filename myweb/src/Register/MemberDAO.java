@@ -13,30 +13,18 @@ public class MemberDAO {
 	private final String table = "User_info";
 	private Connection conn = null;
 	private PreparedStatement pstat = null;
+	static MemberDAO instance;
+	
+	public static MemberDAO getInstance() {
+		if(instance == null) {
+			instance = new MemberDAO();
+		}
+		
+		return instance;
+	}
 	
 	MemberDAO(){
 		this.conn = new DBConnection("50000", "web_admin", "admin").getConnect();
-	}
-	
-	public int registerCheck(String userId) {
-		ResultSet res = null;
-		
-		String sql = "SELECT * FROM " + table + " WHERE User_Id = ?";
-		try {
-			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, userId);
-			res = pstat.executeQuery();
-			if(res.next()) {
-				return 0;
-			}
-			else {
-				return 1;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		 return -1;
 	}
 
 	public int register(String userid, String userpw1, String username, String usergender, String useremail, String userphonenumber, String userbirthdate) {
@@ -61,19 +49,6 @@ public class MemberDAO {
 		}
 		
 		 return result;
-	}
-	
-	public void close() {
-		try {
-			this.pstat.close();
-			this.conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void setPreStatement(String sql) throws SQLException {
-		this.pstat = this.conn.prepareStatement(sql);
 	}
 
 	public MemberVO login(String username, String password) {
@@ -102,6 +77,36 @@ public class MemberDAO {
 		}
 		
 		return records;
+	}
+	
+	public boolean confirmId(String userid) {
+		boolean result = false;
+		String sql = "SELECT USER_ID FROM " + table + "WHERE USER_ID=?";
+		try {
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, userid);
+			ResultSet res = this.pstat.executeQuery();
+			if(res.next()) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	public void close() {
+		try {
+			this.pstat.close();
+			this.conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void setPreStatement(String sql) throws SQLException {
+		this.pstat = this.conn.prepareStatement(sql);
 	}
 
 }

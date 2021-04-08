@@ -9,8 +9,8 @@
 	<%@ include file="/WEB-INF/module/css_js.jsp" %>
 	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/register.css">
 	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/main.css">
-	<%@ include file="/WEB-INF/module/register_link.jsp" %>
 </head>
+<%@ include file="/WEB-INF/module/register_js.jsp" %>
 <body>
 	<header>
 		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
@@ -22,7 +22,7 @@
 			<div><lable>아이디</lable> <p>4~12자의 영문 소문자와 숫자만 사용할 수 있습니다.</p></div>
 			<div>
 					<input type="text" placeholder="아이디를 입력해주세요." class="id-null" name="userid">
-					<button type="button" class="bnt" onclick="idCheck(this.form)">중복확인</button>				
+					<button type="button" class="bnt" onclick="idCheck()">중복확인</button>				
 			</div>
 			<div><lable>비밀번호</lable><p>10자 이상 입력해주세요.</p></div>
 			<div>

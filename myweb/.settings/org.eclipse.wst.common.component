@@ -3,12 +3,11 @@
     <wb-module deploy-name="myweb">
                 
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Java Resources/src"/>
+                
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
                 
-        <property name="context-root" value="prj"/>
-                
         <property name="java-output-path" value="/myweb/build/classes"/>
+        <property name="context-root" value="khmovie"/>
             
     </wb-module>
     

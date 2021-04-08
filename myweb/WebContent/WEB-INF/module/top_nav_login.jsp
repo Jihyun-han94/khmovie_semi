@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -16,13 +15,13 @@
               <a class="nav-link" href="#">예매</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./board">관람후기</a>
+              <a class="nav-link" href="#">관람후기</a>
             </li>
             <li class="login">
-              <a class="nav-link" href="./login">로그인</a>
+              <a class="nav-link" href="#">로그아웃</a>
             </li>
-            <li class="join">
-              <a class="nav-link" href="./register">회원가입</a>
+             <li class="login">
+              <a class="nav-link" href="#">마이페이지</a>
             </li>
           </ul>
         </div>

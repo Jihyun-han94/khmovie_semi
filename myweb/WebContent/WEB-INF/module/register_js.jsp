@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<script>
 function inputPhoneNumber(obj) {
     var number = obj.value.replace(/[^0-9]/g, "");
     var phone = "";
@@ -26,38 +29,39 @@ function inputPhoneNumber(obj) {
 
 function check(){
 	if(!document.register.userid.value){
-		alert("IDë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+		alert("ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
 		return false;
 	}
 	if(!document.register.userpw1.value){
-		alert("PASSWORDë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+		alert("PASSWORD¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
 		return false;
 	}
 	if(document.register.userpw1.value != document.register.userpw2.value){
-		alert("PASSWORDê°€ ë‹¤ë¦…ë‹ˆë‹¤.");
+		alert("PASSWORD°¡ ´Ù¸¨´Ï´Ù.");
 		return false;
 	}
 	if(!document.register.username.value){
-		alert("ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”.");
+		alert("ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä.");
 		return false;
 	}
 	if(!document.register.BrithDate.value){
-		alert("ìƒë…„ì›”ì¼ì„ ì…ë ¥í•˜ì„¸ìš”.");
+		alert("»ı³â¿ùÀÏÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
 		return false;
 	}
 	if(!document.register.userEmail.value){
-		alert("ì´ë©”ì¼ì„ ì…ë ¥í•˜ì„¸ìš”.");
+		alert("ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
 		return false;
 	}
 }
 
 function idCheck(){
 	if(document.register.userid.value = ""){
-		alter("IDë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+		alter("ID¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 		return;
 	}
-	url = "idcheck?id=" + document.register.userid.value;
-	open(url, "confirm", "toolbar=no, location=no, stat=no, scrollbars=ne, resizable=no, width=300, height=200");
-}/**
- * 
- */
+	else{
+		var url = "idcheck?userid="+document.register.userid.value;
+		open(url, "confirm", "toolbar=no, location=no, stat=no, scrollbars=ne, resizable=no, width=300, height=200");
+	}
+}
+</script>

@@ -8,16 +8,27 @@
 	<%@ include file="/WEB-INF/module/css_js.jsp" %>
 	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/main.css">
 	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/register.css">
-	<%@ include file="/WEB-INF/module/register_link.jsp" %>
 </head>
 <body>
 	<header class="idcheck">
 		<h3>아이디 중복확인</h3>
 	</header>
 	<section class="idcheck">
-		<form action="./register" method="post">
-			<button type="submit" onclick="popupClose()">확인</button>
-		</form>
+		<%
+			String id = request.getParameter("userid");
+			MemberDAO dao = MemberDAO.getInstance();
+			boolean result = dao.confirmId(id);
+			if(result) { %>
+				<center>
+				<br /><br />
+				<h4>이미 사용중인 ID 입니다.</h4>
+				</center>
+		<% 	} else { %>
+				<center>
+				<br /><br />
+				<h4>입력하신 ID는 사용가능합니다.</h4>
+				</center>
+		<%  }%>
 	</section>
 </body>
 </html>
