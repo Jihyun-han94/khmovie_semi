@@ -7,7 +7,7 @@ section.register{
 	border-radius: 1rem;
 	width: 500px; height: 900px;
 }
-p{ font-size: 10px; color: gray; margin: 5px 5px;}
+p{font-size: 10px; color: gray; margin: 5px 5px;}
 h1.title{ margin:30px auto; text-align: center; }
 hr{ margin: 20px; }
 lable{ font-weight: bold; margin: 0 5px; }
@@ -25,6 +25,8 @@ button.bnt{
 	color: #1D2316;
 	background-color: white;
 }
+
+
 .name , .gender{ margin: 10px; width: 100px; height: 30px;}
 .brith_date { width: 150px; height: 30px; }
 .phone_number , .email{ width: 200px; height: 30px; }
@@ -39,7 +41,7 @@ button.register-bnt , button.login-bnt{
 }
 .code{ width: 100px; height: 30px;}
 
-section.registerres
+section.register-res
 {
 	margin:20px auto;
 	background-color: white;
@@ -49,7 +51,7 @@ section.registerres
 	padding: auto;
 }
 
-h1.success{ text-align: center; font-size: 20pt; margin: 50px;}
+h1.success{ text-align: center; font-size: 20pt; margin: 50px; color:black; font-weight: bold;}
 
 header.idcheck
 {
@@ -61,8 +63,6 @@ input.userid{margin: 20px 20px;}
 h3 { color: white; text-align: center; margin: 10px;}
 .labelid{text-align: center; font-weight: bold;}
 .id_but_check{ margin: 0px 100px;}
-
-section.idcheck { background-color: white; }
 
 section.login
 {

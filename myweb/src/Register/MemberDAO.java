@@ -31,10 +31,11 @@ public class MemberDAO {
 		String sql = "INSERT INTO " + table + "(USER_ID, USER_PW, USER_NAME, GENDER, EMAIL, PHONE_NUMBER, BIRTH_DATE)";
 		sql += " VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
-		int result = 0;
+		ResultSet res = null;
 		
 		try {
-			pstat = conn.prepareStatement(sql);
+			this.pstat = this.conn.prepareStatement(sql);
+			System.out.println("실행확인");
 			pstat.setString(1, userid);
 			pstat.setString(2, userpw1);
 			pstat.setString(3, username);
@@ -42,18 +43,18 @@ public class MemberDAO {
 			pstat.setString(5, useremail);
 			pstat.setString(6, userphonenumber);
 			pstat.setString(7, userbirthdate);
-			
-			result = this.pstat.executeUpdate();
+			res = pstat.executeQuery();
+			if(res.next() || userid.equals("")) {
+				return 0;
+			}
+			else {
+				return 1;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		 return result;
-	}
-
-	public MemberVO login(String username, String password) {
-		
-		return null;
+		 return -1;
 	}
 
 	public ArrayList<MemberVO> getAll() {
@@ -79,22 +80,28 @@ public class MemberDAO {
 		return records;
 	}
 	
-	public boolean confirmId(String userid) {
-		boolean result = false;
-		String sql = "SELECT USER_ID FROM " + table + "WHERE USER_ID=?";
+	public int checkId(String userid) {
+		ResultSet res = null;
+		String sql = "SELECT * FROM " + table;
+		sql += " WHERE USER_ID=?";
+		
 		try {
-			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, userid);
-			ResultSet res = this.pstat.executeQuery();
+			this.pstat = this.conn.prepareStatement(sql);
+			this.pstat.setString(1, userid);
+			res = pstat.executeQuery();
 			if(res.next()) {
-				result = true;
+				return 0;
+			}
+			else {
+				return 1;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return result;
+		return -1;
 	}
+	
 	
 	public void close() {
 		try {
@@ -105,6 +112,10 @@ public class MemberDAO {
 		}
 	}
 
+	public MemberVO login(String userid, String userpw) {
+		return null;
+	}
+	
 	private void setPreStatement(String sql) throws SQLException {
 		this.pstat = this.conn.prepareStatement(sql);
 	}
