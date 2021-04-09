@@ -9,19 +9,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           	<ul class="navbar-nav">
             	<li class="nav-item">
-              		<a class="nav-link active" aria-current="page" href="#">Home</a>
+              		<a class="nav-link active" aria-current="page" href="<%=request.getContextPath() %>/main">Home</a>
             	</li>
             	<li class="nav-item">
              		<a class="nav-link" href="#">예매</a>
             	</li>
             	<li class="nav-item">
-              		<a class="nav-link" href="./board">관람후기</a>
+              		<a class="nav-link" href="<%=request.getContextPath() %>/board">관람후기</a>
             	</li>
             	<li class="login">
-              		<a class="nav-link" href="./login">로그인</a>
+              		<a class="nav-link" href="<%=request.getContextPath() %>/login">로그인</a>
             	</li>
             	<li class="join">
-              		<a class="nav-link" href="./register">회원가입</a>
+              		<a class="nav-link" href="<%=request.getContextPath() %>/register">회원가입</a>
             	</li>
           	</ul>
 		</div>

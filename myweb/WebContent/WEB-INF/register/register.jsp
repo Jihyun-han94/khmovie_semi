@@ -15,44 +15,44 @@
 	<section class="register">
 		<form action="./register/res" method="post" name="register" onsubmit="return check()">
 		<h1 class="title">회원가입</h1>
-		<hr>
-			<div><label>아이디</label><p>4~12자 사용할 수 있습니다.</p></div>
-			<div>
+		<hr class="register">
+			<div class="register"><label>아이디</label><p>4~12자 사용할 수 있습니다.</p></div>
+			<div class="register">
 				<input type="text" placeholder="아이디를 입력해주세요." id="userid" name="userid">
 				<button type="button" class="bnt" id="idcheck" onClick="idCheck()">중복확인</button>				
 			</div>
-			<div><label>비밀번호</label><p class="pw1-basic">10자 이상 입력해주세요.</p></div>
-			<div>
+			<div class="register"><label>비밀번호</label><p class="pw1-basic">10자 이상 입력해주세요.</p></div>
+			<div class="register">
 				<input type="password" placeholder="비밀번호" class="pw1" name="userpw1" id="pw1"
 				onchange="pwCheck(this, document.getElementById('pw2'))">
 			</div>
-			<div><label>비밀번호 확인</label><p class="pw2-basic">동일한 비밀번호를 입력해주세요.</p></div>
-			<div>
+			<div class="register"><label>비밀번호 확인</label><p class="pw2-basic">동일한 비밀번호를 입력해주세요.</p></div>
+			<div class="register">
 				<input type="password" placeholder="비밀번호확인" class="pw2" name="userpw2" id="pw2"
 				onchange="pwCheck(document.getElementById('pw1'),this)">
 			</div>
-			<div>
+			<div class="register">
 				<label>이름<input type="text" placeholder="이름" class="name" name="username" ></label>
 				<label>성별
 				<select class="gender" name="usergender">
 				<option value="1">남자</option>
 				<option value="2">여자</option>
 				</select></label>
-			</div>
-			<div><label>생년월일</label><p>생년월일을 입력해주세요.</p></div>
-			<div>
+			</div class="register">
+			<div class="register"><label>생년월일</label><p>생년월일을 입력해주세요.</p></div>
+			<div class="register">
 				<input type="date" placeholder="생년월일" class="brith_date" name="BrithDate">
 			</div>
-			<div><label>본인확인</label><p>핸드폰 번호를 입력해주세요.</p></div>
-			<div>
+			<div class="register"><label>본인확인</label><p>핸드폰 번호를 입력해주세요.</p></div>
+			<div class="register">
 				<input type="text" placeholder="핸드폰번호" name="userPhone" onKeyup="inputPhoneNumber(this);" maxlength="13" class="phone_number">
 				<button class="bnt">본인인증</button>
 			</div>
-			<div><label>이메일</label><p>이메일을 입력해주세요.</p></div>
-			<div>
+			<div class="register"><label>이메일</label><p>이메일을 입력해주세요.</p></div>
+			<div class="register">
 				<input type="email" placeholder="이메일" class="email" name="userEmail">
 				<button class="bnt" onclick="emailCheck()">이메일 인증</button>
-			</div>
+			</div class="register">
 			<button class="register-bnt">가입하기</button>
 		</form>
 	</section>

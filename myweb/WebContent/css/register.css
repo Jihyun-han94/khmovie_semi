@@ -5,18 +5,18 @@ section.register{
 	background-color: white;
     border: 3px solid #1D2316;
 	border-radius: 1rem;
-	width: 500px; height: 900px;
+	width: 500px; height: 950px;
 }
 p{font-size: 10px; color: gray; margin: 5px 5px;}
 h1.title{ margin:30px auto; text-align: center; }
-hr{ margin: 20px; }
+hr.register{ margin: 20px; }
 lable{ font-weight: bold; margin: 0 5px; }
 input{
 	border: 0px;
 	border-bottom: 2px solid #1D2316;
 	width: 350px; height: 30px
 }
-div{ margin: 10px 20px; }
+div.register{ margin: 10px 20px; }
 button.bnt{
 	margin: 0px 10px;
 	padding: 5px;
@@ -73,3 +73,14 @@ section.login
 .loginid , .loginpw{ margin: 10px auto; padding: 15px;}
 .remember-box{ width: 50px; height: 20px; margin: 0 10px; display: inline; line-height: 20px;}
 .remember-label{ width: 90px; height: 20px; text-align: right;}
+
+button.register-button{
+	background-color: #1D2316;
+	border-radius: 5px;
+	color: white; font-weight: bold;
+	margin: 0 300px;
+	padding: 10px;
+	font-size: 18pt;
+}
+
+a.register{ color: white};

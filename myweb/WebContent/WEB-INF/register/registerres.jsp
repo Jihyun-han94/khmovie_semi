@@ -13,6 +13,7 @@
 	<%@ include file="/WEB-INF/module/top_nav.jsp" %>
 	<section class="register-res">
 		<h3 class="success"><%=request.getAttribute("msg") %></h3>
+		<button class="bnt register-button"><a class="register" href="<%=request.getContextPath() %>/main">메인으로 이동</a></button>
 	</section>
 </body>
 </html>

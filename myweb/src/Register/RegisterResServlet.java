@@ -22,6 +22,8 @@ public class RegisterResServlet extends HttpServlet {
 		dp.forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
 		String userid = request.getParameter("userid");
 		String userpw1 = request.getParameter("userpw1");
 		String username = request.getParameter("username");
@@ -30,7 +32,8 @@ public class RegisterResServlet extends HttpServlet {
 		String userphonenumber = request.getParameter("userPhone");
 		String userbirthdate = request.getParameter("BrithDate");
 		
-		int result = new MemberDAO().register(userid, userpw1, username, usergender, useremail, userphonenumber, userbirthdate);
+		MemberDAO member = new MemberDAO();
+		int result = member.checkId(userid);
 		
 		if(result == 0) {
 			request.setAttribute("msg", "회원가입에 실패하였습니다.");
@@ -39,6 +42,7 @@ public class RegisterResServlet extends HttpServlet {
 			return;
 		}
 		else {
+			member.register(userid, userpw1, username, usergender, useremail, userphonenumber, userbirthdate);
 			request.setAttribute("msg", "회원가입에 성공하였습니다.");
 			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/register/registerres.jsp");
 			dp.forward(request, response);
