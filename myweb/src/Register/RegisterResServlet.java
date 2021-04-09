@@ -32,14 +32,14 @@ public class RegisterResServlet extends HttpServlet {
 		
 		int result = new MemberDAO().register(userid, userpw1, username, usergender, useremail, userphonenumber, userbirthdate);
 		
-		if(result == 1) {
-			request.setAttribute("msg", "회원가입이 성공하였습니다.");
+		if(result == 0) {
+			request.setAttribute("msg", "회원가입에 실패하였습니다.");
 			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/register/registerres.jsp");
 			dp.forward(request, response);
 			return;
 		}
 		else {
-			request.setAttribute("msg", "회원가입이 실패하였습니다.");
+			request.setAttribute("msg", "회원가입에 성공하였습니다.");
 			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/register/registerres.jsp");
 			dp.forward(request, response);
 		}

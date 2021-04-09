@@ -28,14 +28,13 @@ public class MemberDAO {
 	}
 
 	public int register(String userid, String userpw1, String username, String usergender, String useremail, String userphonenumber, String userbirthdate) {
-		String sql = "INSERT INTO " + table + "(USER_ID, USER_PW, USER_NAME, GENDER, EMAIL, PHONE_NUMBER, BIRTH_DATE)";
+		String sql = "INSERT INTO "+ this.table +" (USER_ID, USER_PW, USER_NAME, GENDER, EMAIL, PHONE_NUMBER, BIRTH_DATE)";
 		sql += " VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
 		ResultSet res = null;
 		
 		try {
 			this.pstat = this.conn.prepareStatement(sql);
-			System.out.println("실행확인");
 			pstat.setString(1, userid);
 			pstat.setString(2, userpw1);
 			pstat.setString(3, username);
@@ -44,7 +43,7 @@ public class MemberDAO {
 			pstat.setString(6, userphonenumber);
 			pstat.setString(7, userbirthdate);
 			res = pstat.executeQuery();
-			if(res.next() || userid.equals("")) {
+			if(res.next()) {
 				return 0;
 			}
 			else {
