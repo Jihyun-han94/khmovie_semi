@@ -81,7 +81,7 @@ public class MemberDAO {
 	
 	public int checkId(String userid) {
 		ResultSet res = null;
-		String sql = "SELECT * FROM " + table;
+		String sql = "SELECT * FROM " + this.table;
 		sql += " WHERE USER_ID=?";
 		
 		try {
@@ -101,6 +101,30 @@ public class MemberDAO {
 		return -1;
 	}
 	
+	@SuppressWarnings("null")
+	public MemberVO login(String userid, String userpw) {
+		MemberVO m = new MemberVO();
+		
+		String sql = "";
+		sql += "SELECT * FROM " + this.table;
+		sql += " WHERE USER_ID = ?";
+		sql += "   AND USER_PW = ?";
+		
+		try {
+			this.pstat = this.conn.prepareStatement(sql);
+			this.pstat.setString(1, userid);
+			this.pstat.setString(2, userpw);
+			ResultSet res = this.pstat.executeQuery();
+			if(res.next()) {
+				m.setRecord(res);
+			}
+			res.close();
+		} catch(SQLException e) {
+			e.getMessage();
+		}
+		
+		return m;
+	}
 	
 	public void close() {
 		try {
@@ -109,10 +133,6 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public MemberVO login(String userid, String userpw) {
-		return null;
 	}
 	
 	private void setPreStatement(String sql) throws SQLException {

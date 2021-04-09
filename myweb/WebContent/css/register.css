@@ -63,17 +63,6 @@ input.userid{margin: 20px 20px;}
 .labelid{text-align: center; font-weight: bold;}
 .id_but_check{ margin: 0px 100px;}
 
-section.login
-{
-	width: 500px; height: 330px;
-	border: 2px solid #1D2316; border-radius: 5px;
-	margin: 20px auto;
-}
-
-.loginid , .loginpw{ margin: 10px auto; padding: 15px;}
-.remember-box{ width: 50px; height: 20px; margin: 0 10px; display: inline; line-height: 20px;}
-.remember-label{ width: 90px; height: 20px; text-align: right;}
-
 button.register-button{
 	background-color: #1D2316;
 	border-radius: 5px;
@@ -84,3 +73,24 @@ button.register-button{
 }
 
 a.register{ color: white};
+
+.valid{
+    box-shadow: 0px 0px 2px 2px green;
+}
+
+.valid-msg{
+    display: block;
+    color: green;
+    font-size: smaller;
+    margin-top: 6px;
+}
+.invalid{
+    box-shadow: 0px 0px 2px 2px red;
+}
+
+.invalid-msg{
+    display: block;
+    color: red;
+    font-size: smaller;
+    margin-top: 6px;
+}

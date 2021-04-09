@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String logined = "";
+	if(session.getAttribute("login") != null) {
+		logined = (String)session.getAttribute("login");
+	}
+%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<div class="container-fluid">
     	<a class="navbar-brand" href="#">Navbar</a>
@@ -17,12 +23,22 @@
             	<li class="nav-item">
               		<a class="nav-link" href="<%=request.getContextPath() %>/board">관람후기</a>
             	</li>
-            	<li class="login">
+            	
+            	<%  if(logined.equals("true")){ %>
+            		<li class="login">
+              		<a class="nav-link" href="<%=request.getContextPath() %>/logout">로그아웃</a>
+	            	</li>
+	            	<li class="join">
+	              		<a class="nav-link" href="#">마이페이지</a>
+	            	</li>
+	            <%  } else { %>
+	            	<li class="login">
               		<a class="nav-link" href="<%=request.getContextPath() %>/login">로그인</a>
-            	</li>
-            	<li class="join">
-              		<a class="nav-link" href="<%=request.getContextPath() %>/register">회원가입</a>
-            	</li>
+	            	</li>
+	            	<li class="join">
+	              		<a class="nav-link" href="<%=request.getContextPath() %>/register">회원가입</a>
+	            	</li>
+	            <%  } %>
           	</ul>
 		</div>
 	</div>

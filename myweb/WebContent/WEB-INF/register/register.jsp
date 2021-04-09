@@ -11,7 +11,9 @@
 	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/main.css">
 </head>
 <body>
-	<%@ include file="/WEB-INF/module/top_nav.jsp" %>
+	<header>
+		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
+	</header>
 	<section class="register">
 		<form action="./register/res" method="post" name="register" onsubmit="return check()">
 		<h1 class="title">회원가입</h1>
@@ -21,15 +23,17 @@
 				<input type="text" placeholder="아이디를 입력해주세요." id="userid" name="userid">
 				<button type="button" class="bnt" id="idcheck" onClick="idCheck()">중복확인</button>				
 			</div>
-			<div class="register"><label>비밀번호</label><p class="pw1-basic">10자 이상 입력해주세요.</p></div>
+			<div class="register"><label>비밀번호</label><p id="pw-check" class="pw-check"
+				onkeyup="passwordCheck(document.getElementById('pass1'), document.getElementById('pass2'), this)">10자 이상 입력해주세요.</p></div>
 			<div class="register">
-				<input type="password" placeholder="비밀번호" class="pw1" name="userpw1" id="pw1"
-				onchange="pwCheck(this, document.getElementById('pw2'))">
+				<input type = "password" id = "pass1" class="pw1" name="userpw1"
+                onkeyup="passwordCheck(this, document.getElementById('pass2'), document.getElementById('pw-check'))">
 			</div>
-			<div class="register"><label>비밀번호 확인</label><p class="pw2-basic">동일한 비밀번호를 입력해주세요.</p></div>
+			<div class="register"><label>비밀번호 확인</label><p id="pw-check" class="pw-check"
+				onkeyup="passwordCheck(document.getElementById('pass1'), document.getElementById('pass2'), this)">동일한 비밀번호를 입력해주세요.</p></div>
 			<div class="register">
-				<input type="password" placeholder="비밀번호확인" class="pw2" name="userpw2" id="pw2"
-				onchange="pwCheck(document.getElementById('pw1'),this)">
+				<input type = "password" id="pass2" class="pw2" name="userpw2"
+                onkeyup="passwordCheck(document.getElementById('pass1'),this, document.getElementById('pw-check'))">
 			</div>
 			<div class="register">
 				<label>이름<input type="text" placeholder="이름" class="name" name="username" ></label>
@@ -128,6 +132,25 @@ function idCheck(){
 			alert(data.Idres);
 		}
 	});
+}
+
+function passwordCheck(p1, p2, messge){
+    if(document.register.userpw1.length >= 10 ){
+		if(p1.value == p2.value){
+	        p1.className = "pw1 valid";
+	        p2.className = "pw2 valid";
+	        messge.className = "pw2-check valid-msg";
+		}
+		else {
+			p1.className = "pw1 invalid";
+			p2.className = "pw2 invalid";
+			messge.className = "pw1-check invalid-msg";
+		}
+	}
+    else{
+    	p1.className = "pw1 invalid";
+		messge.className = "pw-check invalid-msg";
+    }
 }
 </script>
 </html>
