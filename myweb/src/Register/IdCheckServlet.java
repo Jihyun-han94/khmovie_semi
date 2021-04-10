@@ -35,20 +35,20 @@ public class IdCheckServlet extends HttpServlet {
 				response.setCharacterEncoding("UTF-8");
 				response.setContentType("application/json");
 				PrintWriter out = response.getWriter();
-				out.print("{\"Idres\" : \"사용 불가능한 아이디입니다.\"}");
+				out.print("{\"result\" : \"fail\"}");
 			}
 			else {
 				response.setCharacterEncoding("UTF-8");
 				response.setContentType("application/json");
 				PrintWriter out = response.getWriter();
-				out.print("{\"Idres\" : \"사용 가능한 아이디입니다.\"}");
+				out.print("{\"result\" : \"success\"}");
 			}
 		}
 		else {
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("application/json");
 			PrintWriter out = response.getWriter();
-			out.print("{\"Idres\" : \"사용 불가능한 아이디입니다.\"}");
+			out.print("{\"result\" : \"fail\"}");
 		}
 	}
 

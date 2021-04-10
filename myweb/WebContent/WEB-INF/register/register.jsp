@@ -15,7 +15,7 @@
 		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
 	</header>
 	<section class="register">
-		<form action="./register/res" method="post" name="register" onsubmit="return check()">
+		<form action="./register/res" method="post" name="register" onsubmit="return (check() && idConfirm() && idCheck() && passwordCheck()) ">
 		<h1 class="title">회원가입</h1>
 		<hr class="register">
 			<div class="register"><label>아이디<p>4~12자의 영소문자, 숫자를 혼합하여 사용할 수 있습니다.</p></label>
@@ -101,11 +101,9 @@ function check(){
 		alert("PASSWORD를 입력하세요.");
 		return false;
 	}
-	if(document.register.userpw1.length > 10){
-		if(document.register.userpw1.value != document.register.userpw2.value){
-			alert("PASSWORD가 다릅니다.");
-			return false;
-		}
+	if(!document.register.userpw2.value){
+		alert("PASSWORD를 입력하세요.");
+		return false;
 	}
 	if(!document.register.username.value){
 		alert("이름을 입력하세요.");
@@ -127,14 +125,17 @@ function idConfirm(){
     if (id.length < 4 || id.length > 12) {
     	document.getElementById('id-check').innerHTML='4글자이상 12글자 이하로 입력해주세요.';
         document.getElementById('id-check').style.color='red';
+        return false;
     } else {
     	if(!/(?=.*\d)(?=.*[a-z]).{4,12}/.test(id)){
-    		document.getElementById('id-check').innerHTML='숫자와 영문자만 입력해주세요.';
+    		document.getElementById('id-check').innerHTML='숫자와 영문자를 혼합하여 입력해주세요.';
             document.getElementById('id-check').style.color='red';
+            return false;
    		}
     	else{
     		document.getElementById('id-check').innerHTML='아이디 중복 확인을 해주세요.';
-            document.getElementById('id-check').style.color='red';
+            document.getElementById('id-check').style.color='green';
+            return false;
     	}
     }
 }
@@ -148,9 +149,19 @@ function idCheck(){
 			userid: document.register.userid.value
 		},
 		success: function(data){
-			alert(data.Idres);
+			if(data.result === "success"){
+				document.getElementById('id-check').innerHTML='사용 가능한 아이디입니다.';
+	            document.getElementById('id-check').style.color='green';
+				return true;
+			}
+			else if(data.result === "fail"){
+				document.getElementById('id-check').innerHTML='사용 불가능한 아이디입니다.';
+	            document.getElementById('id-check').style.color='red';
+				return false;
+			}
 		}
 	});
+	
 }
 
 function passwordCheck(){
@@ -164,28 +175,34 @@ function passwordCheck(){
     if (pw.length < 6 || pw.length > 16) {
     	document.getElementById('pw1-check').innerHTML='6글자이상 16글자 이하로 입력해주세요.';
         document.getElementById('pw1-check').style.color='red';
+        return false;
     } else {
         if(pw.search(/\s/) != -1){
         	document.getElementById('pw1-check').innerHTML='공백없이 입력해주세요.';
             document.getElementById('pw1-check').style.color='red';
+            return false;
         }
         else if(num < 0 || eng < 0 || spe < 0){
         	document.getElementById('pw1-check').innerHTML='영문, 숫자, 특수문자를 혼합하여 입력해주세요.';
             document.getElementById('pw1-check').style.color='red';
+            return false;
         }
         else {
         	document.getElementById('pw1-check').style.color='blue';
+        	return true;
         }
     }
     
     if(pw !='' && confirmPW !='') {
         if(pw == confirmPW) {
             document.getElementById('pw2-check').innerHTML='비밀번호가 일치합니다.';
-            document.getElementById('pw2-check').style.color='blue';
+            document.getElementById('pw2-check').style.color='green';
+            return true;
         }
         else {
             document.getElementById('pw2-check').innerHTML='비밀번호가 일치하지 않습니다.';
             document.getElementById('pw2-check').style.color='red';
+            return false;
         }
     }
 }
