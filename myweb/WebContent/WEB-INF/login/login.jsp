@@ -20,9 +20,9 @@
     	}
     %>
 	<section class="login">
-		<form action="./login" method="post" name="login" onsubmit="return logincheck()">
 			<section>
 				<div class="login"><label>아이디</label>
+				<form action="./login" method="post" name="login" onsubmit="return logincheck()">
 				<% if(request.getAttribute("loginchek") != null) { %>
 						<p class="login-res">아이디와 비밀번호를 확인해주세요.</p>
 				<% } %>
@@ -41,11 +41,11 @@
 				      	<input type="checkbox" name="remember" class="remember-box" checked>
 				    <% } %>
 				    <label for="id=remember">기억하기</label>
-				    <label class="login-bnt"><button class="login-bnt" onclick="check();">로그인</button>
-				    <a href="<%=request.getContextPath() %>/register"><button class="login-bnt">회원가입</button></a></label>
+				    <label class="login-bnt"><button class="login-bnt" onclick="check();">로그인</button></label>
+				</form>
+				<label class="login-bnt registerpage"><a href="<%=request.getContextPath() %>/register"><button class="login-bnt">회원가입</button></a></label>
 				</div>
 			</section>
-		</form>
 	</section>
 </body>
 <script>

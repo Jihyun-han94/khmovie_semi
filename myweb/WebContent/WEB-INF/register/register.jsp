@@ -18,22 +18,23 @@
 		<form action="./register/res" method="post" name="register" onsubmit="return check()">
 		<h1 class="title">회원가입</h1>
 		<hr class="register">
-			<div class="register"><label>아이디</label><p>4~12자 사용할 수 있습니다.</p></div>
+			<div class="register"><label>아이디<p>4~12자의 영소문자, 숫자를 혼합하여 사용할 수 있습니다.</p></label>
+			<p id="id-check" class="id-check" ></p>
+			</div>
 			<div class="register">
-				<input type="text" placeholder="아이디를 입력해주세요." id="userid" name="userid">
+				<input type="text" placeholder="아이디를 입력해주세요." id="userid" name="userid" onkeyup="idConfirm()">
 				<button type="button" class="bnt" id="idcheck" onClick="idCheck()">중복확인</button>				
 			</div>
-			<div class="register"><label>비밀번호</label><p id="pw-check" class="pw-check"
-				onkeyup="passwordCheck(document.getElementById('pass1'), document.getElementById('pass2'), this)">10자 이상 입력해주세요.</p></div>
+			<div class="register"><label>비밀번호<p class="pw-check" >비밀번호는 6글자~16글자의 영문, 숫자, 특수문자를 혼합하여 사용할 수 있습니다.</p></label>
+			<p id="pw1-check" class="pw-check" ></p></div>
 			<div class="register">
 				<input type = "password" id = "pass1" class="pw1" name="userpw1"
-                onkeyup="passwordCheck(this, document.getElementById('pass2'), document.getElementById('pw-check'))">
+                onkeyup="passwordCheck()">
 			</div>
-			<div class="register"><label>비밀번호 확인</label><p id="pw-check" class="pw-check"
-				onkeyup="passwordCheck(document.getElementById('pass1'), document.getElementById('pass2'), this)">동일한 비밀번호를 입력해주세요.</p></div>
+			<div class="register"><label>비밀번호 확인<p id="pw2-check" class="pw-check" ></p></label></div>
 			<div class="register">
 				<input type = "password" id="pass2" class="pw2" name="userpw2"
-                onkeyup="passwordCheck(document.getElementById('pass1'),this, document.getElementById('pw-check'))">
+                onkeyup="passwordCheck()">
 			</div>
 			<div class="register">
 				<label>이름<input type="text" placeholder="이름" class="name" name="username" ></label>
@@ -120,6 +121,24 @@ function check(){
 	}
 }
 
+function idConfirm(){
+	var id = document.getElementById('userid').value;
+	
+    if (id.length < 4 || id.length > 12) {
+    	document.getElementById('id-check').innerHTML='4글자이상 12글자 이하로 입력해주세요.';
+        document.getElementById('id-check').style.color='red';
+    } else {
+    	if(!/(?=.*\d)(?=.*[a-z]).{4,12}/.test(id)){
+    		document.getElementById('id-check').innerHTML='숫자와 영문자만 입력해주세요.';
+            document.getElementById('id-check').style.color='red';
+   		}
+    	else{
+    		document.getElementById('id-check').innerHTML='아이디 중복 확인을 해주세요.';
+            document.getElementById('id-check').style.color='red';
+    	}
+    }
+}
+
 function idCheck(){
 	$.ajax({
 		url: "<%=request.getContextPath() %>/register/idcheck",
@@ -134,22 +153,40 @@ function idCheck(){
 	});
 }
 
-function passwordCheck(p1, p2, messge){
-    if(document.register.userpw1.length >= 10 ){
-		if(p1.value == p2.value){
-	        p1.className = "pw1 valid";
-	        p2.className = "pw2 valid";
-	        messge.className = "pw2-check valid-msg";
-		}
-		else {
-			p1.className = "pw1 invalid";
-			p2.className = "pw2 invalid";
-			messge.className = "pw1-check invalid-msg";
-		}
-	}
-    else{
-    	p1.className = "pw1 invalid";
-		messge.className = "pw-check invalid-msg";
+function passwordCheck(){
+	var pw = document.getElementById('pass1').value;
+    var confirmPW = document.getElementById('pass2').value;
+    
+    var num = pw.search(/[0-9]/g);
+    var eng = pw.search(/[a-z]/ig);
+    var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+    
+    if (pw.length < 6 || pw.length > 16) {
+    	document.getElementById('pw1-check').innerHTML='6글자이상 16글자 이하로 입력해주세요.';
+        document.getElementById('pw1-check').style.color='red';
+    } else {
+        if(pw.search(/\s/) != -1){
+        	document.getElementById('pw1-check').innerHTML='공백없이 입력해주세요.';
+            document.getElementById('pw1-check').style.color='red';
+        }
+        else if(num < 0 || eng < 0 || spe < 0){
+        	document.getElementById('pw1-check').innerHTML='영문, 숫자, 특수문자를 혼합하여 입력해주세요.';
+            document.getElementById('pw1-check').style.color='red';
+        }
+        else {
+        	document.getElementById('pw1-check').style.color='blue';
+        }
+    }
+    
+    if(pw !='' && confirmPW !='') {
+        if(pw == confirmPW) {
+            document.getElementById('pw2-check').innerHTML='비밀번호가 일치합니다.';
+            document.getElementById('pw2-check').style.color='blue';
+        }
+        else {
+            document.getElementById('pw2-check').innerHTML='비밀번호가 일치하지 않습니다.';
+            document.getElementById('pw2-check').style.color='red';
+        }
     }
 }
 </script>

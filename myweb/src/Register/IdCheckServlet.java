@@ -29,8 +29,7 @@ public class IdCheckServlet extends HttpServlet {
 		
 		MemberDAO dao = new MemberDAO();
 		int result = dao.checkId(userid);
-				
-		char id;
+		
 		if(userid.length() > 3 && userid.length() < 13) {
 			if(result == 0) {
 				response.setCharacterEncoding("UTF-8");
@@ -42,7 +41,7 @@ public class IdCheckServlet extends HttpServlet {
 				response.setCharacterEncoding("UTF-8");
 				response.setContentType("application/json");
 				PrintWriter out = response.getWriter();
-				out.print("{\"Idres\" : \"사용가능한 아이디입니다.\"}");
+				out.print("{\"Idres\" : \"사용 가능한 아이디입니다.\"}");
 			}
 		}
 		else {
