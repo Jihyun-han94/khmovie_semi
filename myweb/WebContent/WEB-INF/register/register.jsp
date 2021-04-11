@@ -15,7 +15,7 @@
 		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
 	</header>
 	<section class="register">
-		<form action="./register/res" method="post" name="register" onsubmit="return (check() && idConfirm() && idCheck() && passwordCheck()) ">
+		<form action="./register/res" method="post" name="register" onsubmit="return check()">
 		<h1 class="title">회원가입</h1>
 		<hr class="register">
 			<div class="register"><label>아이디<p>4~12자의 영소문자, 숫자를 혼합하여 사용할 수 있습니다.</p></label>

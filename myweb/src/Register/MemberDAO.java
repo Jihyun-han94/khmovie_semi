@@ -101,7 +101,6 @@ public class MemberDAO {
 		return -1;
 	}
 	
-	@SuppressWarnings("null")
 	public MemberVO login(String userid, String userpw) {
 		MemberVO m = new MemberVO();
 		
@@ -125,6 +124,52 @@ public class MemberDAO {
 		
 		return m;
 	}
+
+	public String findId(String username, String phone) {
+		String userid = null;
+		
+		String sql = "SELECT USER_ID FROM " + this.table;
+		sql += " WHERE USER_NAME = ?";
+		sql += " AND PHONE_NUMBER = ?";
+		try {
+			this.pstat = this.conn.prepareStatement(sql);
+			this.pstat.setString(1, username);
+			this.pstat.setString(2, phone);
+			ResultSet res = this.pstat.executeQuery();
+			if(res.next()) {
+				userid = res.getString("user_id");
+			}
+			res.close();
+		} catch(SQLException e) {
+			e.getMessage();
+		}
+		
+		return userid;
+	}
+	
+	public String findPw(String username, String userid, String phone) {
+		String userpw = null;
+		
+		String sql = "SELECT USER_PW FROM " + this.table;
+		sql += " WHERE USER_NAME = ?";
+		sql += " AND USER_ID = ?";
+		sql += " AND PHONE_NUMBER = ?";
+		try {
+			this.pstat = this.conn.prepareStatement(sql);
+			this.pstat.setString(1, username);
+			this.pstat.setString(2, userid);
+			this.pstat.setString(3, phone);
+			ResultSet res = this.pstat.executeQuery();
+			if(res.next()) {
+				userpw = res.getString("user_pw");
+			}
+			res.close();
+		} catch(SQLException e) {
+			e.getMessage();
+		}
+		
+		return userpw;
+	}
 	
 	public void close() {
 		try {
@@ -133,10 +178,6 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	private void setPreStatement(String sql) throws SQLException {
-		this.pstat = this.conn.prepareStatement(sql);
 	}
 
 }

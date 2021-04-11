@@ -20,32 +20,30 @@
     	}
     %>
 	<section class="login">
-			<section>
-				<div class="login"><label>아이디</label>
-				<form action="./login" method="post" name="login" onsubmit="return logincheck()">
-				<% if(request.getAttribute("loginchek") != null) { %>
-						<p class="login-res">아이디와 비밀번호를 확인해주세요.</p>
-				<% } %>
-				</div>
-				<div class="input"><input class="pw" type="text" name="userid">
-				<a href="<%=request.getContextPath() %>/findId"><p class="find">아이디 찾기</p></a></div>
-				<div class="login"><label>비밀번호</label></div>
-				<div class="input"><input class="id" type="password" name="userpw">
-				<a href="<%=request.getContextPath() %>/findPw"><p class="find">비밀번호 찾기</p></a></div>
-				<div class="checkbox">
-					<%
-						if(username.equals("")) {
-					%>
-				      	<input type="checkbox" name="remember" class="remember-box">
-				    <% } else { %>
-				      	<input type="checkbox" name="remember" class="remember-box" checked>
-				    <% } %>
-				    <label for="id=remember">기억하기</label>
-				    <label class="login-bnt"><button class="login-bnt" onclick="check();">로그인</button></label>
-				</form>
-				<label class="login-bnt registerpage"><a href="<%=request.getContextPath() %>/register"><button class="login-bnt">회원가입</button></a></label>
-				</div>
-			</section>
+		<form action="./login" method="post" name="login" onsubmit="return logincheck()">
+		<div class="login"><label class="login">아이디</label>
+		<% if(request.getAttribute("loginchek") != null) { %>
+				<p class="login-res">아이디와 비밀번호를 확인해주세요.</p>
+		<% } %>
+		</div>
+		<div class="input"><input class="id" type="text" name="userid">
+		<a href="<%=request.getContextPath()%>/login/findid"><p class="find">아이디 찾기</p></a></div>
+		<div class="login"><label class="login">비밀번호</label></div>
+		<div class="input"><input class="pw" type="password" name="userpw">
+		<a href="<%=request.getContextPath() %>/login/findpw"><p class="find">비밀번호 찾기</p></a></div>
+		<div class="checkbox">
+			<%
+				if(username.equals("")) {
+			%>
+		      	<input type="checkbox" name="remember" class="remember-box">
+		    <% } else { %>
+		      	<input type="checkbox" name="remember" class="remember-box" checked>
+		    <% } %>
+		    <label for="id=remember" class="login">기억하기</label>
+		    <label class="login-bnt"><button class="login-bnt" onclick="check();">로그인</button></label>
+		</form>
+			<label class="login-bnt registerpage"><a href="<%=request.getContextPath() %>/register"><button class="login-bnt">회원가입</button></a></label>
+		</div>
 	</section>
 </body>
 <script>
