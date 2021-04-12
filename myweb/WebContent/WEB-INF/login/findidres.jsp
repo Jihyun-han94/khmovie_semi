@@ -22,7 +22,8 @@
 		<h2 class="id-res"><%=request.getAttribute("userid")%></h2>
 		<h2>입니다.</h2>
 		<div class="info-check">
-				<button class="find-bnt" onclick="loginpage()">로그인하기</button>
+			<button class="find-bnt" onclick="findpwpage()">비밀번호 찾기</button>
+			<button class="find-bnt" onclick="loginpage()">로그인하기</button>
 		</div>
 		<% } else { %>
 		<h2>가입된 정보가</h2>

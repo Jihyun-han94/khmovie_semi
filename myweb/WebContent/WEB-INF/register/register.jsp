@@ -48,14 +48,15 @@
 			<div class="register">
 				<input type="date" placeholder="생년월일" class="brith_date" name="BrithDate">
 			</div>
-			<div class="register"><label>핸드폰번호</label><p name="cert">핸드폰 번호를 입력해주세요.</p></div>
+			<div class="register"><label>핸드폰번호</label><p id="phone-check">핸드폰 번호를 입력해주세요.</p></div>
 			<div class="register">
-				<input type="text" placeholder="핸드폰번호" name="userPhone" onKeyup="inputPhoneNumber(this);" maxlength="13" class="phone_number">
+				<input type="text" placeholder="핸드폰번호" name="userPhone" maxlength="11" class="phone_number"
+				oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 			</div>
 			<div class="register"><label>이메일</label><p>이메일을 입력해주세요.</p></div>
 			<div class="register">
 				<input type="email" placeholder="이메일" class="email" name="userEmail">
-			</div class="register">
+			</div>
 			<button class="register-bnt">가입하기</button>
 		</form>
 	</section>
@@ -64,31 +65,6 @@
 	</footer>
 </body>
 <script type="text/javascript">
-function inputPhoneNumber(obj) {
-    var number = obj.value.replace(/[^0-9]/g, "");
-    var phone = "";
-
-    if(number.length < 4) {
-        return number;
-    } else if(number.length < 7) {
-        phone += number.substr(0, 3);
-        phone += "-";
-        phone += number.substr(3);
-    } else if(number.length < 11) {
-        phone += number.substr(0, 3);
-        phone += "-";
-        phone += number.substr(3, 3);
-        phone += "-";
-        phone += number.substr(6);
-    } else {
-        phone += number.substr(0, 3);
-        phone += "-";
-        phone += number.substr(3, 4);
-        phone += "-";
-        phone += number.substr(7);
-    }
-    obj.value = phone;
-}
 
 function check(){
 	if(!document.register.userid.value){
@@ -111,10 +87,8 @@ function check(){
 		alert("생년월일을 입력하세요.");
 		return false;
 	}
-	if(document.register.userPhone.value == "성공"){
-		return true;
-	}else{
-		alert("핸드폰번호 인증을 완료하세요.");
+	if(!document.register.userPhone.value){
+		alert("핸드폰번호를 입력하세요.");
 		return false;
 	}
 	

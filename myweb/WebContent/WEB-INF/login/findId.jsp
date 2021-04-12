@@ -24,7 +24,8 @@
 			</div>
 			<div class="info">
 				<span class="info-phone">핸드폰 번호</span>
-				<input class="userinfo" type="text" name="userPhone" onKeyup="inputPhoneNumber(this);" maxlength="13" class="phone_number">
+				<input class="userinfo" type="text" name="userPhone" maxlength="11" class="phone_number"
+				oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 			</div>
 			<div class="info-check">
 				<button class="find-bnt">아이디 찾기</button>
@@ -44,30 +45,5 @@ function check(){
 	}
 }
 
-function inputPhoneNumber(obj) {
-    var number = obj.value.replace(/[^0-9]/g, "");
-    var phone = "";
-
-    if(number.length < 4) {
-        return number;
-    } else if(number.length < 7) {
-        phone += number.substr(0, 3);
-        phone += "-";
-        phone += number.substr(3);
-    } else if(number.length < 11) {
-        phone += number.substr(0, 3);
-        phone += "-";
-        phone += number.substr(3, 3);
-        phone += "-";
-        phone += number.substr(6);
-    } else {
-        phone += number.substr(0, 3);
-        phone += "-";
-        phone += number.substr(3, 4);
-        phone += "-";
-        phone += number.substr(7);
-    }
-    obj.value = phone;
-}
 </script>
 </html>
