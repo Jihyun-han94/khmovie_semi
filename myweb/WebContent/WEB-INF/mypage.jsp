@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ page import="Register.MemberVO, Register.MemberDAO" %>
+	<%@ page import="mypage.MypageVO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,12 +32,12 @@
 
 
 <%
-                MemberVO userinfo = (MemberVO) request.getAttribute("userinfo");
+                MypageVO userinfo = (MypageVO) request.getAttribute("userinfo");
                 String name = userinfo.getUserName();
                 String grade = "";
                 String src = "";
                 
-                int gradenum = 0;
+                int gradenum = userinfo.getGrade();
                 
                 if(gradenum==3){
                 	grade = "플라티넘";
@@ -101,16 +101,24 @@
 			<div class="tit-util mt70">
 				<h2 class="tit small">나의 예매내역</h2>
 
-				<a href="/mypage/bookinglist?tab=01" class="more" title="나의 예매내역 더보기">더보기 <i class="iconset ico-arr-right-gray"></i></a>
+				<a href="/myreserve" class="more">더보기 <i class="iconset ico-arr-right-gray"></i></a>
 			</div>
 
 			<!-- my-reserve-history -->
 			<div class="my-reserve-history">
 				<ul>
 					<li class="no-result">
-						<div class="no-history-reservation">
-							<%=title%>	<%=theater%>	<%=holddate%>	<%=seatnum%>	
-						</div>
+						<table>
+							<tbody>
+								<tr>
+									<td><%=title%></td>
+									<td><%=theater%></td>
+									<td><%=holddate%></td>
+									<td><%=seatnum%></td>
+									<td><button type="button">자세히</button></td>
+								</tr>
+							</tbody>
+						</table>
 					</li>
 				</ul>
 			</div>
@@ -121,7 +129,7 @@
 			<div class="tit-util mt70">
 				<h2 class="tit small">나의 리뷰내역</h2>
 
-				<a href="/mypage/bookinglist?tab=01" class="more" title="나의 예매내역 더보기">더보기 <i class="iconset ico-arr-right-gray"></i></a>
+				<a href="/myreview" class="more">더보기 <i class="iconset ico-arr-right-gray"></i></a>
 			</div>
 
 			<!-- my-reserve-history -->

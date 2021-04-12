@@ -30,12 +30,10 @@
 	</div>
 
 	<div id="contents">
-		<h2 class="tit">예매/구매 내역</h2>
-		
-		<!-- 예매내역 -->
-		<div id="myBokdArea" class="tab-cont">
+		<h2 class="tit">나의 리뷰 관리</h2>
+	
+		<div id="myReviewArea" class="tab-cont">
 
-			<!-- 예매 조회 조건 -->
 			<div class="board-list-search mt20">
 				<table>
 					<colgroup>
@@ -71,25 +69,24 @@
 			<table class="table table-hover">
             <thead>
                 <tr>
-                	<th>예매 번호</th>
-                    <th>작품 제목</th>
-                    <th>상영관</th>
-                    <th>관람일시</th>
+                	<th>작품 제목</th>
+                    <th>내용</th>
+                    <th>작성 일시</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
            
                     <tr>
-                        <td>123-456-789</td>
                         <td>영화 제목</td>
-                        <td>상영관 위치</td>
+                        <td>내용 어쩌고 저쩌고</td>
                         <td>2020-02-08 15:20</td>
-                        <td><button type="button" class="button gray-line small ml05" name="more">자세히</button></td>
+                        <td><button type="button" class="button gray-line small ml05" name="edit">수정</button>
+                        <button type="button" class="button gray-line small ml05" name="delete">삭제</button></td>
                     </tr>
             </tbody>
         </table>
-	</div>
+		</div>
 </div>
 </div>
 </body>

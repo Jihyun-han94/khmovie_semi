@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import main.DBConnection;
+import Register.MemberVO;
 
 public class MemberDAO {
 	private final String table = "User_info";
@@ -25,7 +26,7 @@ public class MemberDAO {
 	}
 	
 	public MemberDAO(){
-		this.conn = new DBConnection("1521", "maweb", "admin").getConnect();
+		this.conn = new DBConnection().getConnect();
 	}
 
 	public int register(String userid, String userpw1, String username, String usergender, String useremail, String userphonenumber, String userbirthdate) {
@@ -68,7 +69,7 @@ public class MemberDAO {
 			while(res.next()) {
 				records.add(new MemberVO(
 					res.getString("user_id"), res.getString("user_pw"), res.getString("user_name"),
-					res.getString("email"), res.getString("phone_number"), res.getString("brith_date"),
+					res.getString("email"), res.getString("phone_number"), res.getString("birth_date"),
 					res.getInt("gender"), res.getInt("purchase"), res.getInt("grade")
 				));
 			}
@@ -78,27 +79,6 @@ public class MemberDAO {
 		}
 		
 		return records;
-	}
-	
-	public MemberVO getRecord(String userid) {
-		String sql = "SELECT * FROM user_info WHERE user_id = '" + userid + "'";
-		MemberVO userinfo = null;
-		
-		try {
-			ResultSet res = this.stat.executeQuery(sql);
-			if(res.next()) {
-				userinfo = new MemberVO(
-					res.getString("user_id"), res.getString("user_pw"), res.getString("user_name"),
-					res.getString("email"), res.getString("phone_number"), res.getString("brith_date"),
-					res.getInt("gender"), res.getInt("purchase"), res.getInt("grade")
-				);
-			}
-			res.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return userinfo;
 	}
 	
 	public int checkId(String userid) {

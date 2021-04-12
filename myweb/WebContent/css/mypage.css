@@ -360,3 +360,61 @@ a:link {
     height: 12px;
     background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-arr-right-gray.png);
 }
+
+table {
+    width: 100%;
+    margin: 0;
+    border: 0;
+    table-layout: fixed;
+    border-collapse: collapse;
+    empty-cells: show;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.board-list>tbody>tr>td, .board-list>tbody>tr>th {
+    height: 45px;
+    padding: 10px;
+    border: 1px solid #eaeaea;
+    border-width: 0 0 1px 0;
+    text-align: center;
+}
+
+td {
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+.board-form tbody td, .board-form tbody th {
+    position: relative;
+    height: 50px;
+    padding: 7px 15px;
+    text-align: left;
+    border-bottom: 1px solid #d1d5dd;
+}
+
+.board-form tbody th {
+    background: #f7f8f9;
+}
+
+.board-form tbody td, .board-form tbody th {
+    position: relative;
+    height: 50px;
+    padding: 7px 15px;
+    text-align: left;
+    border-bottom: 1px solid #d1d5dd;
+}
+
+colgroup {
+    display: table-column-group;
+}
