@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="board.BoardVO" %>
+<%@page import="board.BoardDAO" %>
+<%@page import="java.io.File" %>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
+<%@page import="com.oreilly.servlet.MultipartRequest" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,13 +21,23 @@
 <link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/Movie.css">  
 </head>
 <body>
+	<% String path =request.getServletContext().getRealPath(File.separator)+"\\upload"; %>
+	<% BoardVO data = (BoardVO)request.getAttribute("data"); %>
+	<% String filename = (String)request.getAttribute("filename"); 
+		String directory = application.getRealPath("/upload/")+filename;
+		System.out.println(directory);
+	%>
+	
 	<div class="container">
-	<div class="poster">포스터</div>
+	<div class="poster"><img src="../upload/<%=filename %>">
+	
+	
+	
+	</div>
 	<div class="contents">
 	<label for="title">제목</label><br>
-	<p class="title"></p>
-	<label for="context">줄거리</label><br>
-	<p class="context"></p>
+	<p class="title"><%=data.getB_TITLE() %></p>
+	<p class="context"><%=data.getB_CONTEXT() %></p>
 	</div>
 	</div>
 </body>

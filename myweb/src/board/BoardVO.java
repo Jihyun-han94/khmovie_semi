@@ -26,7 +26,7 @@ public class BoardVO {
 		
 	}
 	public BoardVO(String B_ID,String B_TITLE, String B_DIRECT,String B_ARTIST,String B_CONTEXT) {
-		this.B_NUM = 0;
+		this.B_NUM = -1;
 		this.B_ID = B_ID;
 		this.B_TITLE = B_TITLE;
 		this.B_DIRECT = B_DIRECT;

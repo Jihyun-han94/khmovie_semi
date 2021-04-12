@@ -1,5 +1,7 @@
 @charset "UTF-8";
-
+.body{
+	font-color:black;
+}
 .container{
 	width:600px;
 	height:500px;
@@ -98,4 +100,10 @@
 #btn{
 	margin-top:-4em;
 	margin-left:1050px;
+}
+
+.table{
+	background-color : red;
+	margin-top:4000px;
+	width:500px;
 }
