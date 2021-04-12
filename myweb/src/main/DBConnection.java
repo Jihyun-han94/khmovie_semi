@@ -6,8 +6,7 @@ public class DBConnection {
 	private String url = "jdbc:oracle:thin:@";
 	private String ip = "localhost";
 	private String port = "1521";
-	private String sid = "xe";
-	private String username = "admin";
+	private String username = "maweb";
 	private String password = "admin";
 	private Connection connection = null;
 	
@@ -37,7 +36,7 @@ public class DBConnection {
 	}
 	
 	private void connect() {
-		this.url += this.ip + ":" + this.port + ":" + this.sid;
+		this.url += this.ip + ":" + this.port + ":orcl";
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			this.connection = DriverManager.getConnection(this.url, this.username, this.password);

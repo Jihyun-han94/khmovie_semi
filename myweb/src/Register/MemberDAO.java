@@ -21,9 +21,7 @@ public class MemberDAO {
 		return instance;
 	}
 	
-	MemberDAO(){
-		this.conn = new DBConnection("50000", "web_admin", "admin").getConnect();
-	}
+	MemberDAO(){}
 
 	public int register(String userid, String userpw1, String username, String usergender, String useremail, String userphonenumber, String userbirthdate) {
 		String sql = "INSERT INTO "+ this.table +" (USER_ID, USER_PW, USER_NAME, GENDER, EMAIL, PHONE_NUMBER, BIRTH_DATE)";
@@ -75,6 +73,27 @@ public class MemberDAO {
 		}
 		
 		return records;
+	}
+	
+	public MemberVO getRecord(String userid) {
+		String sql = "SELECT * FROM user_info WHERE user_id = '" + userid + "'";
+		MemberVO userinfo = null;
+		
+		try {
+			ResultSet res = this.stat.executeQuery(sql);
+			if(res.next()) {
+				userinfo = new MemberVO(
+					res.getString("user_id"), res.getString("user_pw"), res.getString("user_name"),
+					res.getString("email"), res.getString("phone_number"), res.getString("birth_date"),
+					res.getInt("gender"), res.getInt("purchase"), res.getInt("grade")
+				);
+			}
+			res.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return userinfo;
 	}
 	
 	public int checkId(String userid) {

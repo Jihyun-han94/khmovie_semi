@@ -1,0 +1,362 @@
+.inner-wrap {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+}
+
+body {
+    overflow: auto;
+    overflow-y: scroll;
+    letter-spacing: 0;
+    line-height: 1.5;
+    font-size: 15px;
+    color: #444;
+    font-weight: 400;
+    font-family: NanumBarunGothic,Dotum,'돋움',sans-serif;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+.inner-wrap:after, .inner-wrap:before {
+    content: '';
+    display: table;
+}
+
+.inner-wrap:after {
+    clear: both;
+}
+
+.inner-wrap:after, .inner-wrap:before {
+    content: '';
+    display: table;
+}
+
+.lnb-area.location-fixed {
+    padding-top: 82px;
+}
+
+.lnb-area {
+    float: left;
+    width: 200px;
+    padding: 40px 0 0 0;
+    background-color: #fff;
+}
+
+.location-fixed {
+    padding-top: 42px;
+}
+
+#lnb {
+    margin: 0;
+    padding: 0;
+}
+
+article, aside, figcaption, figure, footer, header, main, nav, section {
+    display: block;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+#lnb>ul {
+    border: 1px solid #d8d9db;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-radius: 10px;
+}
+
+ol, ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+
+#lnb>ul>li {
+    border-top: 1px solid #d8d9db;
+}
+
+
+#lnb>ul>li>a {
+    display: block;
+    color: #222;
+    padding: 10px 15px;
+    font-weight: 400;
+    background-color: transparent;
+}
+
+#lnb ul li a {
+    display: block;
+    text-decoration: none;
+    line-height: 1.3;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+#lnb .depth3 {
+    padding: 20px 0;
+}
+
+#lnb .depth3>li>a {
+    position: relative;
+    padding: 2px 0 2px 24px;
+    color: #666;
+}
+
+
+a:link {
+    color: #444;
+    text-decoration: none;
+}
+
+a {
+    background-color: transparent;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+#contents {
+	float: right;
+	width: calc(100% - 260px);
+    margin: 0;
+    padding: 40px 0 0 0;
+}
+
+.my-page-info {
+    overflow: hidden;
+    height: 190px;
+    border-radius: 10px;
+    background-color: #f3f4f6;
+    padding-top: 20px;
+}
+
+.my-page-info .top {
+    position: relative;
+    height: 140px;
+}
+
+.my-page-info .top .grade {
+    float: left;
+    padding-top: 20px;
+}
+
+.my-page-info .top .grade .name {
+    font-size: 1.8666em;
+    line-height: 1.3;
+    color: #222;
+}
+
+.my-page-main p {
+    margin: 0;
+    padding: 0;
+}
+
+.my-page-info .top .grade .link {
+    padding: 15px 0 0 0;
+}
+
+.my-page-info .top .special-membership {
+    float: right;
+    width: 206px;
+    height: 131px;
+    text-align: center;
+    border: 1px solid #d8d9db;
+    border-radius: 10px;
+}
+
+.my-page-info .bottom {
+    overflow: hidden;
+    height: calc(100% - 198px);
+    padding: 26px 30px 29px 30px;
+    background-color: #eaebed;
+}
+
+.my-page-info .bottom .point {
+    float: left;
+    width: 337px;
+    min-height: 116px;
+}
+
+.my-page-info .bottom .point .tit-area {
+    padding-right: 30px;
+}
+
+.my-page-info .bottom .tit-area {
+    overflow: hidden;
+}
+
+.my-page-info .bottom .tit-area .tit {
+    float: left;
+    font-size: 1.2em;
+    color: #222;
+}
+
+.my-page-info .bottom .point .cont-area .total {
+    overflow: hidden;
+}
+
+.my-page-info .bottom .point .cont-area .total .division {
+    display: table;
+    float: left;
+}
+
+.my-page-info .bottom .point .cont-area .total .division .cell {
+    display: table-cell;
+    height: 44px;
+    padding: 0 0 0 36px;
+    vertical-align: middle;
+    background: url(https://img.page.co.kr/static/pc/images/common/ico/ico-equal-black.png) no-repeat 10px center;
+}
+
+.my-page-info .top .photo .wrap .img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 93px;
+}
+
+.my-page-info .top .photo .wrap .img {
+    overflow: hidden;
+    display: block;
+    width: 93px;
+    height: 93px;
+    border-radius: 93px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 0;
+    line-height: 0;
+    background-color: transparent;
+    box-shadow: 0 5px 5px 0 rgb(45 45 45 / 20%);
+}
+
+button {
+    cursor: pointer;
+    letter-spacing: -.5px;
+    font-weight: 400;
+    font-family: NanumBarunGothic,Dotum,'돋움',sans-serif;
+}
+
+.my-page-info .top .grade .name {
+    font-size: 1.8666em;
+    line-height: 1.3;
+    color: #222;
+}
+
+.my-page-info .top .grade .link {
+    padding: 15px 0 0 0;
+}
+
+.my-page-info .top .grade .link a {
+    margin-right: 10px;
+    color: #666;
+}
+
+.my-page-info .top .photo {
+    float: left;
+    width: 200px;
+    padding: 20px 0 0 60px;
+}
+
+.my-page-info .top .photo .wrap {
+    position: relative;
+    width: 93px;
+    margin: 0;
+    padding: 0 0 7px 0;
+    background: url(https://img.page.co.kr/static/pc/images/mypage/bg-photo-back.png) no-repeat center bottom;
+}
+
+.my-page-main .tit-util {
+    padding-bottom: 0px;
+}
+
+.mt70 {
+    margin-top: 70px!important;
+}
+
+.my-page-main .my-reserve-history {
+    border-top: 1px solid #555;
+    margin-top: 35px;
+}
+
+.my-page-main .my-reserve-history ul li.no-result {
+    min-height: 0;
+    padding: 20px 0;
+}
+
+.my-page-main .my-reserve-history ul li {
+    position: relative;
+    min-height: 140px;
+    margin: 0;
+    padding: 20px 100px 20px 100px;
+}
+
+.tit-util .more {
+    float: right;
+}
+
+.table-wrap {
+    position: relative;
+    border-top: 1px solid #555;
+}
+
+h2.tit.small {
+    padding: 0px;
+    font-size: 1.4666em;
+    color: #503396;
+    font-size: 20px;
+}
+
+.iconset {
+    overflow: hidden;
+    display: inline-block;
+    margin: -1px 0 0 0;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+
+a:link {
+    color: #444;
+    text-decoration: none;
+}
+
+.ico-arr-right-gray {
+    overflow: hidden;
+    width: 7px;
+    height: 12px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-arr-right-gray.png);
+}

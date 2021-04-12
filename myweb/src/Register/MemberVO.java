@@ -13,7 +13,7 @@ public class MemberVO {
 	private String birth_date;
 	private int gender;
 	private int purchase;
-	private int grande;
+	private int grade;
 	
 	public MemberVO(String user_id) {
 		this.user_id = user_id;
@@ -22,7 +22,7 @@ public class MemberVO {
 	public MemberVO() {}
 
 	public MemberVO(String user_id, String user_pw, String user_name, String email, String phone_number, String birth_date,
-			int gender, int purchase, int grande) {
+			int gender, int purchase, int grade) {
 		this.user_id = user_id;
 		this.user_pw = user_pw;
 		this.user_name = user_name;
@@ -31,7 +31,7 @@ public class MemberVO {
 		this.birth_date = birth_date;
 		this.gender = gender;
 		this.purchase = purchase;
-		this.grande = grande;
+		this.grade = grade;
 	}
 
 	public String getUserId() {
@@ -82,11 +82,11 @@ public class MemberVO {
 	public void setPurchase(int purchase) {
 		this.purchase = purchase;
 	}
-	public int getGrande() {
-		return grande;
+	public int getGrade() {
+		return grade;
 	}
-	public void setGrande(int grande) {
-		this.grande = grande;
+	public void setGrade(int grade) {
+		this.grade = grade;
 	}
 
 	public void setRecord(ResultSet res) throws SQLException {
@@ -98,7 +98,7 @@ public class MemberVO {
 		this.birth_date = res.getString("birth_date");
 		this.gender = res.getInt("gender");
 		this.purchase = res.getInt("purchase");
-		this.grande = res.getInt("grande");
+		this.grade = res.getInt("grade");
 	}
 	
 }

@@ -47,6 +47,7 @@ public class LoginServlet extends HttpServlet {
 		if(data.getUserId() != null) {
 			session.setAttribute("login", "true");
 			session.setAttribute("username", data.getUserId());
+			session.setAttribute("usernickname", data.getUserName());
 			
 			Cookie[] cookies = request.getCookies();
 			
@@ -63,7 +64,7 @@ public class LoginServlet extends HttpServlet {
 					}
 				}
 			}
-			response.sendRedirect(request.getContextPath() + "/main");
+			response.sendRedirect(request.getContextPath());
 		} else {
 			response.setCharacterEncoding("UTF-8");
 			request.setAttribute("loginchek", "아이디와 비밀번호를 확인해주세요.");

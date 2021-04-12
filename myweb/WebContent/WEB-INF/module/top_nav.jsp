@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           	<ul class="navbar-nav">
             	<li class="nav-item">
-              		<a class="nav-link active" aria-current="page" href="<%=request.getContextPath() %>/main">Home</a>
+              		<a class="nav-link active" aria-current="page" href="<%=request.getContextPath() %>">Home</a>
             	</li>
             	<li class="nav-item">
              		<a class="nav-link" href="#">예매</a>
@@ -28,9 +28,6 @@
             		<li class="login">
               		<a class="nav-link" href="<%=request.getContextPath() %>/logout">로그아웃</a>
 	            	</li>
-	            	<li class="join">
-	              		<a class="nav-link" href="#">마이페이지</a>
-	            	</li>
 	            <%  } else { %>
 	            	<li class="login">
               		<a class="nav-link" href="<%=request.getContextPath() %>/login">로그인</a>
@@ -39,8 +36,11 @@
 	              		<a class="nav-link" href="<%=request.getContextPath() %>/register">회원가입</a>
 	            	</li>
 	            <%  } %>
+	            
+	            <li class="nav-item">
+	              		<a class="nav-link" href="<%=request.getContextPath() %>/mypage">마이페이지</a>
+	            	</li>
           	</ul>
 		</div>
 	</div>
 </nav>
-<hr id="hr3">
