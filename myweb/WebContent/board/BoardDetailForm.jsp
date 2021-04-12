@@ -21,7 +21,7 @@
             <c:forEach var="list" items="${list }">
                 <tr>
                     <td><font size="1.5"><b>${list.cid }</b>
-                        ${list.ctime }
+                        ${list.cdate }
                         <c:if test = "${sessionId.id == list.cid }">
                             <b>
                                 <a href="javascript:open_win('BoardServlet?command=comment_edit_delete&cnum=${list.cnum }','noname')">[수정/삭제]</a>
