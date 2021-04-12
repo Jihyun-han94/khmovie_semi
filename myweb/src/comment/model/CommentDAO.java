@@ -9,9 +9,77 @@ import java.util.ArrayList;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-import comment.action.*;
+import comment.model.CommentVO;
 
 public class CommentDAO {
+	private CommentDAO() {
+		
+	}
+	private static CommentDAO instance = new CommentDAO();
+	
+	public static CommentDAO getInstance() {
+		return instance;
+	}
+	public Connection getConnection() {
+		Connection con = null;
+		try {
+			Context ctx = new InitialContext();
+			DataSource ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/Oracle");
+			con = ds.getConnection();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return con;
+	}
+	public void closeConnection(Connection con) {
+		if (con != null) {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void hitUp(String num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		String sql = "update s_board set hit = hit+1 where num = ?";
+
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, num);
+
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(con);
+		}
+	}
+	
+	public void hitDown(String num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		String sql = "update s_board set hit = hit-1 where num = ?";
+
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, num);
+
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(con);
+		}
+	}
 	//´ñ±Û DAO
 	public void commentWrite(CommentVO mVo) {
 		Connection con = null;
@@ -63,11 +131,6 @@ public class CommentDAO {
 		}
 		return list;
 	}*/
-	
-	private void closeConnection(Connection con) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	// ´ñ±Û ÆäÀÌÁö Ã³¸®ÇÏ´Â Äõ¸® 
 	public ArrayList<CommentVO> commentView(String num,int page) {

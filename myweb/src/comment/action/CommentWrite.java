@@ -19,9 +19,9 @@ public class CommentWrite implements Action {
         HttpSession session = request.getSession();
         mVo = (CommentVO) session.getAttribute("sessionId");
         
-        mVo.setCid(mVo.getId());
+        mVo.setCid(mVo.getId());//아이디 값가져오기 
         mVo.setCcontent(request.getParameter("c_content"));
-        mVo.setParentnum(Integer.parseInt(request.getParameter("pnum")));
+        mVo.setCparentnum(Integer.parseInt(request.getParameter("pnum")));
         
         
         CommentDAO mDao = CommentDAO.getInstance();
