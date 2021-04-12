@@ -48,16 +48,26 @@
 			<div class="register">
 				<input type="date" placeholder="생년월일" class="brith_date" name="BrithDate">
 			</div>
-			<div class="register"><label>핸드폰번호</label><p id="phone-check">핸드폰 번호를 입력해주세요.</p></div>
+			<div class="register"><label>핸드폰번호 인증</label></div>
 			<div class="register">
-				<input type="text" placeholder="핸드폰번호" name="userPhone" maxlength="11" class="phone_number"
+				<input type="text" placeholder="핸드폰번호를 입력해주세요." name="userPhone" maxlength="11" class="phone_number"
 				oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+				<input type="button" class="send-bnt" onclick="PhoneCheck()" value="인증번호 전송">
 			</div>
+			<div class="register"><label>인증번호</label></div>
+			<div class="register">
+				<input class="phone_number" type="text" placeholder="인증번호를 입력해주세요." name="numkey" maxlength="5" class="numkey"
+				oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+				<input type="button" class="send-bnt" onclick="keyCheck()" value="인증번호 확인">
+			</div>
+			<p class="ps">인증번호 전송 어려움으로 alert로 대체 구현.</p>
 			<div class="register"><label>이메일</label><p>이메일을 입력해주세요.</p></div>
 			<div class="register">
 				<input type="email" placeholder="이메일" class="email" name="userEmail">
 			</div>
-			<button class="register-bnt">가입하기</button>
+			<div class="register">
+				<button class="register">가입하기</button>
+			</div>
 		</form>
 	</section>
 	<footer>
@@ -65,6 +75,7 @@
 	</footer>
 </body>
 <script type="text/javascript">
+var numkey;
 
 function check(){
 	if(!document.register.userid.value){
@@ -91,9 +102,16 @@ function check(){
 		alert("핸드폰번호를 입력하세요.");
 		return false;
 	}
-	
 	if(!document.register.userEmail.value){
 		alert("이메일을 입력하세요.");
+		return false;
+	}
+	if(!document.register.numkey.value){
+		alert("인증번호를 입력해주세요.");
+		return false;
+	}
+	if(document.register.numkey.value != numkey){
+		alert("인증번호가 일치하지 않습니다.");
 		return false;
 	}
 }
@@ -186,5 +204,35 @@ function passwordCheck(){
     
 }
 
+function PhoneCheck(){
+	$.ajax({
+		url: "<%=request.getContextPath() %>/register",
+		type: "post",
+		datatype: "json",
+		data: {
+			phone: document.register.userPhone.value
+		},
+		success: function(data){
+			if(data.result === "fail"){
+				alert("실패");
+			}
+			else {
+				alert(data.result);
+				numkey = data.result;
+				return numkey;
+			}
+		}
+	});
+	
+}
+
+function keyCheck(){
+	if(document.findid.numkey.value != numkey){
+		alert("인증번호가 일치하지 않습니다.");
+	}
+	else{
+		alert("인증번호가 일치합니다.");
+	}
+}
 </script>
 </html>

@@ -1,15 +1,10 @@
 package Register;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-
 import main.DBConnection;
 
 public class MemberDAO {
@@ -172,6 +167,13 @@ public class MemberDAO {
 		}
 		
 		return userpw;
+	}
+	
+	public String sendnum(String phone) {
+		int authNo = (int)(Math.random() * (99999 - 10000 + 1)) + 10000;
+		String numkey = Integer.toString(authNo);
+		System.out.println(numkey);
+		return numkey;
 	}
 	
 	public void close() {

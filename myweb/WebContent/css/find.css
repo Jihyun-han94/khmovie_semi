@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 section.find{
-	width: 500px; height: 500px;
+	width: 500px; height: auto;
 	border: 3px solid #1D2316; border-radius: 5px;
 	margin: 20px auto; padding: 20px;
 }
@@ -26,7 +26,8 @@ div.info{
 span.info-name{ margin: 0 44px; text-align:  left; }
 span.info-phone{ margin: 0 20px; text-align:  left; }
 span.info-id{ margin: 0 39px; text-align:  left; }
-input.userinfo{ margin: 0 20px; border: 2px solid #1D2316; border-radius: 5px; }
+span.info-numkey{ margin: 0 30px; text-align:  left; }
+input.userinfo{ margin: 0 10px; border: 2px solid #1D2316; border-radius: 5px; }
 div.info-check{ margin: 20px; text-align: center; }
 
 button.find-bnt {
@@ -45,3 +46,15 @@ h2{
 h2.id-res{
 	font-size: 25pt; font-weight: bold;
 }
+
+span.numkeyCheck{ display : none;}
+
+input.send-bnt{
+	width: 80px;
+	padding: 5px; float: right;
+	font-size: 5pt; font-weight: bold; color: white;
+	border: 2px solid #1D2316;
+	border-radius: 5px;
+	background-color: #1D2316;
+}
+p.ps{ color: gray; font-size: 12pt; text-align: center;}
