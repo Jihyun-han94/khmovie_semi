@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import main.DBConnection;
 
 public class MemberDAO {
 	private final String table = "User_info";
@@ -21,7 +20,7 @@ public class MemberDAO {
 		return instance;
 	}
 	
-	MemberDAO(){}
+	public MemberDAO(){}
 
 	public int register(String userid, String userpw1, String username, String usergender, String useremail, String userphonenumber, String userbirthdate) {
 		String sql = "INSERT INTO "+ this.table +" (USER_ID, USER_PW, USER_NAME, GENDER, EMAIL, PHONE_NUMBER, BIRTH_DATE)";
@@ -80,7 +79,8 @@ public class MemberDAO {
 		MemberVO userinfo = null;
 		
 		try {
-			ResultSet res = this.stat.executeQuery(sql);
+			this.pstat = this.conn.prepareStatement(sql);
+			ResultSet res = this.pstat.executeQuery();
 			if(res.next()) {
 				userinfo = new MemberVO(
 					res.getString("user_id"), res.getString("user_pw"), res.getString("user_name"),
