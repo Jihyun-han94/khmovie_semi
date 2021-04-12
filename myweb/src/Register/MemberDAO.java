@@ -65,8 +65,8 @@ public class MemberDAO {
 			while(res.next()) {
 				records.add(new MemberVO(
 					res.getString("user_id"), res.getString("user_pw"), res.getString("user_name"),
-					res.getString("email"), res.getString("phone_number"), res.getString("brith_date"),
-					res.getInt("gender"), res.getInt("purchase"), res.getInt("grande")
+					res.getString("email"), res.getString("phone_number"), res.getString("birth_date"),
+					res.getInt("gender"), res.getInt("purchase"), res.getInt("grade")
 				));
 			}
 			res.close();

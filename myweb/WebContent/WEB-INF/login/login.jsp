@@ -20,7 +20,7 @@
     	}
     %>
 	<section class="login">
-		<form action="./login" method="post" name="login" onsubmit="return logincheck()">
+		<form action="./login" method="post" name="login" onsubmit="return check()">
 		<div class="login"><label class="login">아이디</label>
 		<% if(request.getAttribute("loginchek") != null) { %>
 				<p class="login-res">아이디와 비밀번호를 확인해주세요.</p>
@@ -40,7 +40,7 @@
 		      	<input type="checkbox" name="remember" class="remember-box" checked>
 		    <% } %>
 		    <label for="id=remember" class="login">기억하기</label>
-		    <label class="login-bnt"><button class="login-bnt" onclick="check();">로그인</button></label>
+		    <label class="login-bnt"><button class="login-bnt" onclick="check()">로그인</button></label>
 		</form>
 			<label class="login-bnt registerpage"><a href="<%=request.getContextPath() %>/register"><button class="login-bnt">회원가입</button></a></label>
 		</div>
