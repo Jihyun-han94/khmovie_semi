@@ -153,39 +153,40 @@ a:-webkit-any-link {
     padding: 40px 0 0 0;
 }
 
-.my-magabox-info {
+.my-page-info {
     overflow: hidden;
-    height: 200px;
+    height: 190px;
     border-radius: 10px;
     background-color: #f3f4f6;
+    padding-top: 20px;
 }
 
-.my-magabox-info .top {
+.my-page-info .top {
     position: relative;
     height: 140px;
 }
 
-.my-magabox-info .top .grade {
+.my-page-info .top .grade {
     float: left;
     padding-top: 20px;
 }
 
-.my-magabox-info .top .grade .name {
+.my-page-info .top .grade .name {
     font-size: 1.8666em;
     line-height: 1.3;
     color: #222;
 }
 
-.my-megabox-main p {
+.my-page-main p {
     margin: 0;
     padding: 0;
 }
 
-.my-magabox-info .top .grade .link {
+.my-page-info .top .grade .link {
     padding: 15px 0 0 0;
 }
 
-.my-magabox-info .top .special-membership {
+.my-page-info .top .special-membership {
     float: right;
     width: 206px;
     height: 131px;
@@ -194,57 +195,57 @@ a:-webkit-any-link {
     border-radius: 10px;
 }
 
-.my-magabox-info .bottom {
+.my-page-info .bottom {
     overflow: hidden;
     height: calc(100% - 198px);
     padding: 26px 30px 29px 30px;
     background-color: #eaebed;
 }
 
-.my-magabox-info .bottom .point {
+.my-page-info .bottom .point {
     float: left;
     width: 337px;
     min-height: 116px;
 }
 
-.my-magabox-info .bottom .point .tit-area {
+.my-page-info .bottom .point .tit-area {
     padding-right: 30px;
 }
 
-.my-magabox-info .bottom .tit-area {
+.my-page-info .bottom .tit-area {
     overflow: hidden;
 }
 
-.my-magabox-info .bottom .tit-area .tit {
+.my-page-info .bottom .tit-area .tit {
     float: left;
     font-size: 1.2em;
     color: #222;
 }
 
-.my-magabox-info .bottom .point .cont-area .total {
+.my-page-info .bottom .point .cont-area .total {
     overflow: hidden;
 }
 
-.my-magabox-info .bottom .point .cont-area .total .division {
+.my-page-info .bottom .point .cont-area .total .division {
     display: table;
     float: left;
 }
 
-.my-magabox-info .bottom .point .cont-area .total .division .cell {
+.my-page-info .bottom .point .cont-area .total .division .cell {
     display: table-cell;
     height: 44px;
     padding: 0 0 0 36px;
     vertical-align: middle;
-    background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-equal-black.png) no-repeat 10px center;
+    background: url(https://img.page.co.kr/static/pc/images/common/ico/ico-equal-black.png) no-repeat 10px center;
 }
 
-.my-magabox-info .top .photo .wrap .img img {
+.my-page-info .top .photo .wrap .img img {
     width: 100%;
     height: 100%;
     border-radius: 93px;
 }
 
-.my-magabox-info .top .photo .wrap .img {
+.my-page-info .top .photo .wrap .img {
     overflow: hidden;
     display: block;
     width: 93px;
@@ -266,31 +267,96 @@ button {
     font-family: NanumBarunGothic,Dotum,'돋움',sans-serif;
 }
 
-.my-magabox-info .top .grade .name {
+.my-page-info .top .grade .name {
     font-size: 1.8666em;
     line-height: 1.3;
     color: #222;
 }
 
-.my-magabox-info .top .grade .link {
+.my-page-info .top .grade .link {
     padding: 15px 0 0 0;
 }
 
-.my-magabox-info .top .grade .link a {
+.my-page-info .top .grade .link a {
     margin-right: 10px;
     color: #666;
 }
 
-.my-magabox-info .top .photo {
+.my-page-info .top .photo {
     float: left;
     width: 200px;
     padding: 20px 0 0 60px;
 }
 
-.my-magabox-info .top .photo .wrap {
+.my-page-info .top .photo .wrap {
     position: relative;
     width: 93px;
     margin: 0;
     padding: 0 0 7px 0;
-    background: url(https://img.megabox.co.kr/static/pc/images/mypage/bg-photo-back.png) no-repeat center bottom;
+    background: url(https://img.page.co.kr/static/pc/images/mypage/bg-photo-back.png) no-repeat center bottom;
+}
+
+.my-page-main .tit-util {
+    padding-bottom: 0px;
+}
+
+.mt70 {
+    margin-top: 70px!important;
+}
+
+.my-page-main .my-reserve-history {
+    border-top: 1px solid #555;
+    margin-top: 35px;
+}
+
+.my-page-main .my-reserve-history ul li.no-result {
+    min-height: 0;
+    padding: 20px 0;
+}
+
+.my-page-main .my-reserve-history ul li {
+    position: relative;
+    min-height: 140px;
+    margin: 0;
+    padding: 20px 100px 20px 100px;
+}
+
+.tit-util .more {
+    float: right;
+}
+
+.table-wrap {
+    position: relative;
+    border-top: 1px solid #555;
+}
+
+h2.tit.small {
+    padding: 0px;
+    font-size: 1.4666em;
+    color: #503396;
+    font-size: 20px;
+}
+
+.iconset {
+    overflow: hidden;
+    display: inline-block;
+    margin: -1px 0 0 0;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+
+a:link {
+    color: #444;
+    text-decoration: none;
+}
+
+.ico-arr-right-gray {
+    overflow: hidden;
+    width: 7px;
+    height: 12px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-arr-right-gray.png);
 }

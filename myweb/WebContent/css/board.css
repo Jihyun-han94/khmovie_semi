@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+.container{
+	width:600px;
+	height:500px;
+	display: grid;
+	column-gap: 15px; 
+	row-gap: 40px;
+   	grid-template-areas: 
+    "h i j k"
+    "l m n o"
+    "p q r s"
+    ;
+    background-color: white;
+    margin-top: 40px;
+    margin-left:380px
+}
+
+.item1{
+	grid-area:h;
+	color:red;
+	border-color:red;
+}
+
+.item2{
+	grid-area:i;
+}
+
+.item3{
+	grid-area:j;
+}
+
+.item4{
+	grid-area:k;
+}
+
+.item5{
+	grid-area:l;
+}
+.item6{
+	grid-area:m;
+}
+.item7{
+	grid-area:n;
+}
+.item8{
+	grid-area:o;
+}
+.item9{
+	grid-area:p;
+}
+.item10{
+	grid-area:q;
+}
+.item11{
+	grid-area:r;
+}
+.item12{
+	grid-area:s;
+}
+.footer{
+    background-color: #f8f8fa;
+    width: 100%;
+    top: 100%;
+    margin-top: 35em;
+    height: 100px;
+}
+
+#text{
+    color: black;
+    text-align: center;
+    margin-top: 1em;
+    font-size: 23px;
+    font-family: '나눔스퀘어_ac';
+    margin-bottom: 0;
+    
+}
+#hr{
+    color: white;
+    display: block;
+    width: 100px;
+    margin-top: 0.4em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-width: 2px;
+     
+}
+#text2{
+    color: black;
+    margin-left:830px;
+    margin-top: 1em;
+    font-size: 15px;
+    font-family: '나눔스퀘어_ac';
+    margin-bottom: -1.5em; 
+}
+
+#btn{
+	margin-top:-4em;
+	margin-left:1050px;
+}

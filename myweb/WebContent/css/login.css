@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+section.login
+{
+	width: 500px; height: 330px;
+	border: 3px solid #1D2316; border-radius: 5px;
+	margin: 20px auto;
+}
+div.login{ margin: 10px; }
+p.find { margin: 0 0px; font-size: 10pt; color: #1D2316; display: inline; font-weight: bold; border: 2px solid #1D2316; padding: 5px; border-radius: 3px;}
+p.login-res { margin: 0 20px; font-size: 10pt; color: red; display: inline; font-weight: bold; }
+label.login{ font-size: 20pt; font-weight: bold; }
+.input{margin: 5px 25px; }
+input.id, input.pw {
+	margin: 0 20px;
+	border: 0px;
+	border-bottom: 2px solid #1D2316;
+	width: 300px; height: 50px; }
+	
+div.checkbox{ margin: 10px; padding: auto; }
+label.remember-label{ margin: 10px 10px; font-size: 15pt; }
+input.remember-box{ width: 20px; height: 20px; float: legt; }
+button.login-bnt {
+	margin: 0 10px;
+	padding: auto;
+	border: 3px solid #1D2316;
+	border-radius: 5px;
+	color: white; font-weight: bold;
+	background-color: #1D2316;
+}
+label.login-bnt{ float: right; }
+label.registerpage{ display: inline; }
