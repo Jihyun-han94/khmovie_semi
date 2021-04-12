@@ -53,7 +53,7 @@ public class Reserve_3_time extends HttpServlet {
 		
 		request.setAttribute("timeList", timeList);
 		
-		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/selectTime.jsp");
+		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/selectTime.jsp");
 		dp.forward(request, response);
 	}
 }

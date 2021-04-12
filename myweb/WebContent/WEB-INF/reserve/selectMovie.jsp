@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>영화 선택</title>
 <%@ include file="/WEB-INF/module/css_js.jsp" %>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/reserve.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/reserve/css/reserve.css">
 </head>
 <style>
 /*
@@ -45,19 +45,19 @@
 			switch(title) {
 				case "감기":
 					valList.add("cold");
-					imgList.add("./poster/cold.jpg"); break;
+					imgList.add("./reserve/poster/cold.jpg"); break;
 				case "미나리":
 					valList.add("minari");
-					imgList.add("./poster/minari.jpg"); break;
+					imgList.add("./reserve/poster/minari.jpg"); break;
 				case "비밀의 정원":
 					valList.add("secretGarden");
-					imgList.add("./poster/secretGarden.png"); break;
+					imgList.add("./reserve/poster/secretGarden.png"); break;
 				case "베테랑":
 					valList.add("veteran");
-					imgList.add("./poster/veteran.png"); break;
+					imgList.add("./reserve/poster/veteran.png"); break;
 				case "테넷":
 					valList.add("tenet");
-					imgList.add("./poster/tenet.jpg");
+					imgList.add("./reserve/poster/tenet.jpg");
 			}
 		}
 	%>

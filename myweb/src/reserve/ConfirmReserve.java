@@ -30,7 +30,7 @@ public class ConfirmReserve extends HttpServlet {
 		
 		request.setAttribute("ticketList", ticketList);
 		
-		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/myTicketList.jsp");
+		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/myTicketList.jsp");
 		dp.forward(request, response);
 	}
 }

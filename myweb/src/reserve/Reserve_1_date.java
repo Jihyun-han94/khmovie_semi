@@ -65,7 +65,7 @@ public class Reserve_1_date extends HttpServlet {
 				
 				request.setCharacterEncoding("UTF-8");
 				
-				RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/selectMovie.jsp");
+				RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/selectMovie.jsp");
 				dp.forward(request, response);
 		/*
 			}
@@ -138,7 +138,7 @@ public class Reserve_1_date extends HttpServlet {
 		
 		request.setAttribute("dateList", dateList);
 		
-		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/selectDate.jsp");
+		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/selectDate.jsp");
 		dp.forward(request, response);
 	}
 }

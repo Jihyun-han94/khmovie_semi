@@ -33,7 +33,7 @@ public class Reserver_4_seat extends HttpServlet {
 				
 		request.setAttribute("seatNumList", seatNumList);
 		
-		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/selectSeat.jsp");
+		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/selectSeat.jsp");
 		dp.forward(request, response);
 	}
 }

@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>나의 예매 내역</title>
 <%@ include file="/WEB-INF/module/css_js.jsp" %>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/reserve.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/reserve/css/reserve.css">
 </head>
 <body>
 	<header>

@@ -31,7 +31,7 @@ public class Reserve_2_theater extends HttpServlet {
 	
 		request.setAttribute("theaterList", theaterList);
 				
-		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/selectTheater.jsp");
+		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/selectTheater.jsp");
 		dp.forward(request, response);
 	}
 }

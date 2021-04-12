@@ -46,7 +46,7 @@ public class Reserve_5_complete extends HttpServlet {
 				// 인자로 user_id도 넣어줘야 함.
 				reserve.setTicketStatus(ticketID);
 			}
-			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/complete.jsp");
+			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/complete.jsp");
 			dp.forward(request, response);
 			
 			// close() 다 해야 함.
