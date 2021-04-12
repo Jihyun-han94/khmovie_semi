@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/reserve_2")
-public class ReserveServlet_2 extends HttpServlet {
+@WebServlet("/selectTheater")
+public class Reserve_2_theater extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ReserveServlet_2() {
+    public Reserve_2_theater() {
         super();
     }
 

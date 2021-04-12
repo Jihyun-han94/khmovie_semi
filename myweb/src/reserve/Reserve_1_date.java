@@ -15,11 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/reserve_1")
-public class ReserveServlet_1 extends HttpServlet {
+@WebServlet("/selectDate")
+public class Reserve_1_date extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ReserveServlet_1() {
+    public Reserve_1_date() {
         super();
     }
 
@@ -43,23 +43,37 @@ public class ReserveServlet_1 extends HttpServlet {
 //			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve_error.jsp");
 //			dp.forward(request, response);
 //		}
+		
+		
+		// 영화마다 예매하기 버튼 마다로도 해두기
+		
+		
 		HttpSession session = request.getSession();
-		
-		ReserveDAO reserve = new ReserveDAO();
-		ArrayList<ReserveVO> reserveVO = reserve.getAll();
-		ArrayList<String> titleList = new ArrayList<>();
-		for(ReserveVO title : reserveVO) {
-			titleList.add(title.getTitle());
+		/*
+		if(session.getAttribute("login") != null) {
+			if(session.getAttribute("login").equals("true")) {     // 이걸 매 페이지 마다 넣어야 하나?
+		*/
+				ReserveDAO reserve = new ReserveDAO();
+				ArrayList<ReserveVO> movieList = reserve.getAll();
+				ArrayList<String> titleList = new ArrayList<>();
+				
+				for(ReserveVO movie : movieList) {
+					titleList.add(movie.getTitle());
+				}
+				
+				request.setAttribute("titleList", titleList);
+				
+				request.setCharacterEncoding("UTF-8");
+				
+				RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/selectMovie.jsp");
+				dp.forward(request, response);
+		/*
+			}
+		} else {
+			//로그인이 필요한 페이지입니다. 팝업창 띄워주기 처리 후 확인 누르면 아래 처리되도록.
+			//response.sendRedirect("메인페이지");
 		}
-		
-		
-		
-		request.setAttribute("titleList", titleList);
-		
-		request.setCharacterEncoding("UTF-8");
-		
-		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/selectMovie.jsp");
-		dp.forward(request, response);
+		*/
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -67,49 +81,64 @@ public class ReserveServlet_1 extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		switch(title) {
-			case "veteran":
-				title = "베테랑"; break;
-			case "villans":
-				title = "범죄도시"; break;
 			case "cold":
-				title = "감기";
+				title = "감기";	break;
+			case "minari":
+				title = "미나리";	break;
+			case "secretGarden":
+				title = "비밀의 정원"; break;
+			case "veteran":
+				title = "베테랑";	break;
+			case "tenet":
+				title = "테넷";
 		}
 
 		HttpSession session = request.getSession();
 		session.setAttribute("title", title);
 				
 		ReserveDAO reserve = new ReserveDAO();
-		ArrayList<String> getDateNprice = reserve.getDateNprice(title);
+		String availStart = reserve.getAvailStart(title);
+		String availEnd = reserve.getAvailEnd(title);
+		int price = reserve.getPrice(title);
 
-		String start_date_str = getDateNprice.get(0);
-		String end_date_str = getDateNprice.get(1);
-		session.setAttribute("price", Integer.parseInt(getDateNprice.get(2)));
+		ArrayList<String> dateList = new ArrayList<>();
+		session.setAttribute("price", price);
 		
 		final String DATE_PATTERN = "yy-MM-dd";
 		SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
-		Date start_date = new Date(); //
-		Date end_date = new Date();	//
+		Date availStart_Date = new Date(); //
+		Date availEnd_Date = new Date();	//
 		try {
-			start_date = sdf.parse(start_date_str);
-			end_date = sdf.parse(end_date_str);
+			availStart_Date = sdf.parse(availStart);
+			availEnd_Date = sdf.parse(availEnd);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-
-		getDateNprice.clear();	
-		Date curr_date = start_date;
-		while(curr_date.compareTo(end_date) <= 0) {
-			getDateNprice.add(sdf.format(curr_date));
+		
+		dateList.clear();
+		// 예매일 기준 오늘날짜 받아오기
+		Date today_Date = new Date();
+		String today = sdf.format(today_Date);
+		try {
+			today_Date = sdf.parse(today);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		Date curr_date = availStart_Date;
+		while(curr_date.compareTo(availEnd_Date) <= 0) {
+			// 오늘 날짜 이후의 상영일만 추출
+			if(curr_date.compareTo(today_Date) >= 0 ) {
+				dateList.add(sdf.format(curr_date));
+			}
 			Calendar c = Calendar.getInstance();
 			c.setTime(curr_date);
 			c.add(Calendar.DAY_OF_MONTH, 1);
 			curr_date = c.getTime();
 		}
 		
-		request.setAttribute("getDate", getDateNprice);
+		request.setAttribute("dateList", dateList);
 		
 		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/selectDate.jsp");
 		dp.forward(request, response);
 	}
-
 }

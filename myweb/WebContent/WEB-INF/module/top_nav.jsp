@@ -1,36 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%
+	String logined = "";
+	if(session.getAttribute("login") != null) {
+		logined = (String)session.getAttribute("login");
+	}
+%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="<%=request.getContextPath() %>">THEATER</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-            	<% if(getServletInfo().equals("visit")) { %>		
-            		  <a class="nav-link active" href="<%=request.getContextPath() %>/visit">방명록</a>
-            	<% } else { %>	
-            		  <a class="nav-link" href="<%=request.getContextPath() %>/visit">방명록</a>
-            	<% } %>
-            </li>
-            <li class="nav-item">
-            	<% if(getServletInfo().equals("board")) { %>		
-            		  <a class="nav-link active" href="<%=request.getContextPath() %>/board">게시판</a>
-            	<% } else { %>	
-            		  <a class="nav-link" href="<%=request.getContextPath() %>/board">게시판</a>
-            	<% } %>
-            </li>
-        </ul>
-     
-        <ul class="navbar-nav">
-        	<li class="nav-item">
-        		<a class="nav-link" href="<%=request.getContextPath() %>/join">회원가입</a>
-        	</li>
-        	<li class="nav-item">
-        		<a class="nav-link" href="<%=request.getContextPath() %>/login">로그인</a>
-        	</li>
-        </ul>
-    </div>
+	<div class="container-fluid">
+    	<a class="navbar-brand" href="#">Navbar</a>
+        	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          	<span class="navbar-toggler-icon"></span>
+        	</button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          	<ul class="navbar-nav">
+            	<li class="nav-item">
+              		<a class="nav-link active" aria-current="page" href="<%=request.getContextPath() %>/main">Home</a>
+            	</li>
+            	<li class="nav-item">
+             		<a class="nav-link" href="#">예매</a>
+            	</li>
+            	<li class="nav-item">
+              		<a class="nav-link" href="<%=request.getContextPath() %>/board">관람후기</a>
+            	</li>
+            	
+            	<%  if(logined.equals("true")){ %>
+            		<li class="login">
+              		<a class="nav-link" href="<%=request.getContextPath() %>/logout">로그아웃</a>
+	            	</li>
+	            	<li class="join">
+	              		<a class="nav-link" href="#">마이페이지</a>
+	            	</li>
+	            <%  } else { %>
+	            	<li class="login">
+              		<a class="nav-link" href="<%=request.getContextPath() %>/login">로그인</a>
+	            	</li>
+	            	<li class="join">
+	              		<a class="nav-link" href="<%=request.getContextPath() %>/register">회원가입</a>
+	            	</li>
+	            <%  } %>
+          	</ul>
+		</div>
+	</div>
 </nav>
+<hr id="hr3">

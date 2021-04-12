@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/reserve_3")
-public class ReserveServlet_3 extends HttpServlet {
+@WebServlet("/selectTime")
+public class Reserve_3_time extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ReserveServlet_3() {
+    public Reserve_3_time() {
         super();
     }
 
@@ -28,7 +28,19 @@ public class ReserveServlet_3 extends HttpServlet {
 			case "cheonho":
 				theaterName = "천호"; break;
 			case "songpa":
-				theaterName = "송파";
+				theaterName = "송파"; break;
+			case "apgujeong":
+				theaterName = "압구정"; break;
+			case "miah":
+				theaterName = "미아"; break;
+			case "sooyu":
+				theaterName = "소유"; break;
+			case "deungchon":
+				theaterName = "등촌"; break;
+			case "gangbyeon":
+				theaterName = "강변"; break;
+			case "konUniv":
+				theaterName = "건대입구";
 		}
 		
 		HttpSession session = request.getSession();

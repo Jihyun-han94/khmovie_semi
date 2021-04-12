@@ -5,32 +5,54 @@
 <head>
 <meta charset="UTF-8">
 <title>예매완료</title>
+<%@ include file="/WEB-INF/module/css_js.jsp" %>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/reserve.css">
 </head>
 <style>
-	div {
+	section {
 		width: 300px;
 		height: 350px;
-		border: 1px solid darkgray;
+		background-color: #1D2316;
+		margin-left: 130px;
+		border: 1px solid white;
 	}
-	
-	h4 {
+	h6 {
+		transition: translate(0%, 5%);
 		text-align: center;
-		color: rgb(74, 0, 149);
+		color: skyblue;
+		font-weight: bold;
+		line-height: 60px;
 	}
-	
+	hr {
+		color: white;
+		border-color: white;
+		background-color: white;
+	}
+
 	p {
-		text-indent: 20px;
+		text-indent: 23px;
+		color: black;
+		background-color: orange;
+	}
+	table {
+		margin-top: 20px;
+		margin-left: 25px;
+		color: white;
+	}
+	td {
+		text-indent: 15px;
 	}
 	
-	button {
+	#confirm {
 		display: block;
 		margin: 0 auto;
-		background-color: rgb(74, 0, 149);
-		color: white;
-		cursor: pointer;
+		font-weight: bold;
 	}
 </style>
 <body>
+	<header>
+		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
+	</header>
 	<%
 		String title = (String)session.getAttribute("title");
 		String date = (String)session.getAttribute("date");
@@ -40,21 +62,43 @@
 		int totalPrice = (Integer)session.getAttribute("totalPrice");
 	%>
 	<section>
-		<div>
-			<h4>예매가 정상적으로 접수되었습니다.</h4>
-			<hr>
-			<p><b>예매내역 확인</b></p>
-			<!-- <p>예매일시: <%=date %> + <%=time %></p> -->
-			<p><b>영화제목</b> &nbsp;<%=title %></p>
-			<p><b>관람극장</b> &nbsp;메가박스 <%=theaterName %></p>
-			<p><b>관람일시</b> &nbsp;<%=date %>&nbsp;<%=time %></p>
-			<p><b>관람인원</b> &nbsp;<%=seatNumArr.length %>명</p>
-			<p><b>좌석번호</b> &nbsp;</p>
-			<p><b>결제금액</b> &nbsp;<%=totalPrice %>원</p>
-			<form action = "./reserve_5">
-				<button type="submit">확인</button>
-			</form>
-		</div>	
+		<h6>예매가 정상적으로 접수되었습니다.</h6>
+		<p><b>예매내역 확인</b></p>
+		<!-- <p>예매일시: <%=date %> + <%=time %></p> -->
+		<table>
+			<tr>
+				<th>영화제목</th>
+				<td><%=title %></td>
+			</tr>
+			<tr>
+				<th>관람극장</th>
+				<td><%=theaterName %></td>
+			</tr>
+			<tr>
+				<th>관람일시</th>
+				<td><%=date %>&nbsp;<%=time %></td>
+			</tr>
+			<tr>
+				<th>관람인원</th>
+				<td><%=seatNumArr.length %>명</td>
+			</tr>
+			<tr>
+				<th>좌석번호</th>
+				<td>
+					<% for(int i = 0; i < seatNumArr.length; i++) { %>
+						<%=seatNumArr[i] %>&nbsp;
+					<% } %>
+				</td>
+			</tr>
+			<tr>
+				<th>결제금액</th>
+				<td><%=totalPrice %>원</td>
+			</tr>
+		</table>
+		<br>
+		<form action = "./reserve_5">
+			<button id="confirm" type="submit" class="btn btn-light btn-sm">확인</button>
+		</form>
 	</section>
 </body>
 </html>

@@ -6,35 +6,46 @@
 <head>
 <meta charset="UTF-8">
 <title>날짜 선택</title>
+<%@ include file="/WEB-INF/module/css_js.jsp" %>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/reserve.css">
 </head>
 <style>
-	p {
-		background-color: black;
-		color: lightgray;
-	}
-	
+	/*
 	.selectDate {
-		width: 300px;
+		width: 600px;
 		border-radius: 5px;
 		box-shadow: 5px 5px 5px lightgray;
 	}
+	*/
 	
-	.btn {
-		display: block;
+	div.reserveStatus>span:first-child, div.reserveStatus>span:last-child {
+		font-size: small;
+		color: rgb(157, 157, 157);
+	}
+	
+	div.reserveStatus>span:nth-child(2) {
+		font-size: large;
+		font-weight: bold;
+		color: skyblue;
 	}
 </style>
 <body>
-	<% ArrayList<String> getDate = (ArrayList<String>)request.getAttribute("getDate"); %>
+	<header>
+		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
+	</header>
+	<% ArrayList<String> dateList = (ArrayList<String>)request.getAttribute("dateList"); %>
 	<section>
-		<div class="selectDate">
-			<p>2.날짜 선택</p>
-			<div class="container">
-				<form action="./reserve_2" method="post">
-				<% for(String date : getDate) { %>
-						<button type="submit" class="btn btn-primary" name="date" value="<%=date %>"><%=date %></button>
-				<% } %>
-				</form>
-			</div>
+		<div class="reserveStatus">
+			<span>영화 선택 ></span>
+			<span>날짜 선택 > </span><span>극장 선택 > 시간 선택 > 좌석 선택</span>
+		</div>
+		<br>
+		<div class="container">
+			<form action="./selectTheater" method="post">
+			<% for(String date : dateList) { %>
+					<button type="submit" class="btn btn-outline-light btn-sm" name="date" value="<%=date %>"><%=date %></button>
+			<% } %>
+			</form>
 		</div>
 	</section>
 </body>
