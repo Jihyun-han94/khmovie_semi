@@ -24,12 +24,14 @@
 	<% String path =request.getServletContext().getRealPath(File.separator)+"\\upload"; %>
 	<% BoardVO data = (BoardVO)request.getAttribute("data"); %>
 	<% String filename = (String)request.getAttribute("filename"); 
+		System.out.println(filename);
 		String directory = application.getRealPath("/upload/")+filename;
 		System.out.println(directory);
 	%>
 	
 	<div class="container">
-	<div class="poster"><img src="../upload/<%=filename %>">
+	
+	<div class="poster"><img src="upload/<%=filename %>">
 	
 	
 	

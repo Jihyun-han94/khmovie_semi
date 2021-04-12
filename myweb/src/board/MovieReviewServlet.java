@@ -27,7 +27,7 @@ public class MovieReviewServlet extends HttpServlet {
 		String B_TITLE = request.getParameter("B_TITLE");
 		String filename = request.getParameter("filename");
 		
-		
+		System.out.println(filename);
 		System.out.println("moviereviewservlet B_TITLE"+B_TITLE);
 		BoardDAO board = new BoardDAO();
 		BoardVO data = board.getRecord(B_TITLE);
