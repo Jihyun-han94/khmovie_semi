@@ -51,7 +51,7 @@ section.register-res
 	padding: auto;
 }
 
-h3.success{ text-align: center; font-size: 20pt; margin: 50px; color:black; font-weight: bold;}
+h3.fail{ text-align: center; font-size: 20pt; margin: 50px; color:black; font-weight: bold;}
 
 header.idcheck
 {

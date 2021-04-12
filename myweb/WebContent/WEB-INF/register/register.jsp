@@ -15,7 +15,7 @@
 		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
 	</header>
 	<section class="register">
-		<form action="./register/res" method="post" name="register" onsubmit="return check()">
+		<form action="./register/res" method="post" name="register" onsubmit="return (check() && sendSms())">
 		<h1 class="title">회원가입</h1>
 		<hr class="register">
 			<div class="register"><label>아이디<p>4~12자의 영소문자, 숫자를 혼합하여 사용할 수 있습니다.</p></label>
@@ -48,15 +48,13 @@
 			<div class="register">
 				<input type="date" placeholder="생년월일" class="brith_date" name="BrithDate">
 			</div>
-			<div class="register"><label>본인확인</label><p>핸드폰 번호를 입력해주세요.</p></div>
+			<div class="register"><label>핸드폰번호</label><p name="cert">핸드폰 번호를 입력해주세요.</p></div>
 			<div class="register">
 				<input type="text" placeholder="핸드폰번호" name="userPhone" onKeyup="inputPhoneNumber(this);" maxlength="13" class="phone_number">
-				<button class="bnt">본인인증</button>
 			</div>
 			<div class="register"><label>이메일</label><p>이메일을 입력해주세요.</p></div>
 			<div class="register">
 				<input type="email" placeholder="이메일" class="email" name="userEmail">
-				<button class="bnt" onclick="emailCheck()">이메일 인증</button>
 			</div class="register">
 			<button class="register-bnt">가입하기</button>
 		</form>
@@ -113,6 +111,13 @@ function check(){
 		alert("생년월일을 입력하세요.");
 		return false;
 	}
+	if(document.register.userPhone.value == "성공"){
+		return true;
+	}else{
+		alert("핸드폰번호 인증을 완료하세요.");
+		return false;
+	}
+	
 	if(!document.register.userEmail.value){
 		alert("이메일을 입력하세요.");
 		return false;
@@ -188,23 +193,24 @@ function passwordCheck(){
             return false;
         }
         else {
-        	document.getElementById('pw1-check').style.color='blue';
-        	return true;
+        	document.getElementById('pw1-check').innerHTML='사용가능한 비밀번호 입니다.';
+            document.getElementById('pw1-check').style.color='green';
+        	if(pw !='' && confirmPW !='') {
+                if(pw == confirmPW) {
+                    document.getElementById('pw2-check').innerHTML='비밀번호가 일치합니다.';
+                    document.getElementById('pw2-check').style.color='green';
+                    return true;
+                }
+                else {
+                    document.getElementById('pw2-check').innerHTML='비밀번호가 일치하지 않습니다.';
+                    document.getElementById('pw2-check').style.color='red';
+                    return false;
+                }
+            }
         }
     }
     
-    if(pw !='' && confirmPW !='') {
-        if(pw == confirmPW) {
-            document.getElementById('pw2-check').innerHTML='비밀번호가 일치합니다.';
-            document.getElementById('pw2-check').style.color='green';
-            return true;
-        }
-        else {
-            document.getElementById('pw2-check').innerHTML='비밀번호가 일치하지 않습니다.';
-            document.getElementById('pw2-check').style.color='red';
-            return false;
-        }
-    }
 }
+
 </script>
 </html>
