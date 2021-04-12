@@ -21,8 +21,7 @@ public class MemberVO {
 	
 	public MemberVO() {}
 
-	public MemberVO(String user_id, String user_pw, String user_name, String email, String phone_number, String birth_date,
-			int gender, int purchase, int grade) {
+	public MemberVO(String user_id, String user_pw, String user_name, int gender, String email, String phone_number, int purchase, int grade, String birth_date) {
 		this.user_id = user_id;
 		this.user_pw = user_pw;
 		this.user_name = user_name;

@@ -25,11 +25,12 @@ public class MypageServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = request.getSession();
 		String userid = (String) session.getAttribute("username");
 		MemberDAO member = new MemberDAO();
-		MemberVO mv = member.getRecord(userid);
+		MemberVO mv = member.getRecord(userid.toUpperCase());
 		member.close();
 		
 	    request.setAttribute("userinfo", mv);

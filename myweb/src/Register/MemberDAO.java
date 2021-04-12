@@ -4,13 +4,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+
+import main.DBConnection;
 
 public class MemberDAO {
 	private final String table = "User_info";
 	private Connection conn = null;
 	private PreparedStatement pstat = null;
+	private Statement stat = null;
 	static MemberDAO instance;
+	
 	
 	public static MemberDAO getInstance() {
 		if(instance == null) {
@@ -20,7 +25,9 @@ public class MemberDAO {
 		return instance;
 	}
 	
-	public MemberDAO(){}
+	public MemberDAO(){
+		this.conn = new DBConnection("50000", "web_admin", "admin").getConnect();
+	}
 
 	public int register(String userid, String userpw1, String username, String usergender, String useremail, String userphonenumber, String userbirthdate) {
 		String sql = "INSERT INTO "+ this.table +" (USER_ID, USER_PW, USER_NAME, GENDER, EMAIL, PHONE_NUMBER, BIRTH_DATE)";
@@ -61,9 +68,15 @@ public class MemberDAO {
 			ResultSet res = this.pstat.executeQuery();
 			while(res.next()) {
 				records.add(new MemberVO(
-					res.getString("user_id"), res.getString("user_pw"), res.getString("user_name"),
-					res.getString("email"), res.getString("phone_number"), res.getString("birth_date"),
-					res.getInt("gender"), res.getInt("purchase"), res.getInt("grade")
+						res.getString("user_id"),
+						res.getString("user_pw"),
+						res.getString("user_name"),
+						res.getInt("gender"),
+						res.getString("email"),
+						res.getString("phone_number"),
+						res.getInt("purchase"),
+						res.getInt("grade"),
+						res.getString("birth_date")
 				));
 			}
 			res.close();
@@ -75,18 +88,25 @@ public class MemberDAO {
 	}
 	
 	public MemberVO getRecord(String userid) {
-		String sql = "SELECT * FROM user_info WHERE user_id = '" + userid + "'";
 		MemberVO userinfo = null;
+		String sql = "SELECT * FROM "+ this.table + " WHERE user_id = ?";
 		
 		try {
 			this.pstat = this.conn.prepareStatement(sql);
+			this.pstat.setString(1, userid);
 			ResultSet res = this.pstat.executeQuery();
-			if(res.next()) {
+			if(res.next()) {	
 				userinfo = new MemberVO(
-					res.getString("user_id"), res.getString("user_pw"), res.getString("user_name"),
-					res.getString("email"), res.getString("phone_number"), res.getString("birth_date"),
-					res.getInt("gender"), res.getInt("purchase"), res.getInt("grade")
-				);
+					res.getString("user_id"),
+					res.getString("user_pw"),
+					res.getString("user_name"),
+					res.getInt("gender"),
+					res.getString("email"),
+					res.getString("phone_number"),
+					res.getInt("purchase"),
+					res.getInt("grade"),
+					res.getString("birth_date")
+				);				
 			}
 			res.close();
 		} catch (SQLException e) {
