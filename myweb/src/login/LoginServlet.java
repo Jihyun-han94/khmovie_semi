@@ -44,6 +44,7 @@ public class LoginServlet extends HttpServlet {
 		
 		MemberDAO member = new MemberDAO();
 		MemberVO data = member.login(userid, userpw);
+		
 		HttpSession session = request.getSession();
 		
 		if(data.getUserId() != null) {
@@ -51,20 +52,14 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("username", data.getUserId());
 			session.setAttribute("usernickname", data.getUserName());
 			
-			Cookie[] cookies = request.getCookies();
-			
 			if(remember != null) {
 				Cookie cookie = new Cookie("username", userid);
 				cookie.setMaxAge(60*60*24);
 				response.addCookie(cookie);
 			} else {
-				for(Cookie c: cookies) {
-					if(c.getName().equals("username")) {
-						c.setMaxAge(0);
-						response.addCookie(c);
-						break;
-					}
-				}
+				Cookie cookie = new Cookie("username", userid);
+				cookie.setMaxAge(60*60);
+				response.addCookie(cookie);
 			}
 			response.sendRedirect(request.getContextPath());
 		} else {

@@ -2,6 +2,8 @@ package mypage;
 
 import java.sql.*;
 
+import main.DBConnection;
+
 // DAO(Data Access Object)
 //     데이터 베이스 접속과 관련된 메서드를 정의
 public class MypageDAO {
@@ -10,7 +12,7 @@ public class MypageDAO {
 	private PreparedStatement pstat = null;
 	
 	public MypageDAO() {
-		this.connect();
+		this.conn = new DBConnection().getConnect();
 	}
 
 	public MypageVO getRecord(String userid) {
@@ -56,33 +58,6 @@ public class MypageDAO {
 			e.printStackTrace();
 		}
 		return result;
-	}
-	
-	private void connect() {
-		try {
-			// JDBC 드라이버 로딩
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("JDBC 드라이버 로딩 완료!");
-			
-			// 접속 정보 작성
-			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-			String user = "maweb";
-			String password = "admin";
-			
-			// DB 접속 객체 생성 및 접속 시도
-			this.conn = DriverManager.getConnection(url, user, password);
-			System.out.println("Oracle DB 접속 완료!");
-			
-			// SQL 구문 작업용 객체 생성
-			this.stat = this.conn.createStatement();
-			
-		} catch (ClassNotFoundException e) {
-			System.out.println("MemberDAO.java -> connect() : " + e.getMessage());
-		} catch (SQLRecoverableException e) {    // 접속 IP/Port 오류
-			System.out.println("MemberDAO.java -> connect() : " + e.getMessage());
-		} catch (SQLException e) {
-			System.out.println("MemberDAO.java -> connect() : " + e.getMessage());
-		}
 	}
 	
 	public void close() {

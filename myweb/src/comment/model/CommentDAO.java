@@ -80,7 +80,7 @@ public class CommentDAO {
 			closeConnection(con);
 		}
 	}
-	//´ñ±Û DAO
+	//ï¿½ï¿½ï¿½ DAO
 	public void commentWrite(CommentVO mVo) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -132,7 +132,7 @@ public class CommentDAO {
 		return list;
 	}*/
 
-	// ´ñ±Û ÆäÀÌÁö Ã³¸®ÇÏ´Â Äõ¸® 
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	public ArrayList<CommentVO> commentView(String num,int page) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -166,7 +166,7 @@ public class CommentDAO {
 		return list;
 	}
 
-	//´ñ±ÛÀÌ Á¸ÀçÇÏ´ÂÁö È®ÀÎÇÏ´Â Äõ¸®
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int commentCheck(String num) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -258,7 +258,7 @@ public class CommentDAO {
 		
 	}
 	
-	//´ñ±Û¼ö Á¶È¸
+	//ï¿½ï¿½Û¼ï¿½ ï¿½ï¿½È¸
 	public ArrayList<CommentVO> commentCount() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -272,7 +272,7 @@ public class CommentDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				CommentVO mVo = new CommentVO();
-				mVo.setB_Num(rs.getInt("b_num")); //°Ô½ÃÆÇ ³Ñ¹ö
+				mVo.setB_Num(rs.getInt("b_num")); //ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½
 				mVo.setCcount(rs.getInt("c_count"));
 				clist.add(mVo);
 			}
@@ -283,7 +283,7 @@ public class CommentDAO {
 		}
 		return clist;
 	}
-	//´ñ±Û ÆäÀÌÂ¡Ã³¸® Äõ¸®
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Â¡Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	
 			public int commentTotalCount(String num) {
 				Connection con = null;
