@@ -16,7 +16,7 @@
 	<section class="find">
 		<h3>비밀번호 찾기</h3>
 		<hr>
-		<form action="./findpw/res" method="post" name="findpw" onsubmit="return (check() && numkey())">
+		<form action="./findpw/res" method="post" name="findpw" onsubmit="return check()">
 			<label class="find-label">회원 정보에 등록한 휴대전화로 인증</label>
 			<div class="info">
 				<span class="info-name">이  름</span>
@@ -49,28 +49,6 @@
 	</section>
 </body>
 <script type="text/javascript">
-function PhoneCheck(){
-	$.ajax({
-		url: "<%=request.getContextPath() %>/phone/code/check",
-		type: "post",
-		datatype: "json",
-		data: {
-			phone: document.findid.userPhone.value
-		},
-		success: function(data){
-			if(data.result === "fail"){
-				alert("실패");
-			}
-			else {
-				alert(data.result);
-				var numkey = data.result;
-				return numkey;
-			}
-		}
-	});
-	
-}
-
 function inputPhoneNumber(obj) {
     var number = obj.value.replace(/[^0-9]/g, "");
     var phone = "";
@@ -96,13 +74,43 @@ function inputPhoneNumber(obj) {
     obj.value = phone;
 }
 
+var numkey;
+
+function PhoneCheck(){
+	$.ajax({
+		url: "<%=request.getContextPath() %>/phone/code/check",
+		type: "post",
+		datatype: "json",
+		data: {
+			phone: document.findpw.userPhone.value
+		},
+		success: function(data){
+			if(data.result === "fail"){
+				alert("유효하지 않은 전화번호 입니다.");
+			}
+			else {
+				alert(data.result);
+				numkey = data.result;
+				return numkey;
+			}
+		}
+	});
+}
+
 function keyCheck(){
-	if(document.findid.numkey.value != numkey){
+	if(document.findpw.numkey.value != numkey){
 		alert("인증번호가 일치하지 않습니다.");
 	}
 	else{
 		alert("인증번호가 일치합니다.");
 	}
+}
+
+function findpwpage() {
+	window.location.href="<%=request.getContextPath() %>/login/findpw";
+}
+function loginpage() {
+	window.location.href="<%=request.getContextPath() %>/login";
 }
 
 function check(){
@@ -126,13 +134,6 @@ function check(){
 		alert("인증번호가 일치하지 않습니다.");
 		return false;
 	}
-}
-
-function findidpage() {
-	window.location.href="<%=request.getContextPath() %>/login/findid";
-}
-function loginpage() {
-	window.location.href="<%=request.getContextPath() %>/login";
 }
 </script>
 </html>

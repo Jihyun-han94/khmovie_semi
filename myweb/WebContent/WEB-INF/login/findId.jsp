@@ -72,25 +72,6 @@ function inputPhoneNumber(obj) {
 
 var numkey;
 
-function check(){
-	if(!document.findid.userName.value){
-		alert("이름를 입력하세요.");
-		return false;
-	}
-	if(!document.findid.userPhone.value){
-		alert("핸드폰 번호를 입력하세요.");
-		return false;
-	}
-	if(!document.findid.numkey.value){
-		alert("인증번호를 입력해주세요.");
-		return false;
-	}
-	if(document.findid.numkey.value != numkey){
-		alert("인증번호가 일치하지 않습니다.");
-		return false;
-	}
-}
-
 function PhoneCheck(){
 	$.ajax({
 		url: "<%=request.getContextPath() %>/phone/code/check",
@@ -126,6 +107,25 @@ function findpwpage() {
 }
 function loginpage() {
 	window.location.href="<%=request.getContextPath() %>/login";
+}
+
+function check(){
+	if(!document.findid.userName.value){
+		alert("이름를 입력하세요.");
+		return false;
+	}
+	if(!document.findid.userPhone.value){
+		alert("핸드폰 번호를 입력하세요.");
+		return false;
+	}
+	if(!document.findid.numkey.value){
+		alert("인증번호를 입력해주세요.");
+		return false;
+	}
+	if(document.findid.numkey.value != numkey){
+		alert("인증번호가 일치하지 않습니다.");
+		return false;
+	}
 }
 </script>
 </html>

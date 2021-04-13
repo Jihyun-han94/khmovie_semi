@@ -119,3 +119,5 @@ a.register{ color: white};
     font-size: smaller;
     margin-top: 6px;
 }
+
+h2.fail{ text-align: center; }
