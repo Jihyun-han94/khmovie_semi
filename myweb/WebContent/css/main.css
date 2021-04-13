@@ -10,6 +10,12 @@ body{
 }
 */
 
+/* 아영 임의로 추가 */
+.item img:hover {
+	transition-duration: 0.5;
+	filter: brightness(60%);
+}
+
 .item{
     position: absolute;
     top: 27%;
