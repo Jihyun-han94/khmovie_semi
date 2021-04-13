@@ -26,7 +26,7 @@
 				<span class="info-phone">핸드폰 번호</span>
 				<input class="userinfo" type="text" name="userPhone" maxlength="13" class="phone_number"
 				oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-				placeholder="예) 010-1234-5678" onKeyup="inputPhoneNumber(this)">>
+				placeholder="예) 010-1234-5678" onKeyup="inputPhoneNumber(this)">
 				<input type="button" class="send-bnt" onclick="PhoneCheck()" value="인증번호 전송">
 			</div>
 			<div class="info">
