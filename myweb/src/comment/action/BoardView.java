@@ -21,8 +21,8 @@ public class BoardView implements Action {
 		CommentVO mVo = new CommentVO();
 		
 		//게시글을 클릭했을때 보여줄 정보를 가지고옴
-		mVo = mDao.selectOneBoard(num);
-		mDao.hitUp(num);
+		//mVo = mDao.selectOneBoard(num);
+		//mDao.hitUp(num);
 		
 		
 		request.setAttribute("mVo", mVo);

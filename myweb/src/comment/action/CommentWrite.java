@@ -19,7 +19,7 @@ public class CommentWrite implements Action {
         HttpSession session = request.getSession();
         mVo = (CommentVO) session.getAttribute("sessionId");
         
-        mVo.setCid(mVo.getId());//아이디 값가져오기 
+      //mVo.setCid(mVo.getId());//아이디 값가져오기 
         mVo.setCcontent(request.getParameter("c_content"));
         mVo.setCparentnum(Integer.parseInt(request.getParameter("pnum")));
         

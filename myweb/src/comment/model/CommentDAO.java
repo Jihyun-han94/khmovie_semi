@@ -272,7 +272,7 @@ public class CommentDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				CommentVO mVo = new CommentVO();
-				mVo.setB_Num(rs.getInt("b_num")); //게시판 넘버
+			//	mVo.setB_Num(rs.getInt("b_num")); //게시판 넘버
 				mVo.setCcount(rs.getInt("c_count"));
 				clist.add(mVo);
 			}
