@@ -68,7 +68,7 @@
 		</div>
 		<br>
 		<div class="container">
-			<form action="./selectDate" method="post" accept-charset="UTF-8">
+			<form action="./selectDate" accept-charset="UTF-8">
 				<% for(int i = 0; i < titleList.size(); i++) { %>
 					<div class="movieItem">
 						<button class="movie" type="submit" name="title" value="<%=valList.get(i) %>">
@@ -77,7 +77,6 @@
 						<!--
 							<span class="imgTxt">예매하기</span></div> span에 링크 적용이 안 돼 우선 패스.
 						-->
-						<%-- <button type="submit" class="btn btn-sm" name="title" value="<%=valList.get(i) %>"></button> --%>
 					</div>
 				<% } %>
 			</form>
