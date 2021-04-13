@@ -32,6 +32,7 @@ public class IdCheckServlet extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 		int result = dao.checkId(userid);
 		
+		System.out.println(userid);
 		if(userid.length() > 3 && userid.length() < 13) {
 			if(result == 0) {
 				response.setCharacterEncoding("UTF-8");

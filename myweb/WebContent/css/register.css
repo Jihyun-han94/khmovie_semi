@@ -5,7 +5,7 @@ section.register{
 	background-color: white;
     border: 3px solid #1D2316;
 	border-radius: 1rem;
-	width: 500px; height: 1000px;
+	width: 500px; height: auto;
 }
 p{font-size: 10px; color: gray; margin: 5px 5px;}
 h1.title{ margin:30px auto; text-align: center; }
@@ -44,7 +44,18 @@ button.bnt{
 .brith_date { width: 150px; height: 30px; }
 .phone_number , .email{ width: 200px; height: 30px; }
 select{ width: 100px; }
-button.register , button.login-bnt{
+
+button.register{
+	display: inline;
+	background-color: white;
+	border-radius: 5px;
+	color: #1D2316; font-weight: bold;
+	margin: 10px 20px; float: right;
+	padding: 10px;
+	font-size: 18pt;
+}
+
+button.login-bnt{
 	display: inline;
 	background-color: #1D2316;
 	border-radius: 5px;

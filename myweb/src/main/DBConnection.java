@@ -5,7 +5,7 @@ import java.sql.*;
 public class DBConnection {
 	private String url = "jdbc:oracle:thin:@";
 	private String ip = "localhost";
-	private String port = "50000";
+	private String port = "1521";
 	private String sid = "xe";
 	private String username = "myweb";
 	private String password = "admin";
