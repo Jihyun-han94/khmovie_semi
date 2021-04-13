@@ -30,7 +30,7 @@ public class MypageServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String userid = (String) session.getAttribute("username");
 		MemberDAO member = new MemberDAO();
-		MemberVO mv = member.getRecord(userid.toUpperCase());
+		MemberVO mv = member.getRecord(userid);
 		member.close();
 		
 	    request.setAttribute("userinfo", mv);

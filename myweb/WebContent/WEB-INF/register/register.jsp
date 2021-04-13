@@ -15,14 +15,14 @@
 		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
 	</header>
 	<section class="register">
-		<form action="./register/res" method="post" name="register" onsubmit="return (check() && sendSms())">
+		<form action="./register/res" method="post" name="register" onsubmit="return check()">
 		<h1 class="title">회원가입</h1>
 		<hr class="register">
 			<div class="register"><label>아이디<p>4~12자의 영소문자, 숫자를 혼합하여 사용할 수 있습니다.</p></label>
 			<p id="id-check" class="id-check" ></p>
 			</div>
 			<div class="register">
-				<input type="text" placeholder="아이디를 입력해주세요." id="userid" name="userid" onkeyup="idConfirm()">
+				<input type="text" placeholder="아이디를 입력해주세요." id="userid" name="userid" onkeyup="idConfirm()" maxlength="12">
 				<button type="button" class="bnt" id="idcheck" onClick="idCheck()">중복확인</button>				
 			</div>
 			<div class="register"><label>비밀번호<p class="pw-check" >비밀번호는 6글자~16글자의 영문, 숫자, 특수문자를 혼합하여 사용할 수 있습니다.</p></label>
@@ -33,8 +33,7 @@
 			</div>
 			<div class="register"><label>비밀번호 확인<p id="pw2-check" class="pw-check" ></p></label></div>
 			<div class="register">
-				<input type = "password" id="pass2" class="pw2" name="userpw2"
-                onkeyup="passwordCheck()">
+				<input type = "password" id="pass2" class="pw2" name="userpw2" onkeyup="passwordCheck()" maxlength="16">
 			</div>
 			<div class="register">
 				<label>이름<input type="text" placeholder="이름" class="name" name="username" ></label>
@@ -48,10 +47,11 @@
 			<div class="register">
 				<input type="date" placeholder="생년월일" class="brith_date" name="BrithDate">
 			</div>
-			<div class="register"><label>핸드폰번호 인증</label></div>
+			<div class="register"><label>핸드폰번호 인증</label><p id="phone-check" class="phone-check" ></p></div>
 			<div class="register">
-				<input type="text" placeholder="핸드폰번호를 입력해주세요." name="userPhone" maxlength="11" class="phone_number"
-				oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+				<input type="text" name="userPhone" class="phone_number"
+				oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="13" placeholder="예) 010-1234-5678"
+				onKeyup="inputPhoneNumber(this)">
 				<input type="button" class="send-bnt" onclick="PhoneCheck()" value="인증번호 전송">
 			</div>
 			<div class="register"><label>인증번호</label></div>
@@ -82,8 +82,16 @@ function check(){
 		alert("ID를 입력하세요.");
 		return false;
 	}
+	if(!document.register.userid.length > 3){
+		alert("ID 길이가 적절하지 않습니다.");
+		return false;
+	}
 	if(!document.register.userpw1.value){
 		alert("PASSWORD를 입력하세요.");
+		return false;
+	}
+	if(!document.register.userpw1.length > 5){
+		alert("PASSWORD의 길이가 적절하지 않습니다.");
 		return false;
 	}
 	if(!document.register.userpw2.value){
@@ -100,6 +108,10 @@ function check(){
 	}
 	if(!document.register.userPhone.value){
 		alert("핸드폰번호를 입력하세요.");
+		return false;
+	}
+	if(!document.register.userPhone.length){
+		alert("유효하지 않은 전화번호 입니다.");
 		return false;
 	}
 	if(!document.register.userEmail.value){
@@ -204,6 +216,31 @@ function passwordCheck(){
     
 }
 
+function inputPhoneNumber(obj) {
+    var number = obj.value.replace(/[^0-9]/g, "");
+    var phone = "";
+    if(number.length < 4) {
+        return number;
+    } else if(number.length < 7) {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3);
+    } else if(number.length < 11) {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3, 3);
+        phone += "-";
+        phone += number.substr(6);
+    } else {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3, 4);
+        phone += "-";
+        phone += number.substr(7);
+    }
+    obj.value = phone;
+}
+
 function PhoneCheck(){
 	$.ajax({
 		url: "<%=request.getContextPath() %>/register",
@@ -227,7 +264,7 @@ function PhoneCheck(){
 }
 
 function keyCheck(){
-	if(document.findid.numkey.value != numkey){
+	if(document.register.numkey.value != numkey){
 		alert("인증번호가 일치하지 않습니다.");
 	}
 	else{

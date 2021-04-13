@@ -24,8 +24,9 @@
 			</div>
 			<div class="info">
 				<span class="info-phone">핸드폰 번호</span>
-				<input class="userinfo" type="text" name="userPhone" maxlength="11" class="phone_number"
-				oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+				<input class="userinfo" type="text" name="userPhone" maxlength="13" class="phone_number"
+				oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+				placeholder="예) 010-1234-5678" onKeyup="inputPhoneNumber(this)">>
 				<input type="button" class="send-bnt" onclick="PhoneCheck()" value="인증번호 전송">
 			</div>
 			<div class="info">
@@ -42,6 +43,31 @@
 	</section>
 </body>
 <script>
+function inputPhoneNumber(obj) {
+    var number = obj.value.replace(/[^0-9]/g, "");
+    var phone = "";
+    if(number.length < 4) {
+        return number;
+    } else if(number.length < 7) {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3);
+    } else if(number.length < 11) {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3, 3);
+        phone += "-";
+        phone += number.substr(6);
+    } else {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3, 4);
+        phone += "-";
+        phone += number.substr(7);
+    }
+    obj.value = phone;
+}
+
 var numkey;
 
 function check(){
