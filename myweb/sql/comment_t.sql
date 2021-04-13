@@ -1,0 +1,14 @@
+-- 댓글 테이블
+CREATE TABLE BOARD_COMMENT 
+(
+  CNUM NUMBER PRIMARY KEY,
+  CID VARCHAR2(15),
+  CDATE DATE,
+  CPARENTNUM NUMBER,
+  CCONTENT VARCHAR2(500) NOT NULL,
+  CCOUNT NUMBER
+);
+ 
+-- Board_t는 게시판 테이블을, B_NUM은 글번호를 나타낸다.
+
+create sequence COMMENT_SEQ;
