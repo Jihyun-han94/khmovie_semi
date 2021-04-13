@@ -20,19 +20,19 @@ div.info{
 	font-weight: bold;
 	border-right: 3px #1D2316;
 	border:3px solid #1D2316; border-radius: 5px;
-	margin: 10px 0; padding: 12px;
+	margin: 10px 0;
 }
 
-span.info-name{ margin: 0 44px; text-align:  left; }
-span.info-phone{ margin: 0 20px; text-align:  left; }
-span.info-id{ margin: 0 39px; text-align:  left; }
-span.info-numkey{ margin: 0 30px; text-align:  left; }
-input.userinfo{ margin: 0 10px; border: 2px solid #1D2316; border-radius: 5px; }
+span.info-name{ margin: 14px 44px; text-align:  left; }
+span.info-phone{ margin: 14px 20px; text-align:  left; }
+span.info-id{ margin: 14px 39px; text-align:  left; }
+span.info-numkey{ margin: 14px 30px; text-align:  left; }
+input.userinfo{ margin: 14px 10px; border: 2px solid #1D2316; border-radius: 5px; }
 div.info-check{ margin: 20px; text-align: center; }
 
-button.find-bnt {
+button.find-bnt, input.find-bnt{
 	width: 100px; height: 40px;
-	margin: 10px 10px;
+	margin: 10px 5px;
 	font-size: 10pt; font-weight: bold; color: white;
 	border: 2px solid #1D2316;
 	border-radius: 5px;
@@ -50,7 +50,7 @@ h2.id-res{
 span.numkeyCheck{ display : none;}
 
 input.send-bnt{
-	width: 80px;
+	width: 80px; margin-top: 15px; margin-right: 10px;
 	padding: 5px; float: right;
 	font-size: 5pt; font-weight: bold; color: white;
 	border: 2px solid #1D2316;

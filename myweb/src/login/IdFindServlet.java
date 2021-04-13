@@ -30,8 +30,14 @@ public class IdFindServlet extends HttpServlet {
 		String phone = request.getParameter("phone");
 		
 		MemberDAO dao = new MemberDAO();
-		String result = dao.sendnum(phone);
-		System.out.println(result);
+		String result;
+		
+		if(phone.length() == 13) {
+			result = dao.sendnum(phone);
+		}else {
+			result = null;
+		}
+		
 		if(result == null) {
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("application/json");

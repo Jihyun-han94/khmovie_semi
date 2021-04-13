@@ -20,8 +20,9 @@ public class MypageDAO {
 		String sql = "SELECT * FROM User_info WHERE user_id = '" + userid + "'";
 		MypageVO m = null;
 		try {
-			// SQL 질의문 실행
-			ResultSet res = this.stat.executeQuery(sql);
+			// SQL 질의문 실행 //stat로 sql 불러 올 때 실행되지 않음.
+			this.pstat = this.conn.prepareStatement(sql);
+			ResultSet res = this.pstat.executeQuery();
 			if(res.next()) {
 				m = new MypageVO(
 						res.getString("user_id"), res.getString("user_pw"), res.getString("user_name"),
@@ -103,7 +104,7 @@ public class MypageDAO {
 	public void close() {
 		// 모든 JDBC 관련 생성 객체 정보 close()
 		try {
-			this.stat.close();
+			this.pstat.close();
 			this.conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

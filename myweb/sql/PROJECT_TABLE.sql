@@ -1,3 +1,7 @@
+CREATE USER myweb IDENTIFIED BY admin;
+
+GRANT CONNECT, RESOURCE, DBA TO MYWEB;
+
 CREATE TABLE Movie (
     TITLE VARCHAR2(100) PRIMARY KEY,
     START_DATE DATE DEFAULT SYSDATE,
@@ -74,9 +78,6 @@ CREATE TABLE FILE_T(
     movietitle VARCHAR(200),
     fileName VARCHAR(200),
     fileRealName VARCHAR(200)
-<<<<<<< HEAD
-);
-=======
 );
 
->>>>>>> refs/remotes/origin/한지현
+COMMIT;

@@ -37,6 +37,8 @@
 			</div>
 			<p class="ps">인증번호 전송 어려움으로 alert로 대체 구현.</p>
 			<div class="info-check">
+				<input type="button" class="find-bnt" onclick="findpwpage()" value="비밀번호 찾기">
+				<input type="button" class="find-bnt" onclick="loginpage()" value="로그인">
 				<button class="find-bnt">아이디 찾기</button>
 			</div>
 		</form>
@@ -70,6 +72,43 @@ function inputPhoneNumber(obj) {
 
 var numkey;
 
+function PhoneCheck(){
+	$.ajax({
+		url: "<%=request.getContextPath() %>/phone/code/check",
+		type: "post",
+		datatype: "json",
+		data: {
+			phone: document.findid.userPhone.value
+		},
+		success: function(data){
+			if(data.result === "fail"){
+				alert("유효하지 않은 전화번호 입니다.");
+			}
+			else {
+				alert(data.result);
+				numkey = data.result;
+				return numkey;
+			}
+		}
+	});
+}
+
+function keyCheck(){
+	if(document.findid.numkey.value != numkey){
+		alert("인증번호가 일치하지 않습니다.");
+	}
+	else{
+		alert("인증번호가 일치합니다.");
+	}
+}
+
+function findpwpage() {
+	window.location.href="<%=request.getContextPath() %>/login/findpw";
+}
+function loginpage() {
+	window.location.href="<%=request.getContextPath() %>/login";
+}
+
 function check(){
 	if(!document.findid.userName.value){
 		alert("이름를 입력하세요.");
@@ -86,37 +125,6 @@ function check(){
 	if(document.findid.numkey.value != numkey){
 		alert("인증번호가 일치하지 않습니다.");
 		return false;
-	}
-}
-
-function PhoneCheck(){
-	$.ajax({
-		url: "<%=request.getContextPath() %>/login/findid",
-		type: "post",
-		datatype: "json",
-		data: {
-			phone: document.findid.userPhone.value
-		},
-		success: function(data){
-			if(data.result === "fail"){
-				alert("실패");
-			}
-			else {
-				alert(data.result);
-				numkey = data.result;
-				return numkey;
-			}
-		}
-	});
-	
-}
-
-function keyCheck(){
-	if(document.findid.numkey.value != numkey){
-		alert("인증번호가 일치하지 않습니다.");
-	}
-	else{
-		alert("인증번호가 일치합니다.");
 	}
 }
 </script>
