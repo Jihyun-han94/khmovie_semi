@@ -68,9 +68,15 @@ public class MemberDAO {
 			ResultSet res = this.pstat.executeQuery();
 			while(res.next()) {
 				records.add(new MemberVO(
-					res.getString("user_id"), res.getString("user_pw"), res.getString("user_name"),
-					res.getString("email"), res.getString("phone_number"), res.getString("birth_date"),
-					res.getInt("gender"), res.getInt("purchase"), res.getInt("grade")
+						res.getString("user_id"),
+						res.getString("user_pw"),
+						res.getString("user_name"),
+						res.getInt("gender"),
+						res.getString("email"),
+						res.getString("phone_number"),
+						res.getInt("purchase"),
+						res.getInt("grade"),
+						res.getString("birth_date")
 				));
 			}
 			res.close();
@@ -79,6 +85,36 @@ public class MemberDAO {
 		}
 		
 		return records;
+	}
+	
+	
+	public MemberVO getRecord(String userid) {
+		MemberVO userinfo = null;
+		String sql = "SELECT * FROM "+ this.table + " WHERE user_id = ?";
+		
+		try {
+			this.pstat = this.conn.prepareStatement(sql);
+			this.pstat.setString(1, userid);
+			ResultSet res = this.pstat.executeQuery();
+			if(res.next()) {	
+				userinfo = new MemberVO(
+					res.getString("user_id"),
+					res.getString("user_pw"),
+					res.getString("user_name"),
+					res.getInt("gender"),
+					res.getString("email"),
+					res.getString("phone_number"),
+					res.getInt("purchase"),
+					res.getInt("grade"),
+					res.getString("birth_date")
+				);				
+			}
+			res.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return userinfo;
 	}
 	
 	public int checkId(String userid) {
@@ -171,6 +207,13 @@ public class MemberDAO {
 		}
 		
 		return userpw;
+	}
+	
+	public String sendnum(String phone) {
+		int authNo = (int)(Math.random() * (99999 - 10000 + 1)) + 10000;
+		String numkey = Integer.toString(authNo);
+		System.out.println(numkey);
+		return numkey;
 	}
 	
 	public void close() {

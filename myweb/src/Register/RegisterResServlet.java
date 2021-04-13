@@ -5,9 +5,11 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/register/res")
@@ -25,7 +27,7 @@ public class RegisterResServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String userid = request.getParameter("userid");
-		String userpw1 = request.getParameter("userpw1");
+		String userpw = request.getParameter("userpw1");
 		String username = request.getParameter("username");
 		String usergender = request.getParameter("usergender");
 		String useremail = request.getParameter("userEmail");
@@ -37,15 +39,29 @@ public class RegisterResServlet extends HttpServlet {
 		
 		if(result == 0) {
 			request.setAttribute("msg", "회원가입에 실패하였습니다.");
-			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/register/registerres.jsp");
+			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/register/registerfail.jsp");
 			dp.forward(request, response);
 			return;
 		}
 		else {
-			member.register(userid, userpw1, username, usergender, useremail, userphonenumber, userbirthdate);
-			request.setAttribute("msg", "회원가입에 성공하였습니다.");
-			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/register/registerres.jsp");
-			dp.forward(request, response);
+			MemberVO data = member.login(userid, userpw);
+			
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("login", "true");
+			session.setAttribute("username", data.getUserId());
+			
+			Cookie[] cookies = request.getCookies();
+			
+			for(Cookie c: cookies) {
+				if(c.getName().equals("username")) {
+					c.setMaxAge(0);
+					response.addCookie(c);
+					break;
+				}
+			}
+			
+			response.sendRedirect(request.getContextPath() + "/main");
 		}
 	}
 

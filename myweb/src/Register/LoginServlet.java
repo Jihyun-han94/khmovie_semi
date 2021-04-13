@@ -41,7 +41,6 @@ public class LoginServlet extends HttpServlet {
 		
 		MemberDAO member = new MemberDAO();
 		MemberVO data = member.login(userid, userpw);
-		
 		HttpSession session = request.getSession();
 		
 		if(data.getUserId() != null) {
