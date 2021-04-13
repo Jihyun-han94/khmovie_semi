@@ -43,7 +43,7 @@
 					</p>
 
 					<div class="link">
-						<a href="<%=request.getContextPath() %>/userinfo">> 예매하러 가기</a>
+						<a href="<%=request.getContextPath() %>/reserve">> 예매하러 가기</a>
 					</div>
 				</div>
 			</div>

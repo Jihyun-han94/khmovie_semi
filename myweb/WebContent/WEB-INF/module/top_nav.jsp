@@ -17,7 +17,7 @@
               		<a class="nav-link active" aria-current="page" href="<%=request.getContextPath() %>">Home</a>
             	</li>
             	<li class="nav-item">
-             		<a class="nav-link" href="#">예매</a>
+             		<a class="nav-link" href="<%=request.getContextPath() %>/reserve">예매</a>
             	</li>
             	<li class="nav-item">
               		<a class="nav-link" href="<%=request.getContextPath() %>/board">관람후기</a>

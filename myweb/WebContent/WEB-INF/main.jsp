@@ -20,16 +20,16 @@
     <hr id="hr">
     <div class="item">
       	<div class="col-sm-3">
-      		<a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image" class="img-responsive"></a>
+      		<a href="<%=request.getContextPath() %>/selectDate?title=감기" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image" class="img-responsive"></a>
       	</div>
       	<div class="col-sm-3">
-      		<a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image" class="img-responsive"></a>
+      		<a href="<%=request.getContextPath() %>/selectDate?title=미나리" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image" class="img-responsive"></a>
       	</div>
       	<div class="col-sm-3">
-      		<a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image" class="img-responsive"></a>
+      		<a href="<%=request.getContextPath() %>/selectDate?title=비밀의 정원" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image" class="img-responsive"></a>
       	</div>
       	<div class="col-sm-3">
-      		<a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image" class="img-responsive"></a>
+      		<a href="<%=request.getContextPath() %>/selectDate?title=테넷" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image" class="img-responsive"></a>
       	</div>
    	</div>
     <h2 id="text2">Review</h2>
