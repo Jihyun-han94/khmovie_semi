@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Member.MemberDAO;
+import Member.MemberVO;
+
 
 @WebServlet("/register/res")
 public class RegisterResServlet extends HttpServlet {

@@ -1,4 +1,4 @@
-package Register;
+package Member;
 
 import java.sql.Date;
 import java.sql.ResultSet;

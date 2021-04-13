@@ -1,4 +1,4 @@
-package Register;
+package Member;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import Member.MemberVO;
 import main.DBConnection;
-import Register.MemberVO;
 
 public class MemberDAO {
 	private final String table = "User_info";
