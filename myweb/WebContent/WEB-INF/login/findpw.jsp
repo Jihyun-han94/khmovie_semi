@@ -41,6 +41,8 @@
 			</div>
 			<p class="ps">인증번호 전송 어려움으로 alert로 대체 구현.</p>
 			<div class="info-check">
+				<input type="button" class="find-bnt" onclick="findidpage()" value="아이디 찾기">
+				<input type="button" class="find-bnt" onclick="loginpage()" value="로그인">
 				<button class="find-bnt">비밀번호 찾기</button>
 			</div>
 		</form>
@@ -49,7 +51,7 @@
 <script type="text/javascript">
 function PhoneCheck(){
 	$.ajax({
-		url: "<%=request.getContextPath() %>/login/findpw",
+		url: "<%=request.getContextPath() %>/phone/code/check",
 		type: "post",
 		datatype: "json",
 		data: {
@@ -124,6 +126,13 @@ function check(){
 		alert("인증번호가 일치하지 않습니다.");
 		return false;
 	}
+}
+
+function findidpage() {
+	window.location.href="<%=request.getContextPath() %>/login/findid";
+}
+function loginpage() {
+	window.location.href="<%=request.getContextPath() %>/login";
 }
 </script>
 </html>

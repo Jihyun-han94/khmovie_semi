@@ -193,7 +193,7 @@ function inputPhoneNumber(obj) {
 
 function PhoneCheck(){
 	$.ajax({
-		url: "<%=request.getContextPath() %>/register",
+		url: "<%=request.getContextPath() %>/phone/code/check",
 		type: "post",
 		datatype: "json",
 		data: {
@@ -201,7 +201,8 @@ function PhoneCheck(){
 		},
 		success: function(data){
 			if(data.result === "fail"){
-				alert("인증번호 전송 실패");
+				alert("유효하지 않은 전화번호 입니다.");
+				return false;
 			}
 			else {
 				alert(data.result);
