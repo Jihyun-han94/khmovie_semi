@@ -110,7 +110,7 @@ function check(){
 		alert("핸드폰번호를 입력하세요.");
 		return false;
 	}
-	if(!document.register.userPhone.length){
+	if(!document.register.userPhone.length == 13){
 		alert("유효하지 않은 전화번호 입니다.");
 		return false;
 	}

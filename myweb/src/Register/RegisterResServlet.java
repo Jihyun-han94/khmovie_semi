@@ -35,7 +35,7 @@ public class RegisterResServlet extends HttpServlet {
 		String userbirthdate = request.getParameter("BrithDate");
 		
 		MemberDAO member = new MemberDAO();
-		int result = member.checkId(userid);
+		int result = member.register(userid, userpw, username, usergender, useremail, userphonenumber, userbirthdate);
 		
 		if(result == 0) {
 			request.setAttribute("msg", "회원가입에 실패하였습니다.");
@@ -50,6 +50,7 @@ public class RegisterResServlet extends HttpServlet {
 			
 			session.setAttribute("login", "true");
 			session.setAttribute("username", data.getUserId());
+			session.setAttribute("usernickname", data.getUserName());
 			
 			Cookie[] cookies = request.getCookies();
 			
@@ -60,8 +61,7 @@ public class RegisterResServlet extends HttpServlet {
 					break;
 				}
 			}
-			
-			response.sendRedirect(request.getContextPath() + "/main");
+			response.sendRedirect(request.getContextPath());
 		}
 	}
 

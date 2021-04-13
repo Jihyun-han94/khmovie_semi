@@ -30,6 +30,7 @@ public class RegisterServlet extends HttpServlet {
 		
 		MemberDAO dao = new MemberDAO();
 		String result = dao.sendnum(phone);
+		
 		if(result == null) {
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("application/json");
@@ -42,6 +43,8 @@ public class RegisterServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			out.print("{\"result\" : " + result + "}");
 		}
+		
+		
 	}
 
 }
