@@ -1,9 +1,7 @@
 @charset "UTF-8";
-.body{
-	font-color:black;
-}
+
 .container{
-	width:600px;
+	width:50%;
 	height:500px;
 	display: grid;
 	column-gap: 15px; 
@@ -14,8 +12,8 @@
     "p q r s"
     ;
     background-color: white;
-    margin-top: 40px;
-    margin-left:380px
+    margin:0px auto;
+    
 }
 
 .item1{

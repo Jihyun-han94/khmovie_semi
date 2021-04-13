@@ -18,7 +18,7 @@
 <script type="text/javascript"
     src="<%=request.getContextPath() %>/static/bootstrap-4.6.0/js/bootstrap.min.js"></script>
 <%@ include file="/WEB-INF/module/top_nav_login.jsp" %>
-<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/Movie.css">  
+<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/Movie.css">    
 </head>
 <body>
 	<% String path =request.getServletContext().getRealPath(File.separator)+"\\upload"; %>
@@ -30,15 +30,12 @@
 	%>
 	
 	<div class="container">
-	
-	<div class="poster"><img src="upload/<%=filename %>">
-	
-	
-	
-	</div>
+	<div class="poster"><img id="img" src="upload/<%=filename %>"></div>
 	<div class="contents">
-	<label for="title">제목</label><br>
 	<p class="title"><%=data.getB_TITLE() %></p>
+	<p class="direct">감독 : <%=data.getB_DIRECT() %></p>
+	<p class="acctist">출연진 : <%=data.getB_ARTIST() %></p>
+	<p>줄거리</p>
 	<p class="context"><%=data.getB_CONTEXT() %></p>
 	</div>
 	</div>
