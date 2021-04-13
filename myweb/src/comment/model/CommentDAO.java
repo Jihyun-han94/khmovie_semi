@@ -27,7 +27,7 @@ public class CommentDAO {
 			DataSource ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/Oracle");
 			con = ds.getConnection();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
 		return con;
 	}

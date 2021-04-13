@@ -7,7 +7,7 @@ public class DBConnection {
 	private String ip = "localhost";
 	private String port = "50000";
 	private String sid = "xe";
-	private String username = "MYWEB";
+	private String username = "myweb";
 	private String password = "admin";
 	private Connection connection = null;
 	

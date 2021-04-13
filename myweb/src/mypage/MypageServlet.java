@@ -33,7 +33,6 @@ public class MypageServlet extends HttpServlet {
 		
 		String name = mv.getUserName();
 		int grade = mv.getGrade();
-		
 	    request.setAttribute("name", name);
 	    request.setAttribute("grade", grade);
 		
