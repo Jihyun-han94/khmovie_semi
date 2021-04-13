@@ -76,7 +76,6 @@
 </body>
 <script type="text/javascript">
 var numkey;
-
 function idConfirm(){
 	var id = document.getElementById('userid').value;
 	
@@ -121,7 +120,6 @@ function idCheck(){
 	});
 	
 }
-
 function passwordCheck(){
 	var pw = document.getElementById('pass1').value;
     var confirmPW = document.getElementById('pass2').value;
@@ -164,7 +162,6 @@ function passwordCheck(){
     }
     
 }
-
 function inputPhoneNumber(obj) {
     var number = obj.value.replace(/[^0-9]/g, "");
     var phone = "";
@@ -190,7 +187,6 @@ function inputPhoneNumber(obj) {
     
     obj.value = phone;
 }
-
 function PhoneCheck(){
 	$.ajax({
 		url: "<%=request.getContextPath() %>/phone/code/check",
@@ -212,7 +208,6 @@ function PhoneCheck(){
 		}
 	});
 }
-
 function keyCheck(){
 	if(document.register.numkey.value != numkey){
 		alert("인증번호가 일치하지 않습니다.");
@@ -223,7 +218,6 @@ function keyCheck(){
 		return true;
 	}
 }
-
 function CheckEmail(str){                                                 
      var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
      if(!reg_email.test(str)) {                            
@@ -233,7 +227,6 @@ function CheckEmail(str){
           return true;         
      }                            
 }
-
 function check(){
 	
 	var onId = document.register.userid;
@@ -292,7 +285,6 @@ function check(){
 	}
 	
 	var obEmail = document.register.userEmail;
-
 	if (!obEmail.value) {
 		alert("이메일을 입력하세요!");
 		obEmail.focus();	
