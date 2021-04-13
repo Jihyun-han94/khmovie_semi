@@ -24,7 +24,7 @@ public class CommentDelete implements Action {
         mDao.commentDelete(cnum);
         request.setAttribute("mVo", mVo);
         
-        request.getRequestDispatcher("board/commentOk.jsp").forward(request, response);
+        request.getRequestDispatcher("comment/commentOk.jsp").forward(request, response);
         
     }
 

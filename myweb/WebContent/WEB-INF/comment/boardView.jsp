@@ -7,6 +7,7 @@
 <title>기존 게시판에 댓글 추가</title>
 </head>
 <body>
+<div>
 <table>
     <tr>
         <th colspan="2">REVIEW</th>
@@ -52,5 +53,6 @@
 <c:forEach var="i" begin = "1" end ="${totalCount }" step="1">
     <a href="BoardServlet?command=board_view&num=${param.num }&page=${i}">[${i}]</a>
 </c:forEach>
+</div>
 </body>
 </html>

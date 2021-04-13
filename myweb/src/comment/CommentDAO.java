@@ -102,38 +102,8 @@ public class CommentDAO {
 		}
 
 	}
-
-	/*public ArrayList<CommentVO> commentView(String num) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		ArrayList<CommentVO> list = new ArrayList<>();
-		String sql = "select c.c_num, c.c_id, c.c_content, c.c_time from s_board b, s_comment c "
-				+ "where b.num = c.parentnum and b.num = ? "
-				+ "order by 4 desc";
-		try {
-			con = getConnection();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, num);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				CommentVO mVo = new CommentVO();
-				mVo.setCnum(rs.getInt("c_num"));
-				mVo.setCid(rs.getString("c_id"));
-				mVo.setCcontent(rs.getString("c_content"));
-				mVo.setCtime(rs.getTimestamp("c_date"));
-				list.add(mVo);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeConnection(con);
-		}
-		return list;
-	}*/
-
 	// ´ñ±Û ÆäÀÌÁö Ã³¸®ÇÏ´Â Äõ¸® 
-	public ArrayList<CommentVO> commentView(String num,int page) {
+	/*public ArrayList<CommentVO> commentView(String num,int page) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -165,6 +135,7 @@ public class CommentDAO {
 		}
 		return list;
 	}
+	*/
 
 	//´ñ±ÛÀÌ Á¸ÀçÇÏ´ÂÁö È®ÀÎÇÏ´Â Äõ¸®
 	public int commentCheck(String num) {
@@ -197,7 +168,7 @@ public class CommentDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		CommentVO sVo = new CommentVO();
+		CommentVO mVo = new CommentVO();
 		
 		String sql = "select * from s_comment where c_num = ?";
 		
@@ -207,18 +178,18 @@ public class CommentDAO {
 			pstmt.setString(1, cnum);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				sVo.setCcontent(rs.getString("c_content"));
-				sVo.setCid(rs.getString("c_id"));
-				sVo.setCparentnum(rs.getInt("parentnum"));
+				mVo.setCcontent(rs.getString("c_content"));
+				mVo.setCid(rs.getString("c_id"));
+				mVo.setCparentnum(rs.getInt("parentnum"));
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			closeConnection(con);
 		}
-		return sVo;
+		return mVo;
 	}
-	
+	//´ñ±Û ¼öÁ¤
 	public void commentUpdate(String cnum, String ccontent) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -238,7 +209,7 @@ public class CommentDAO {
 			closeConnection(con);
 		}
 	}
-	
+	//´ñ±Û »èÁ¦
 	public void commentDelete(String cnum) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -284,7 +255,7 @@ public class CommentDAO {
 		return clist;
 	}
 	//´ñ±Û ÆäÀÌÂ¡Ã³¸® Äõ¸®
-	
+	/*
 			public int commentTotalCount(String num) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -308,6 +279,6 @@ public class CommentDAO {
 				}
 				return totalCount;
 			}
-
+*/
 	
 }
