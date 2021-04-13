@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+body{
+	font-family: '나눔스퀘어_ac';
+	font-size:18px;
+}
+.container{
+	display : inline;
+	margin-left : 200px;
+}
+.contents{
+	margin-left : 850px;
+	margin-top : -550px;
+}
+
+#img{
+	width:400px;
+	margin-top : 100px;
+	margin-left : 400px;
+	
+}
+.title{
+	font-size : 25px;
+}

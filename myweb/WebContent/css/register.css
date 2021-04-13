@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+section.register{
+	margin:20px auto;
+	background-color: white;
+    border: 3px solid #1D2316;
+	border-radius: 1rem;
+	width: 500px; height: 1000px;
+}
+p{font-size: 10px; color: gray; margin: 5px 5px;}
+h1.title{ margin:30px auto; text-align: center; }
+hr.register{ margin: 20px; }
+
+input.send-bnt{
+	width: 80px;
+	padding: 5px;
+	font-size: 5pt; font-weight: bold; color: white;
+	border: 2px solid white;
+	border-radius: 5px;
+	background-color: #1D2316;
+}
+
+p.ps{ color: gray; font-size: 8pt; text-align: center;}
+
+lable{ font-weight: bold; margin: 0 5px; }
+
+input{
+	border: 0px;
+	border-bottom: 2px solid #1D2316;
+	width: 350px; height: 30px
+}
+div.register{ margin: 10px 20px; }
+button.bnt{
+	margin: 0px 10px;
+	padding: 5px;
+	border: 2px solid #1D2316;
+	border-radius: 5px;
+	color: #1D2316;
+	background-color: white;
+}
+
+
+.name , .gender{ margin: 10px; width: 100px; height: 30px;}
+.brith_date { width: 150px; height: 30px; }
+.phone_number , .email{ width: 200px; height: 30px; }
+select{ width: 100px; }
+button.register , button.login-bnt{
+	display: inline;
+	background-color: #1D2316;
+	border-radius: 5px;
+	color: white; font-weight: bold;
+	margin: 10px 20px; float: right;
+	padding: 10px;
+	font-size: 18pt;
+}
+.code{ width: 100px; height: 30px;}
+
+section.register-res
+{
+	margin:20px auto;
+	background-color: white;
+    border: 3px solid #1D2316;
+	border-radius: 1rem;
+	width: 800px; height: 300px;
+	padding: auto;
+}
+
+h3.fail{ text-align: center; font-size: 20pt; margin: 50px; color:black; font-weight: bold;}
+
+header.idcheck
+{
+	width: 300px; height: 50px;
+	border: 2px solid #1D2316;
+	background-color: #1D2316;
+}
+input.userid{margin: 20px 20px;}
+.labelid{text-align: center; font-weight: bold;}
+.id_but_check{ margin: 0px 100px;}
+
+button.register-button{
+	background-color: #1D2316;
+	border-radius: 5px;
+	color: white; font-weight: bold;
+	margin: 0 300px;
+	padding: 10px;
+	font-size: 18pt;
+}
+
+a.register{ color: white};
+
+.valid{
+    box-shadow: 0px 0px 2px 2px green;
+}
+
+.valid-msg{
+    display: block;
+    color: green;
+    font-size: smaller;
+    margin-top: 6px;
+}
+.invalid{
+    box-shadow: 0px 0px 2px 2px red;
+}
+
+.invalid-msg{
+    display: block;
+    color: red;
+    font-size: smaller;
+    margin-top: 6px;
+}

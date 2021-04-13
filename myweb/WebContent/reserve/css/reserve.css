@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+body {
+    background-color: #1D2316;
+    font-family: '나눔스퀘어_ac';
+}
+
+section {
+	margin-top: 50px;
+}
+
+.reserveStatus {
+	width: 600px;
+	margin-left: 130px;
+}
+
+.movie {
+	background-color: #1D2316;
+	border: none;
+	float: left;
+}
+
+
+/*  rgb(201, 217, 53) */
+/*
+.category {
+	background-color: rgb(248, 248, 248);
+	height: 30px;
+	font-size: large;
+}
+*/
+
+/*
+span {
+	vertical-align: middle;
+	color: black;
+	display: inline-block;
+	margin-left: 5px;
+}
+*/
+
+/* div에 filter하면 여백까지 나와서 img에만 */
+img:hover {
+	filter: brightness(40%);
+}
+
+/* img에 hover는 하든 안 하든 상관없는데 div에 hover 안 하면 안 됨. div에 hover 해야만 됨.
+.movieItem:hover .imgTxt {	
+	z-index: 1;
+	opacity: 1;
+	color: white;
+}
+*/
+
+.movieItem {
+	position: relative;
+}
+
+/*
+.imgTxt {
+	position: absolute;
+	vertical-align: middle;
+	transform: translate(-180%, 400%);
+	color: white;
+	opacity: 0;
+	cursor: pointer;
+}
+*/
