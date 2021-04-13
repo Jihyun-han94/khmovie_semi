@@ -1,8 +1,6 @@
 package mypage;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,15 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Member.MemberDAO;
-import Member.MemberVO;
 
-
-@WebServlet("/mypage")
-public class MypageServlet extends HttpServlet {
+@WebServlet("/deleteMember")
+public class MYinfoDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public MypageServlet() {
+
+    public MYinfoDeleteServlet() {
         super();
     }
 
@@ -26,17 +22,21 @@ public class MypageServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String userid = (String) session.getAttribute("username");
 		
+		System.out.println(">>delete작동");
+		
 		MypageDAO member = new MypageDAO();
-		MypageVO mv = member.getRecord(userid);
-		member.close();
+		int res = member.deleteData(userid);
+		member.close(); 
 		
-		String name = mv.getUserName();
-		int grade = mv.getGrade();
-	    request.setAttribute("name", name);
-	    request.setAttribute("grade", grade);
+		if(res != 1) {
+			session.invalidate();
+			response.sendRedirect("../register");
+		}
+		else {
+			System.out.println(">>delete 실패");
+			response.sendRedirect("../mypage");
+		}
 		
-		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/mypage.jsp");
-		dp.forward(request, response);
 	}
 
 }

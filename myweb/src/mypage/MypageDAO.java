@@ -12,7 +12,7 @@ public class MypageDAO {
 	private PreparedStatement pstat = null;
 	
 	public MypageDAO() {
-		this.conn = new DBConnection().getConnect();
+		this.connect();
 	}
 
 	public MypageVO getRecord(String userid) {
@@ -37,23 +37,41 @@ public class MypageDAO {
 		return m;
 	}
 	
-	public int updateData(MypageVO info) {
+	public int updateData(MypageVO data) {
 		int result = 0;
 		String sql = "";
-		sql += "UPDATE user_info";
-		sql += "   SET PHONE_NUMBER=?";
+		sql += "UPDATE USER_INFO";
+		sql += "   SET USER_PW=?";
 		sql += "     , EMAIL=?";
-		sql += "     , USER_PW=?";
+		sql += "     , PHONE_NUMBER=?";
 		sql += " WHERE USER_ID=?";
 		
 		try {
 			this.pstat = this.conn.prepareStatement(sql);
-			this.pstat.setString(1, info.getPhoneNumber());
-			this.pstat.setString(2, info.getEmail());
-			this.pstat.setString(3, info.getUserPw());
-			this.pstat.setString(4, info.getUserId());
+			this.pstat.setString(1, data.getUserPw());
+			this.pstat.setString(2, data.getEmail());
+			this.pstat.setString(3, data.getPhoneNumber());
+			this.pstat.setString(4, data.getUserId());
 			
 			result = this.pstat.executeUpdate();    // 저장 처리가 완료 되면 1 반환
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public int deleteData(String userid) {
+
+		int result = 0;    // 삭제 처리 유무를 판별
+		String sql = "";
+		sql += "DELETE FROM user_info";
+		sql += " WHERE user_id = ?";
+		
+		try {
+			this.pstat = this.conn.prepareStatement(sql);
+			this.pstat.setString(1, userid);
+			
+			result = this.pstat.executeUpdate();    // 삭제 처리가 완료 되면 1 반환
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

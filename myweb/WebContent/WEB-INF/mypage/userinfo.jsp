@@ -17,7 +17,7 @@
 	      var bfpw = document.getElementById('bfpw').value;
 	      var afpw = document.getElementById('afpw').value;
 	      var chpw = document.getElementById('chpw').value;
-	      var hdpw = document.getElementById('hdpw').value;
+	      var hdpw = document.getElementById('userpw').value;
 	      
 	      if(afpw != null) {
 		      if(afpw != chpw) {
@@ -32,8 +32,22 @@
 	      }
 	      
 	      return true;
-	
+		
 	    }
+	    
+	    function deleteMember() {
+	    	var con = confirm("정말로 탈퇴하십니까?");
+	    	if (con){
+	    		var pw = document.getElementById('userpw').value;
+	    		var pwcheck = prompt("현재 비밀번호를 입력해주세요.");
+	    		if(pwcheck == pw)
+	    			location.href="/deleteMember";
+	    		else
+	    			alert("현재 비밀번호가 일치 하지 않습니다");
+	    	}
+	    }
+	    
+	    
 	   </script>
 
 </head>
@@ -61,14 +75,14 @@
 	<div id="contents">
 		<h2 class="tit">개인 정보 수정</h2>
 		<form name="mbInfoForm" action="infoupdate" method="post" onsubmit="return check()">
+		      <input type="hidden" name="userid" id="userid" value="<%=userinfo.getUserId() %>">
+              <input type="hidden" name="userpw" id="userpw" value="<%=userinfo.getUserPw() %>">
               <div class="table-wrap mb40">
                   <table class="board-form">
                       <colgroup>
                           <col style="width:180px;">
                           <col>
                       </colgroup>
-                      <input type="hidden" name="id" id="userid" value="<%= userinfo.getUserId() %>" readonly>
-                      <input type="hidden" name="hdpw" id="userpw" value="<%= userinfo.getUserPw() %>" readonly>
                       <tbody>
                           <tr>
                               <th scope="row">이름</th>
@@ -86,11 +100,9 @@
                                   <label for="num">휴대폰</label>
                               </th>
                               <td>
-                                  <div class="change-phone-num-area">
-                                      <div class="position">
-                                          <input type="text" id="phone" class="input-text w160px numType" placeholder="010-0000-0000" title="변경할 휴대폰 번호 입력" maxlength="13" />
-                                      </div>
-                                  </div>
+
+                                 <input type="text" name="phone" id="phone" class="input-text w500px" placeholder="010-0000-0000" maxlength="13" value="<%= userinfo.getPhoneNumber() %>"/>
+
                               </td>
                           </tr>
                           <tr>
@@ -123,6 +135,7 @@
                   </table>
                   <div class="btn-group">
 			<button type="submit" class="button gray-line small ml05">수정</button>
+			<button type="button" class="button gray-line small ml05" onclick="return deleteMember()">회원 탈퇴</button>
 		</div>
                
               </div>

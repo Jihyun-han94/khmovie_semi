@@ -14,49 +14,49 @@ public class BoardView implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String url = "board/boardView.jsp";
+		String url = "/board/BoardDetailForm.jsp";
 		String num = request.getParameter("num");
 
 		CommentDAO mDao = CommentDAO.getInstance();
 		CommentVO mVo = new CommentVO();
 		
-		//°Ô½Ã±ÛÀ» Å¬¸¯ÇßÀ»¶§ º¸¿©ÁÙ Á¤º¸¸¦ °¡Áö°í¿È
-		mVo = mDao.selectOneBoard(num);
+		//ï¿½Ô½Ã±ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//mVo = mDao.selectOneBoard(num);
 		mDao.hitUp(num);
 		
 		
 		request.setAttribute("mVo", mVo);
 		
-		//´ñ±ÛÀÌ Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 		int result = mDao.commentCheck(num);
 		if (result == 1) {
 			//ArrayList<SoccerVO> list = sDao.commentView(num);
 			
-			//´ñ±Û ÀüÃ¼¼ö¸¦ Á¶È¸ÇÏ¿© ÆäÀÌÁö¼ýÀÚ¸¦ °áÁ¤ÇÏ´Â ÄÚµå
+			//ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Úµï¿½
 			int totalCount = mDao.commentTotalCount(num);
 			
 			int countPageView = totalCount/5;
-			//´ñ±ÛÀÌ 6°³°¡ µÇ¾úÀ»¶§ ´ÙÀ½ÆäÀÌÁö°¡ »ý°Ü¾ß ÇÏ¹Ç·Î ³ª¸ÓÁö°¡ 0º¸´Ù Å©¸é ÆäÀÌÁö¸¦ Ãß°¡ÇÔ
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ 6ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ü¾ï¿½ ï¿½Ï¹Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½
 			if(totalCount % 5 > 0) {
 				countPageView++;
 			}
-			//´ñ±ÛÀÌ 5°³ ¹Ì¸¸ÀÏ¶§´Â ÆäÀÌÁö¸¦ º¸¿©ÁÖÁö¾ÊÀ½
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ 5ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			if(totalCount > 5) {
 			request.setAttribute("totalCount", countPageView);
 			}
-			//ÆäÀÌÁö¸¦ ¸Å°³º¯¼ö·Î ´øÁ®¾ßÇÏ±â¿¡ NullÃ¼Å©¸¦ ÇØ¼­ ÆäÀÌÁö º¯¼ö¿¡ °ªÀ» ³Ö¾îÁÜ
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï±â¿¡ NullÃ¼Å©ï¿½ï¿½ ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½
 			int page = (request.getParameter("page") == null)? 1: Integer.parseInt(request.getParameter("page"));
 			
-			//°Ô½Ã±Û ¹øÈ£¿Í ÆäÀÌÁö¹øÈ£¸¦ ¸Å°³°ªÀ¸·Î ´øÁ® ´ñ±ÛÀ» 5°³¾¿ ±Ü¾î¿À´Â ÄÚµå
+			//ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ 5ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¾ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½
 			ArrayList<CommentVO> list = mDao.commentView(num, page);
 
 			request.setAttribute("list", list);
 			
 		}else if(result == 0) {
-			request.setAttribute("message", "¾ÆÁ÷ ¸®ºä°¡ ¾ø½À´Ï´Ù.");
+			request.setAttribute("message", "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ä°¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 		}
 
-		request.getRequestDispatcher(url).forward(request, response);
+		request.getRequestDispatcher(request.getContextPath()+url).forward(request, response);
 
 	}
 }

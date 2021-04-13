@@ -26,7 +26,6 @@ public class MyinfoUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(">>> doPost로 실행");
 		
 		request.setCharacterEncoding("UTF-8");
 		
@@ -35,19 +34,28 @@ public class MyinfoUpdateServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String afpw = request.getParameter("afpw");
 		
-		System.out.println(userid+phone+email+afpw);
+		if(afpw == null) {
+			afpw = request.getParameter("userpw");
+		}
 		
-		/*MypageDAO member = new MypageDAO();
-		MypageVO info = member.getRecord(userid);
-		info.setPhoneNumber(phone);
-		info.setEmail(email);
-		info.setUserPw(afpw);
-		int res = member.updateData(info);
+		System.out.println(">>> doPost로 실행");
 		
-		if(res == 0)
-			System.out.println("업데이트 실패");*/
+		MypageDAO member = new MypageDAO();
+		MypageVO data = member.getRecord(userid);
+		data.setPhoneNumber(phone);
+		data.setEmail(email);
+		data.setUserPw(afpw);
 		
-		response.sendRedirect(request.getContextPath()+"/userinfo");
+		//System.out.println(info.getPhoneNumber());
+		
+		int res = member.updateData(data);
+		
+		member.close();
+		
+		if(res != 1)
+			System.out.println("업데이트 실패");
+	
+		response.sendRedirect("../mypage");
 	}
 
 }
