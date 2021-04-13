@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import = "java.util.ArrayList,board.BoardVO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,8 +50,16 @@
     <div class="item12"><a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image"
             class="img-responsive"></a></div>        
 	</div>
-	<footer class="footer">
-
-    </footer>
+	<div class="table">
+	<table>
+	<% ArrayList<BoardVO> datas = (ArrayList<BoardVO>)request.getAttribute("datas");
+		for(BoardVO data: datas){%>
+	<tr>
+	<td><%=data.getB_TITLE() %></td>
+	</tr>
+	<% }%>
+	</table>
+	</div>	
+	<footer class="footer"></footer>
 </body>
 </html>
