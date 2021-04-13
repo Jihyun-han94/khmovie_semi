@@ -1,4 +1,4 @@
-package comment.action;
+package comment;
 
 import java.io.IOException;
 
@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import comment.model.*;
+import comment.*;
 
 public class CommentDelete implements Action {
 	// 댓글 삭제 처리 

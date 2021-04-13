@@ -1,4 +1,4 @@
-package comment.action;
+package comment;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import comment.model.*;
+import comment.*;
 
 public class BoardView implements Action {
 

@@ -1,4 +1,4 @@
-package comment.model;
+package comment;
 
 import java.sql.Timestamp;
 

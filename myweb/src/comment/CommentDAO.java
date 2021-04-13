@@ -1,4 +1,4 @@
-package comment.model;
+package comment;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-import comment.model.CommentVO;
+import comment.CommentVO;
 
 public class CommentDAO {
 	private CommentDAO() {

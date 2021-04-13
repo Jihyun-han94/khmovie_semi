@@ -1,4 +1,4 @@
-package comment.action;
+package comment;
 
 import java.io.IOException;
 
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import comment.model.*;
+import comment.*;
 
 public class CommentWrite implements Action {
 	 //댓글 작성시 로그인 되어있는 세션 값에서 아이디 값을 가져오고
