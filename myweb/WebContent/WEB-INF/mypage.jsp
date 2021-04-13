@@ -36,7 +36,6 @@
                 String src = "";
                 String grade = "";
                 
-                
                 if(gradenum==3){
                 	grade = "플라티넘";
                 	src = "/img/platinum.png";
