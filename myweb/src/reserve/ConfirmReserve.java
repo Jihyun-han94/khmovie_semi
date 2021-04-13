@@ -25,8 +25,8 @@ public class ConfirmReserve extends HttpServlet {
 		String user_id = (String)session.getAttribute("username");
 		
 		ReserveDAO reserve = new ReserveDAO();
-		// "iwbapg"를 user_id로 바꿔야 함.
-		ArrayList<TicketVO> ticketList = reserve.getMyTList("iwbapg");
+
+		ArrayList<TicketVO> ticketList = reserve.getMyTList(user_id);
 		
 		request.setAttribute("ticketList", ticketList);
 		

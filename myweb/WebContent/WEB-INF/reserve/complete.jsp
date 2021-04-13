@@ -96,7 +96,7 @@
 			</tr>
 		</table>
 		<br>
-		<form action = "./reserve_5">
+		<form action = "<%=request.getContextPath() %>">
 			<button id="confirm" type="submit" class="btn btn-light btn-sm">확인</button>
 		</form>
 	</section>

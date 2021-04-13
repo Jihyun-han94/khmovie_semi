@@ -37,14 +37,13 @@ public class Reserve_5_complete extends HttpServlet {
 			price = price * seatNumArr.length;
 			session.setAttribute("totalPrice", price);
 			
-			
 			// 티켓ID 가져오기
 			ArrayList<String> ticketIdList = reserve.getTicketID(title, date, theaterName, time, seatNumArr);
+			
 			// ticket_status 에 넣기
 			String user_id = (String)session.getAttribute("username");
 			for(String ticketID : ticketIdList) {
-				// 인자로 user_id도 넣어줘야 함.
-				reserve.setTicketStatus(ticketID);
+				reserve.setTicketStatus(ticketID, user_id);
 			}
 			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/complete.jsp");
 			dp.forward(request, response);
