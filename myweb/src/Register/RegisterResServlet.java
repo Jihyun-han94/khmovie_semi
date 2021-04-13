@@ -39,25 +39,18 @@ public class RegisterResServlet extends HttpServlet {
 		
 		MemberDAO member = new MemberDAO();
 		int result = member.register(userid, userpw, username, usergender, useremail, userphonenumber, userbirthdate);
+		MemberVO data = member.login(userid, userpw);
+		HttpSession session = request.getSession();
 		
 		if(result == 0) {
-			MemberVO data = member.login(userid, userpw);
-			
-			HttpSession session = request.getSession();
-			
 			session.setAttribute("login", "true");
 			session.setAttribute("username", data.getUserId());
 			session.setAttribute("usernickname", data.getUserName());
 			
-			Cookie[] cookies = request.getCookies();
+			Cookie cookie = new Cookie("username", userid);
+			cookie.setMaxAge(60*60);
+			response.addCookie(cookie);
 			
-			for(Cookie c: cookies) {
-				if(c.getName().equals("username")) {
-					c.setMaxAge(0);
-					response.addCookie(c);
-					break;
-				}
-			}
 			response.sendRedirect(request.getContextPath());
 		}
 		else {

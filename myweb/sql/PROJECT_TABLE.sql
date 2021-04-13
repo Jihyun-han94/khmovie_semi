@@ -74,4 +74,9 @@ CREATE TABLE FILE_T(
     movietitle VARCHAR(200),
     fileName VARCHAR(200),
     fileRealName VARCHAR(200)
+<<<<<<< HEAD
 );
+=======
+);
+
+>>>>>>> refs/remotes/origin/한지현

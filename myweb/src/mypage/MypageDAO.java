@@ -12,7 +12,7 @@ public class MypageDAO {
 	private PreparedStatement pstat = null;
 	
 	public MypageDAO() {
-		this.connect();
+		this.conn = new DBConnection().getConnect();
 	}
 
 	public MypageVO getRecord(String userid) {
