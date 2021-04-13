@@ -13,12 +13,12 @@ public class ReserveDAO {
 	private String table = "reserve_" + tbId;
 	
 	public ReserveDAO() {
-		this.conn = new DBConnection("50000").getConnect();
+		this.conn = new DBConnection().getConnect();
 		this.tbId = 2104;
 	}
 	
 	public ReserveDAO(String tbId) {
-		this.conn = new DBConnection("50000").getConnect();
+		this.conn = new DBConnection().getConnect();
 		this.tbId = Integer.parseInt(tbId);
 	}
 	

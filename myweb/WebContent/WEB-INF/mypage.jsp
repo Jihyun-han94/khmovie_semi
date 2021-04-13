@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ page import="mypage.MypageVO" %>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,12 +32,11 @@
 
 
 <%
-                MypageVO userinfo = (MypageVO) request.getAttribute("userinfo");
-                String name = userinfo.getUserName();
-                String grade = "";
+                String name = (String) request.getAttribute("name");
+				int gradenum = (int) request.getAttribute("grade");
                 String src = "";
+                String grade = "";
                 
-                int gradenum = userinfo.getGrade();
                 
                 if(gradenum==3){
                 	grade = "플라티넘";

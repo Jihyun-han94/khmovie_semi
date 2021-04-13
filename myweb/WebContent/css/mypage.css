@@ -418,3 +418,48 @@ td {
 colgroup {
     display: table-column-group;
 }
+
+.button.purple.large {
+    line-height: 46px;
+}
+
+.button.purple {
+    color: #fff;
+    line-height: 36px;
+    border: 0;
+    background: #503396;
+}
+
+.button.large {
+    height: 46px;
+    padding: 0 30px;
+    line-height: 44px;
+}
+
+a.button {
+    text-decoration: none;
+}
+
+.button {
+    display: inline-block;
+    height: 36px;
+    margin: 0;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 34px;
+    color: #503396;
+    font-weight: 400;
+    border-radius: 4px;
+    font-family: NanumBarunGothic,Dotum,'돋움',sans-serif;
+    text-decoration: none;
+    border: 1px solid #503396;
+    vertical-align: middle;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.btn-group {
+    padding: 20px 0 30px 0;
+    margin: 0;
+    text-align: center;
+}

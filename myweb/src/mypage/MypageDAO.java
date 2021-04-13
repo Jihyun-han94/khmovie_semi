@@ -7,6 +7,7 @@ import java.sql.*;
 public class MypageDAO {
 	private Connection conn = null;
 	private Statement stat = null;
+	private PreparedStatement pstat = null;
 	
 	public MypageDAO() {
 		this.connect();
@@ -32,6 +33,29 @@ public class MypageDAO {
 		}
 		
 		return m;
+	}
+	
+	public int updateData(MypageVO info) {
+		int result = 0;
+		String sql = "";
+		sql += "UPDATE user_info";
+		sql += "   SET PHONE_NUMBER=?";
+		sql += "     , EMAIL=?";
+		sql += "     , USER_PW=?";
+		sql += " WHERE USER_ID=?";
+		
+		try {
+			this.pstat = this.conn.prepareStatement(sql);
+			this.pstat.setString(1, info.getPhoneNumber());
+			this.pstat.setString(2, info.getEmail());
+			this.pstat.setString(3, info.getUserPw());
+			this.pstat.setString(4, info.getUserId());
+			
+			result = this.pstat.executeUpdate();    // 저장 처리가 완료 되면 1 반환
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
 	private void connect() {

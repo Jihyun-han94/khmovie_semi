@@ -31,7 +31,11 @@ public class MypageServlet extends HttpServlet {
 		MypageVO mv = member.getRecord(userid);
 		member.close();
 		
-	    request.setAttribute("userinfo", mv);
+		String name = mv.getUserName();
+		int grade = mv.getGrade();
+		
+	    request.setAttribute("name", name);
+	    request.setAttribute("grade", grade);
 		
 		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/mypage.jsp");
 		dp.forward(request, response);
