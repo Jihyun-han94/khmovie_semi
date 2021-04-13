@@ -20,17 +20,17 @@
     	}
     %>
 	<section class="login">
-		<form action="./login" method="post" name="login" onsubmit="return check()">
+		<form action="./login" method="post" name="login">
 		<div class="login"><label class="login">아이디</label>
+		<input type="button" class="find-bnt" onclick="findidpage()" value="아이디 찾기">
 		<% if(request.getAttribute("loginchek") != null) { %>
 				<p class="login-res">아이디와 비밀번호를 확인해주세요.</p>
 		<% } %>
 		</div>
-		<div class="input"><input class="id" type="text" name="userid">
-		<a href="<%=request.getContextPath()%>/login/findid"><p class="find">아이디 찾기</p></a></div>
-		<div class="login"><label class="login">비밀번호</label></div>
-		<div class="input"><input class="pw" type="password" name="userpw">
-		<a href="<%=request.getContextPath() %>/login/findpw"><p class="find">비밀번호 찾기</p></a></div>
+		<div class="input"><input class="id" type="text" name="userid"></div>
+		<div class="login"><label class="login">비밀번호</label>
+		<input type="button" class="find-bnt" onclick="findpwpage()" value="비밀번호 찾기"></div>
+		<div class="input"><input class="pw" type="password" name="userpw"></div>
 		<div class="checkbox">
 			<%
 				if(username.equals("")) {
@@ -42,7 +42,7 @@
 		    <label for="id=remember" class="login">기억하기</label>
 		    <label class="login-bnt"><button class="login-bnt" onclick="check()">로그인</button></label>
 		</form>
-			<label class="login-bnt registerpage"><a href="<%=request.getContextPath() %>/register"><button class="login-bnt">회원가입</button></a></label>
+			<input type="button" class="find-bnt" onclick="registerpage()" value="회원가입">
 		</div>
 	</section>
 </body>
@@ -56,6 +56,18 @@ function check(){
 		alert("PASSWORD를 입력하세요.");
 		return false;
 	}
+}
+
+function findidpage() {
+	window.location.href="<%=request.getContextPath() %>/login/findid";
+}
+
+function findpwpage() {
+	window.location.href="<%=request.getContextPath() %>/login/findpw";
+}
+
+function registerpage() {
+	window.location.href="<%=request.getContextPath() %>/register";
 }
 </script>
 </html>

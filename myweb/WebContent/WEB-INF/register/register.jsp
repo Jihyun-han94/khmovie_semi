@@ -77,96 +77,6 @@
 <script type="text/javascript">
 var numkey;
 
-function check(){
-	
-	var onId = document.register.userid;
-	if(!onId.value){
-		alert("ID를 입력하세요.");
-		onId.focus();
-		return false;
-	}
-	if(!onId.length > 3 && !onId.length < 13){
-		alert("ID 길이가 적절하지 않습니다.");
-		onId.focus();
-		return false;
-	}else{
-		if(idConfirm() == false){
-			alert("ID 중복을 확인해주세요!");
-			onId.focus();
-			return false;
-		}
-	}
-	
-	var password = document.register.userpw1;
-	if(!document.register.userpw1.value){
-		alert("비밀번호를 입력하세요.");
-		return false;
-	}
-	if(!document.register.userpw1.length > 5){
-		alert("비밀번호의 길이가 적절하지 않습니다.");
-		return false;
-	}
-	if(!document.register.userpw2.value){
-		alert("비밀번호를 입력하세요.");
-		return false;
-	}else{
-		if(!passwordCheck()){
-			alert("비밀번호를 확인해주세요!");
-			password.focus();
-			return false;
-		}
-	}
-	if(!document.register.username.value){
-		alert("이름을 입력하세요.");
-		return false;
-	}
-	if(!document.register.BrithDate.value){
-		alert("생년월일을 입력하세요.");
-		return false;
-	}
-	
-	var phone_number = document.register.userPhone;
-	if(!phone_number.value){
-		alert("핸드폰번호를 입력하세요.");
-		return false;
-	}
-	if(!phone_number.length > 12){
-		alert("유효하지 않은 핸드폰 번호입니다.");
-		return false;
-	}
-	
-	var obEmail = document.register.userEmail;
-
-	if (!obEmail.value) {
-		alert("이메일을 입력하세요!");
-		obEmail.focus();	
-		return false;
-	}
-	else {
-		if(!CheckEmail(obEmail.value))	{
-			alert("이메일 형식이 잘못되었습니다");
-			obEmail.focus();
-			return false;
-		}                
-	}
-	
-	var keycode = document.register.numkey;
-	if(!keycode.value){
-		alert("인증번호를 입력해주세요.");
-		return false;
-	}
-	if(keycode != numkey){
-		alert("인증번호가 일치하지 않습니다.");
-		return false;
-	}else{
-		if(!keyCheck()){
-			alert("인증번호를 확인해주세요.");
-			keycode.focus();
-			return false;
-		}
-	}
-}
-
 function idConfirm(){
 	var id = document.getElementById('userid').value;
 	
@@ -242,6 +152,7 @@ function passwordCheck(){
                 if(pw == confirmPW) {
                     document.getElementById('pw2-check').innerHTML='비밀번호가 일치합니다.';
                     document.getElementById('pw2-check').style.color='green';
+                    return true;
                 }
                 else {
                     document.getElementById('pw2-check').innerHTML='비밀번호가 일치하지 않습니다.';
@@ -295,7 +206,7 @@ function PhoneCheck(){
 			else {
 				alert(data.result);
 				numkey = data.result;
-				return true;
+				return numkey;
 			}
 		}
 	});
@@ -320,7 +231,89 @@ function CheckEmail(str){
      else {                       
           return true;         
      }                            
-}       
+}
 
+function check(){
+	
+	var onId = document.register.userid;
+	if(!onId.value){
+		alert("ID를 입력하세요.");
+		onId.focus();
+		return false;
+	}
+	if(!onId.length > 3 && !onId.length < 13){
+		alert("ID 길이가 적절하지 않습니다.");
+		onId.focus();
+		return false;
+	}else{
+		if(idConfirm() == false){
+			alert("ID 중복을 확인해주세요!");
+			onId.focus();
+			return false;
+		}
+	}
+	
+	var password = document.register.userpw1;
+	if(!document.register.userpw1.value){
+		alert("비밀번호를 입력하세요.");
+		return false;
+	}
+	if(!document.register.userpw1.length > 5){
+		alert("비밀번호의 길이가 적절하지 않습니다.");
+		return false;
+	}
+	if(!document.register.userpw2.value){
+		alert("비밀번호를 입력하세요.");
+		return false;
+	}else{
+		if(!passwordCheck()){
+			alert("비밀번호를 확인해주세요!");
+			password.focus();
+		}
+	}
+	if(!document.register.username.value){
+		alert("이름을 입력하세요.");
+		return false;
+	}
+	if(!document.register.BrithDate.value){
+		alert("생년월일을 입력하세요.");
+		return false;
+	}
+	
+	var phone_number = document.register.userPhone;
+	if(!phone_number.value){
+		alert("핸드폰번호를 입력하세요.");
+		return false;
+	}
+	if(!phone_number.length > 12){
+		alert("유효하지 않은 핸드폰 번호입니다.");
+		return false;
+	}
+	
+	var obEmail = document.register.userEmail;
+
+	if (!obEmail.value) {
+		alert("이메일을 입력하세요!");
+		obEmail.focus();	
+		return false;
+	}
+	else {
+		if(!CheckEmail(obEmail.value))	{
+			alert("이메일 형식이 잘못되었습니다");
+			obEmail.focus();
+			return false;
+		}                
+	}
+	
+	var keycode = document.register.numkey;
+	if(!keycode.value){
+		alert("인증번호를 입력해주세요.");
+		return false;
+	}
+	if(keycode.value != numkey){
+		alert("인증번호가 일치하지 않습니다.");
+		return false;
+	}
+}
 </script>
 </html>

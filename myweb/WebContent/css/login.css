@@ -20,7 +20,7 @@ input.id, input.pw {
 div.checkbox{ margin: 10px; padding: auto; }
 label.remember-label{ margin: 10px 10px; font-size: 15pt; }
 input.remember-box{ width: 20px; height: 20px; float: legt; }
-button.login-bnt {
+button.login-bnt, input.find-bnt{
 	margin: 0 10px;
 	padding: auto;
 	border: 3px solid #1D2316;
@@ -30,3 +30,7 @@ button.login-bnt {
 }
 label.login-bnt{ float: right; }
 label.registerpage{ display: inline; }
+
+input.find-bnt{
+	float: right;
+}
