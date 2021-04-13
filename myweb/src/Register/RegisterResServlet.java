@@ -38,12 +38,6 @@ public class RegisterResServlet extends HttpServlet {
 		int result = member.register(userid, userpw, username, usergender, useremail, userphonenumber, userbirthdate);
 		
 		if(result == 0) {
-			request.setAttribute("msg", "회원가입에 실패하였습니다.");
-			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/register/registerfail.jsp");
-			dp.forward(request, response);
-			return;
-		}
-		else {
 			MemberVO data = member.login(userid, userpw);
 			
 			HttpSession session = request.getSession();
@@ -62,6 +56,12 @@ public class RegisterResServlet extends HttpServlet {
 				}
 			}
 			response.sendRedirect(request.getContextPath());
+		}
+		else {
+			request.setAttribute("msg", "회원가입에 실패하였습니다.");
+			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/register/registerfail.jsp");
+			dp.forward(request, response);
+			return;
 		}
 	}
 
