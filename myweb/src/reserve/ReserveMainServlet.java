@@ -40,10 +40,10 @@ public class ReserveMainServlet extends HttpServlet {
 				RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/selectMovie.jsp");
 				dp.forward(request, response);
 			} else {
-				
+				CkLogin ckLogin = new CkLogin(request, response);
 			}
 		} else {
-			
+			CkLogin ckLogin = new CkLogin(request, response);
 		}
 	}
 }

@@ -93,9 +93,11 @@ public class Reserve_1_date extends HttpServlet {
 				
 				RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/selectDate.jsp");
 				dp.forward(request, response);
+			} else {
+				CkLogin ckLogin = new CkLogin(request, response);
 			}
 		} else {
-			
+			CkLogin ckLogin = new CkLogin(request, response);
 		}
 	}
 }

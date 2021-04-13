@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class TicketVO {
+	// ticket 테이블 컬럼
 	private String ticketID;
 	private String holdDate;
 	private String time;
@@ -67,8 +68,6 @@ public class TicketVO {
 	public void setBTime(String bTime) {
 		this.bTime = bTime;
 	}
-
-	
 
 	public void setInfo(ResultSet res) {
 		try {

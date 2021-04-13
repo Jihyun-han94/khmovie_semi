@@ -22,15 +22,23 @@ public class ConfirmReserve extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		String user_id = (String)session.getAttribute("username");
-		
-		ReserveDAO reserve = new ReserveDAO();
-
-		ArrayList<TicketVO> ticketList = reserve.getMyTList(user_id);
-		
-		request.setAttribute("ticketList", ticketList);
-		
-		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/myTicketList.jsp");
-		dp.forward(request, response);
+		if(session.getAttribute("login") != null) {
+			if(session.getAttribute("login").equals("true")) {
+				
+				String user_id = (String)session.getAttribute("username");
+				
+				ReserveDAO reserve = new ReserveDAO();
+				ArrayList<TicketVO> ticketList = reserve.getMyTList(user_id);
+				
+				request.setAttribute("ticketList", ticketList);
+				
+				RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/myTicketList.jsp");
+				dp.forward(request, response);
+			} else {
+				CkLogin ckLogin = new CkLogin(request, response);
+			}
+		} else {
+			CkLogin ckLogin = new CkLogin(request, response);
+		}
 	}
 }
