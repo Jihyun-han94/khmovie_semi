@@ -25,15 +25,19 @@ public class ConfirmReserve extends HttpServlet {
 		if(session.getAttribute("login") != null) {
 			if(session.getAttribute("login").equals("true")) {
 				
-				String user_id = (String)session.getAttribute("username");
+				String date = (String)request.getAttribute("date");
 				
-				ReserveDAO reserve = new ReserveDAO();
-				ArrayList<TicketVO> ticketList = reserve.getMyTList(user_id);
 				
-				request.setAttribute("ticketList", ticketList);
 				
-				RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/myTicketList.jsp");
-				dp.forward(request, response);
+//				String user_id = (String)session.getAttribute("username");
+//				
+//				ReserveDAO reserve = new ReserveDAO();
+//				ArrayList<TicketVO> ticketList = reserve.getMyTList(user_id);
+//				
+//				request.setAttribute("ticketList", ticketList);
+//				
+//				RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/myTicketList.jsp");
+//				dp.forward(request, response);
 			} else {
 				CkLogin ckLogin = new CkLogin(request, response);
 			}

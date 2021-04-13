@@ -232,8 +232,9 @@ public class ReserveDAO {
 	public ArrayList<TicketVO> getMyTList(String user_id) {
 		ArrayList<TicketVO> ticketList = new ArrayList<>();
 		String sql = "";
-		sql += "SELECT ti.ticketID, ti.holdDate, ti.time, ti.seatNum, ti.title, ts.user_id, ts.Btime";
-		sql += " FROM ticket ti, ticket_status ts";
+		sql += "SELECT ti.ticketID, ti.title, ti.holdDate, ti.time, ti.seatNum, ts.user_id, ts.Btime";
+		sql += " FROM (SELECT theaterName FROM ticket ti, ticket_schedule tsc WHERE ti.scheduleID = tsc.scheduleID) thName";
+		sql += " JOIN ticket_status ts ON (thName)";
 		sql += " WHERE ti.ticketID = ts.ticketID";
 		sql += " AND ts.user_id = ?";
 		sql += " ORDER BY ts.Btime";

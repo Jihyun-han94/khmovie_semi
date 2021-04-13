@@ -23,19 +23,4 @@
 		<% } %>
 	</select>
 </body>
-<script>
-	function getData(element) {
-		$.ajax({
-			url: "<%=request.getContextPath() %>/doAjax",
-			type: "get",
-			datatype: "json",
-			data: {
-				bTime: $(element).val()
-			},
-			success: function(data) {
-				
-			}
-		})
-	}
-</script>
 </html>

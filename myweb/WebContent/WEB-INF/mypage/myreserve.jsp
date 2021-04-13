@@ -38,7 +38,7 @@
 						<tr>
 							<th scope="row">날짜별 </th>
 							<td>
-								<select name="selYM" class="selectpicker small">
+								<select name="selYM" class="selectpicker small" onclick="reserveList(this)">
 										<option value="202104">2021년 4월</option>
 										<option value="202103">2021년 3월</option>
 										<option value="202102">2021년 2월</option>
@@ -85,5 +85,19 @@
 </div>
 </div>
 </body>
-
+<script>
+	function getRList(element) {
+		$.ajax({
+			url: "<%=request.getContextPath() %>/getRList",
+			type: "get",
+			datatype: "json",
+			data: {
+				date: $(element).val()
+			},
+			success: function(data) {
+				
+			}
+		});
+	}
+</script>
 </html>

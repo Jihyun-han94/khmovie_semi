@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/doAjax")
-public class DoAjax extends HttpServlet {
+@WebServlet("/getRList")
+public class GetRList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-    public DoAjax() {
+    public GetRList() {
         super();
     }
 
