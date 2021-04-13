@@ -12,6 +12,30 @@
 
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/mypage.css">
 
+<script>
+	    function check() {
+	      var bfpw = document.getElementById('bfpw').value;
+	      var afpw = document.getElementById('afpw').value;
+	      var chpw = document.getElementById('chpw').value;
+	      var hdpw = document.getElementById('hdpw').value;
+	      
+	      if(afpw != null) {
+		      if(afpw != chpw) {
+		        alert("변경한 비밀번호가 일치 하지 않습니다");
+		        return false;
+		      }
+		  }
+	      
+	      if(bfpw != hdpw){
+	    	  alert("현재 비밀번호가 일치 하지 않습니다");
+		        return false;
+	      }
+	      
+	      return true;
+	
+	    }
+	   </script>
+
 </head>
 <body>
 <header>
@@ -32,27 +56,20 @@
 	
 	
 	<%
-		MypageVO userinfo = (MypageVO) request.getAttribute("userinfo");
+		MypageVO userinfo = (MypageVO) request.getAttribute("userinfo"); %>
 		
-	
-	%>
-
 	<div id="contents">
 		<h2 class="tit">개인 정보 수정</h2>
-		<form name="mbInfoForm" action="./userinfo" method="post">
+		<form name="mbInfoForm" action="infoupdate" method="post" onsubmit="return check()">
               <div class="table-wrap mb40">
                   <table class="board-form">
                       <colgroup>
                           <col style="width:180px;">
                           <col>
                       </colgroup>
+                      <input type="hidden" name="id" id="userid" value="<%= userinfo.getUserId() %>" readonly>
+                      <input type="hidden" name="hdpw" id="userpw" value="<%= userinfo.getUserPw() %>" readonly>
                       <tbody>
-                      <tr>
-                              <th scope="row">아이디</th>
-                              <td>
-                     	 <input type="hidden" name="id" value="<%= userinfo.getUserId() %>" readonly>
-                      </td>
-                          </tr>
                           <tr>
                               <th scope="row">이름</th>
                               <td>
@@ -71,7 +88,7 @@
                               <td>
                                   <div class="change-phone-num-area">
                                       <div class="position">
-                                          <input type="text" id="phone" class="input-text w160px numType" placeholder="010-0000-0000" title="변경할 휴대폰 번호 입력" maxlength="11" />
+                                          <input type="text" id="phone" class="input-text w160px numType" placeholder="010-0000-0000" title="변경할 휴대폰 번호 입력" maxlength="13" />
                                       </div>
                                   </div>
                               </td>
@@ -81,19 +98,25 @@
                                   <label for="email">이메일</label>
                               </th>
                               <td>
-                                  <input type="text" id="email" name="mbEmail" class="input-text w500px" value="<%=userinfo.getEmail() %>" />
+                                  <input type="text" id="email" name="email" class="input-text w500px" value="<%=userinfo.getEmail() %>" />
                               </td>
                           </tr>
                           <tr>
                               <th scope="row">현재 비밀번호</th>
                               <td>
-                                  <input type="password" id="bfpw" name="password" class="input-text w500px"/>
+                                  <input type="password" id="bfpw" name="bfpw" class="input-text w500px"/>
                               </td>
                           </tr>
                           <tr>
                               <th scope="row">변경할 비밀번호</th>
                               <td>
-                                  <input type="password" id="afpw" name="password" class="input-text w500px"/>
+                                  <input type="password" id="afpw" name="afpw" class="input-text w500px"/>
+                              </td>
+                          </tr>
+                          <tr>
+                              <th scope="row">비밀번호 확인</th>
+                              <td>
+                                  <input type="password" id="chpw" name="chpw" class="input-text w500px"/>
                               </td>
                           </tr>
                       </tbody>

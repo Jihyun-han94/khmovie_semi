@@ -32,23 +32,4 @@ public class MyInfoServlet extends HttpServlet {
 		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/mypage/userinfo.jsp");
 		dp.forward(request, response);
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		
-		String id = request.getParameter("id");
-		String phone = request.getParameter("phone");
-		String email = request.getParameter("email");
-		String afpw = request.getParameter("afpw");
-		
-		MypageDAO member = new MypageDAO();
-		MypageVO info = member.getRecord(id);
-		info.setPhoneNumber(phone);
-		info.setEmail(email);
-		info.setUserPw(afpw);
-		member.updateData(info);
-		
-		response.sendRedirect("./userinfo");
-	}
-
 }
