@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>예매완료</title>
 <%@ include file="/WEB-INF/module/css_js.jsp" %>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/reserve/css/reserve.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/reserve.css">
 </head>
 <style>
 	section {
@@ -96,7 +96,7 @@
 			</tr>
 		</table>
 		<br>
-		<form action = "./reserve_5">
+		<form action = "<%=request.getContextPath() %>">
 			<button id="confirm" type="submit" class="btn btn-light btn-sm">확인</button>
 		</form>
 	</section>

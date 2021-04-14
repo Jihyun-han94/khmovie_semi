@@ -12,11 +12,13 @@
     src="<%=request.getContextPath() %>/static/jquery/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
     src="<%=request.getContextPath() %>/static/bootstrap-4.6.0/js/bootstrap.min.js"></script>
-<%@ include file="/WEB-INF/module/top_nav.jsp" %>
 <link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/MovieUpdate.css">  
 
 </head>
 <body>
+	<header>
+		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
+	</header>
 	<h2 id="text">Review</h2>
     <hr id="hr">
     <div class="container">
@@ -48,16 +50,9 @@
 		</div>
 	</form>
 	</div>
-          	
-		
-	
 	
 	<footer class="footer"></footer>
 
 </body>
 </html>
-
-
-
-
 

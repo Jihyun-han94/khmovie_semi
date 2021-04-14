@@ -21,16 +21,29 @@ public class ConfirmReserve extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		
-		String user_id = (String)session.getAttribute("username");
-		
-		ReserveDAO reserve = new ReserveDAO();
-		// "iwbapg"를 user_id로 바꿔야 함.
-		ArrayList<TicketVO> ticketList = reserve.getMyTList("iwbapg");
-		
-		request.setAttribute("ticketList", ticketList);
-		
-		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/myTicketList.jsp");
-		dp.forward(request, response);
+		CkLogin ckLogin = new CkLogin(request, response);
+
+		if(session.getAttribute("login") != null) {
+			if(session.getAttribute("login").equals("true")) {
+				
+				String date = (String)request.getAttribute("date");
+				
+				
+				
+//				String user_id = (String)session.getAttribute("username");
+//				
+//				ReserveDAO reserve = new ReserveDAO();
+//				ArrayList<TicketVO> ticketList = reserve.getMyTList(user_id);
+//				
+//				request.setAttribute("ticketList", ticketList);
+//				
+//				RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/myTicketList.jsp");
+//				dp.forward(request, response);
+			} else {
+				ckLogin.alert();
+			}
+		} else {
+			ckLogin.alert();
+		}
 	}
 }

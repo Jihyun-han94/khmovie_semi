@@ -5,11 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>mypage</title>
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/static/bootstrap-4.6.0/css/bootstrap.min.css">
-<script type="text/javascript" src="<%=request.getContextPath() %>/static/bootstrap-4.6.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/static/jquery/js/jquery-3.6.0.min.js"></script>
-
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/mypage.css">
+<script type="text/javascript" src="<%=request.getContextPath() %>/static/jquery/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/static/bootstrap-4.6.0/js/bootstrap.min.js"></script>
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/static/bootstrap-4.6.0/css/bootstrap.min.css">
 
 </head>
 <body>
@@ -38,21 +37,28 @@
 						<tr>
 							<th scope="row">날짜별 </th>
 							<td>
-								<select name="selYM" class="selectpicker small">
-										<option value="202104">2021년 4월</option>
-										<option value="202103">2021년 3월</option>
-										<option value="202102">2021년 2월</option>
-										<option value="202101">2021년 1월</option>
-										<option value="202012">2020년 12월</option>
-										<option value="202011">2020년 11월</option>
-										<option value="202010">2020년 10월</option>
-										<option value="202009">2020년 9월</option>
-										<option value="202008">2020년 8월</option>
-										<option value="202007">2020년 7월</option>
+								<select name="selYM" class="selectpicker small" onchange="getRList(this)">
+										<option value="4/21">2021년 4월</option>
+										<option value="3-21">2021년 3월</option>
+										<option value="2-21">2021년 2월</option>
+										<option value="1-21">2021년 1월</option>
+										<option value="12-20">2020년 12월</option>
+										<option value="11-20">2020년 11월</option>
+										<option value="10-20">2020년 10월</option>
+										<option value="9-20">2020년 9월</option>
+										<option value="8-20">2020년 8월</option>
+										<option value="7-20">2020년 7월</option>
 								</select>
+<<<<<<< HEAD
 
 								<button type="button" class="button search" name="search"> 조회 
+=======
+							<!-- 
+								<button type="button" class="button gray-line small ml05" name="search">
+									<i class="iconset ico-search-gray"></i> 조회 
+>>>>>>> a8bce28a5542765dea136084bbe320f0402835f7
 								</button>
+							-->
 							</td>
 						</tr>
 					</tbody>
@@ -69,8 +75,8 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
-           
+            <tbody id="tbody">
+           <!-- 
                     <tr>
                         <td>123-456-789</td>
                         <td>영화 제목</td>
@@ -78,11 +84,51 @@
                         <td>2020-02-08 15:20</td>
                         <td><button type="button" class="button small" name="more">자세히</button></td>
                     </tr>
+            -->
             </tbody>
         </table>
 	</div>
 </div>
 </div>
 </body>
-
+<script>
+	function getRList(element) {
+		$.ajax({
+			url: "<%=request.getContextPath() %>/getRList",
+			type: "get",
+			datatype: "json",
+			data: {
+				date: $(element).val()
+			},
+			success: function(data) {
+				let reserve = data.reserve;
+				let length = Object.keys(reserve).length;
+				
+				let html = "";
+				let arr = new Array(); 
+				for(let i = 0; i < length; i++) {
+					arr.push(reserve[i]);
+				}
+				console.log('성공');
+				
+				for(let j = 0; j < arr.length; j++) {
+					for(key in arr) {
+						html += "<tr>";
+						html += "<td>" + arr[key].ticketID + "</td>";
+						html += "<td>" + arr[key].title + "</td>";
+						html += "<td>" + arr[key].theaterName + "</td>";
+						html += "<td>" + arr[key].holdDate + "</td>";
+						html += "<td>" + arr[key].time_schedule + "</td>";
+						html += "<td>" + arr[key].seatNum + "</td>";
+						html += "<td>" + arr[key].user_id + "</td>";
+						html += "</tr>";
+						
+						$("#tbody").empty();
+						$("#tbody").append(html);
+					}
+				}
+			}
+		});
+	}
+</script>
 </html>

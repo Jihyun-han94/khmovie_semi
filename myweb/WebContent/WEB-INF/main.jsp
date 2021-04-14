@@ -20,16 +20,16 @@
     <hr id="hr">
     <div class="item">
       	<div class="col-sm-3">
-      		<a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image" class="img-responsive"></a>
+      		<a href="<%=request.getContextPath() %>/selectDate?title=감기" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/cold.jpg" alt="Image" class="img-responsive" width="175px" height="250px"></a>
       	</div>
       	<div class="col-sm-3">
-      		<a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image" class="img-responsive"></a>
+      		<a href="<%=request.getContextPath() %>/selectDate?title=미나리" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/minari.jpg" alt="Image" class="img-responsive" width="175px" height="250px"></a>
       	</div>
       	<div class="col-sm-3">
-      		<a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image" class="img-responsive"></a>
+      		<a href="<%=request.getContextPath() %>/selectDate?title=비밀의 정원" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/secretGarden.png" alt="Image" class="img-responsive" width="175px" height="250px"></a>
       	</div>
       	<div class="col-sm-3">
-      		<a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image" class="img-responsive"></a>
+      		<a href="<%=request.getContextPath() %>/selectDate?title=테넷" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/tenet.jpg" alt="Image" class="img-responsive" width="175px" height="250px"></a>
       	</div>
    	</div>
     <h2 id="text2">Review</h2>
@@ -48,8 +48,7 @@
       		<a href="#x" class="thumbnail2"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image" class="img-responsive"></a>
       	</div>
     </div>
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+
     <h2 id="text3">등급별 혜택</h2>
     <hr id="hr4">
     <div class="item3">

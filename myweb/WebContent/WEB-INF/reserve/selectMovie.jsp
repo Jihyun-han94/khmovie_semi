@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>영화 선택</title>
 <%@ include file="/WEB-INF/module/css_js.jsp" %>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/reserve/css/reserve.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/reserve.css">
 </head>
 <style>
 /*
@@ -45,19 +45,19 @@
 			switch(title) {
 				case "감기":
 					valList.add("cold");
-					imgList.add("./reserve/poster/cold.jpg"); break;
+					imgList.add("./static/img/cold.jpg"); break;
 				case "미나리":
 					valList.add("minari");
-					imgList.add("./reserve/poster/minari.jpg"); break;
+					imgList.add("./static/img/minari.jpg"); break;
 				case "비밀의 정원":
 					valList.add("secretGarden");
-					imgList.add("./reserve/poster/secretGarden.png"); break;
+					imgList.add("./static/img/secretGarden.png"); break;
 				case "베테랑":
 					valList.add("veteran");
-					imgList.add("./reserve/poster/veteran.png"); break;
+					imgList.add("./static/img/veteran.png"); break;
 				case "테넷":
 					valList.add("tenet");
-					imgList.add("./reserve/poster/tenet.jpg");
+					imgList.add("./static/img/tenet.jpg");
 			}
 		}
 	%>
@@ -68,7 +68,7 @@
 		</div>
 		<br>
 		<div class="container">
-			<form action="./selectDate" method="post" accept-charset="UTF-8">
+			<form action="./selectDate" accept-charset="UTF-8">
 				<% for(int i = 0; i < titleList.size(); i++) { %>
 					<div class="movieItem">
 						<button class="movie" type="submit" name="title" value="<%=valList.get(i) %>">
@@ -77,7 +77,6 @@
 						<!--
 							<span class="imgTxt">예매하기</span></div> span에 링크 적용이 안 돼 우선 패스.
 						-->
-						<%-- <button type="submit" class="btn btn-sm" name="title" value="<%=valList.get(i) %>"></button> --%>
 					</div>
 				<% } %>
 			</form>

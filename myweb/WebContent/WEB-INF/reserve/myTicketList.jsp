@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>나의 예매 내역</title>
 <%@ include file="/WEB-INF/module/css_js.jsp" %>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/reserve/css/reserve.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/reserve.css">
 </head>
 <body>
 	<header>
@@ -19,23 +19,8 @@
 	<select name="select">
 		<option>예매일자</option>
 		<% for(TicketVO ticket : ticketList) { %>
-				<option value="<%=ticket.getBTime() %>" onclick=getData(this);><%=ticket.getBTime() %></option>
+				<option value="<%= %>" onclick=getData(this);><%= %></option>
 		<% } %>
 	</select>
 </body>
-<script>
-	function getData(element) {
-		$.ajax({
-			url: "<%=request.getContextPath() %>/doAjax",
-			type: "get",
-			datatype: "json",
-			data: {
-				bTime: $(element).val()
-			},
-			success: function(data) {
-				
-			}
-		})
-	}
-</script>
 </html>

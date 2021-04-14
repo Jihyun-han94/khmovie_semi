@@ -9,55 +9,10 @@ import main.DBConnection;
 public class ReserveDAO {
 	private Connection conn = null;
 	private PreparedStatement pstat = null;
-	private int tbId = 0;
-	private String table = "reserve_" + tbId;
-	
+
 	public ReserveDAO() {
 		this.conn = new DBConnection().getConnect();
-		this.tbId = 2104;
 	}
-	
-	public ReserveDAO(String tbId) {
-		this.conn = new DBConnection().getConnect();
-		this.tbId = Integer.parseInt(tbId);
-	}
-	
-	public ReserveVO getTitle(String id) {
-		ReserveVO movie = null;
-		String sql = "";
-		sql += "SELECT * FROM " + this.table;
-		sql += "WHERE id = ?";
-		try {
-			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, id);
-			ResultSet res = pstat.executeQuery();
-			if(res.next()) {
-				movie = new ReserveVO();
-				movie.setPiece(res);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return movie;
-	}
-	
-	/*
-	public ArrayList<String> getTitleList() {
-		ArrayList<String> titleList = new ArrayList<>();
-		String sql = "";
-		sql += "SELECT title FROM movie_temp";
-		try {
-			Statement stat = conn.createStatement();
-			ResultSet res = stat.executeQuery(sql);
-			while(res.next()) {
-				titleList.add(res.getString("title"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return titleList;
-	}
-	*/
 	
 	public ArrayList<ReserveVO> getAll() {
 		ArrayList<ReserveVO> movieList = new ArrayList<>();
@@ -80,7 +35,6 @@ public class ReserveDAO {
 	public String getAvailStart(String title) {
 		String availStart = "";
 		String sql = "";
-		//sql += "SELECT start_date, end_date FROM movie WHERE title = ?";
 		sql += "SELECT distinct holdDate FROM ticket WHERE title = ? AND ROWNUM = 1";
 		sql += " ORDER BY holdDate ASC";
 		try {
@@ -99,7 +53,6 @@ public class ReserveDAO {
 	public String getAvailEnd(String title) {
 		String availEnd = "";
 		String sql = "";
-		//sql += "SELECT start_date, end_date FROM movie WHERE title = ?";
 		sql += "SELECT * FROM";
 		sql += " (SELECT distinct holdDate FROM ticket WHERE title = ?";
 		sql += " ORDER BY holdDate DESC) WHERE ROWNUM = 1";
@@ -146,11 +99,6 @@ public class ReserveDAO {
 			pstat.setString(2, date);
 			ResultSet res = pstat.executeQuery();
 			while(res.next()) {
-				/* 영화관 중복제거
-				if(!theaterList.contains(res.getString("theaterName"))) {
-					theaterList.add(res.getString("theaterName"));
-				}
-				*/
 				theaterList.add(res.getString("theaterName"));
 			}
 		} catch (SQLException e) {
@@ -173,11 +121,6 @@ public class ReserveDAO {
 			pstat.setString(3, theaterName);
 			ResultSet res = pstat.executeQuery();
 			while(res.next()) {
-				/* 시간 중복제거
-				if(!timeList.contains(res.getString("time"))) {
-					timeList.add(res.getString("time"));
-				}
-				*/
 				timeList.add(res.getString("time_schedule"));
 			}
 		} catch (SQLException e) {
@@ -270,15 +213,15 @@ public class ReserveDAO {
 		return ticketIdList;
 	}
 	
-	// 로그인 연결 후 user_id 인자로 추가해야함
-	public int setTicketStatus(String ticketID) {
+	public int setTicketStatus(String ticketID, String user_id) {
 		int res = 0;
 		String sql = "";
 		sql += "INSERT INTO ticket_status (ticketID, user_id)";
-		sql += " VALUES (?, 'iwbapg')";
+		sql += " VALUES (?, ?)";
 		try {
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, ticketID);
+			pstat.setString(2, user_id);
 			res = pstat.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -286,14 +229,18 @@ public class ReserveDAO {
 		return res;
 	}
 	
-	public ArrayList<TicketVO> getMyTList(String user_id) {
-		ArrayList<TicketVO> ticketList = new ArrayList<>();
+	public ArrayList<TicketVO> getMyRList(String user_id, String date) {
+		ArrayList<TicketVO> reserveList = new ArrayList<>();
 		String sql = "";
-		sql += "SELECT ti.ticketID, ti.holdDate, ti.time, ti.seatNum, ti.title, ts.user_id, ts.Btime";
-		sql += " FROM ticket ti, ticket_status ts";
-		sql += " WHERE ti.ticketID = ts.ticketID";
+		sql += "SELECT ts.Btime, ts.ticketID, tt.title, tt.theaterName, tt.holdDate, tt.time_schedule, tt.seatNum, ts.user_id";
+		sql += "	FROM";
+		sql += "	(SELECT Btime, user_id, ticketID FROM (SELECT TO_CHAR(Btime, 'yyyymmdd') AS Btime, user_id, ticketID FROM ticket_status) ts WHERE Btime like ?) ts,"; 
+		sql += "	(SELECT ti.ticketID, ti.title, ths.theaterName, ti.holdDate, ths.time_schedule, ths.seatNum";
+		sql += "		FROM ticket ti, theater_schedule ths WHERE ti.scheduleID = ths.scheduleID) tt";
+		sql += " WHERE ts.ticketID = tt.ticketID";
 		sql += " AND ts.user_id = ?";
-		sql += " ORDER BY ts.Btime";
+		sql += " AND ts.Btime LIKE '%" + date + "%'";
+		sql += " ORDER BY ts.ticketID";
 		try {
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, user_id);
@@ -301,12 +248,12 @@ public class ReserveDAO {
 			while(res.next()) {
 				TicketVO ticket = new TicketVO();
 				ticket.setInfo(res);
-				ticketList.add(ticket);
+				reserveList.add(ticket);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return ticketList;
+		return reserveList;
 	}
 	
 	

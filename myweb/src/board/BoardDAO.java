@@ -2,8 +2,6 @@ package board;
 import java.sql.*;
 import java.util.ArrayList;
 
-import main.DBConnection;
-
 
 
 public class BoardDAO {
@@ -21,11 +19,21 @@ public class BoardDAO {
 		}
 		System.out.println("JDBC 드라이버 로딩 완료!");
 		
-		this.conn = new DBConnection().getConnect();
+		//접속 정보 작성
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String user = "myweb";
+		String password = "admin";
+		
+		//DB 접속 객체 생성 및 접속 시도
+		try {
+			this.conn = DriverManager.getConnection(url,user,password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		System.out.println("Oracle DB 접속 완료!");
 	}
 	
-	//B_NUM을 가지고 쿼리 조회
+
 	public BoardVO getRecord(String B_TITLE) {
 		
 		String sql = "SELECT * FROM Board_t WHERE B_TITLE=?";
@@ -79,13 +87,13 @@ public class BoardDAO {
 		return records;
 	}
 	
-	public int upload(String movietitle,String fileName, String fileRealName) {
-		String SQL = "INSERT INTO FILE_T VALUES(?,?,?)";
+	public int upload(BoardVO filedata) {
+		String SQL = "INSERT INTO FILE_T VALUES(file_seq.NEXTVAL,?,?,?)";
 		try {
 			this.pstat = this.conn.prepareStatement(SQL);
-			this.pstat.setString(1, movietitle);
-			this.pstat.setString(2, fileName);
-			this.pstat.setString(3, fileRealName);
+			this.pstat.setString(1, filedata.getMovietitle());
+			this.pstat.setString(2, filedata.getFileName());
+			this.pstat.setString(3, filedata.getFileRealName());
 			return pstat.executeUpdate(); //완료되면 1 return
 		} catch (SQLException e) {
 			
@@ -94,6 +102,33 @@ public class BoardDAO {
 		
 		return -1;
 	}
+	
+
+	public ArrayList<BoardVO> getfiles(){
+		String sql ="";
+	    sql += "SELECT * FROM FILE_t";
+	      sql += " WHERE filenum<=12";
+	      
+		ArrayList<BoardVO> records = new ArrayList<BoardVO>();
+
+		try {
+			this.pstat = this.conn.prepareStatement(sql);
+			ResultSet res = this.pstat.executeQuery();
+		
+			while(res.next()) {
+				records.add(new BoardVO(
+						res.getString("movietitle"),
+						res.getString("fileName"),res.getString("fileRealName")
+						));
+			}
+			res.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("getall완료");
+		return records;
+	}
+
 	
 	
 	public int saveData(BoardVO data) {

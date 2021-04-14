@@ -7,9 +7,8 @@
 <meta charset="UTF-8">
 <title>mypage</title>
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/static/bootstrap-4.6.0/css/bootstrap.min.css">
-<script type="text/javascript" src="<%=request.getContextPath() %>/static/bootstrap-4.6.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/static/jquery/js/jquery-3.6.0.min.js"></script>
-
+<script type="text/javascript" src="<%=request.getContextPath() %>/static/bootstrap-4.6.0/js/bootstrap.min.js"></script>
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/mypage.css">
 
 <script>
@@ -59,9 +58,13 @@
 	<div class="lnb-area location-fixed">
 		<%@ include file="/WEB-INF/module/mypage_lnb_nav.jsp" %>
 	</div>
+<<<<<<< HEAD
 	<%
 		MypageVO userinfo = (MypageVO) request.getAttribute("userinfo");
 	%>
+=======
+	<% MypageVO userinfo = (MypageVO) request.getAttribute("userinfo"); %>
+>>>>>>> a8bce28a5542765dea136084bbe320f0402835f7
 	<div id="contents">
 		<h2 class="tit">개인 정보 수정</h2>
 		<form name="mbInfoForm" action="infoupdate" method="post" onsubmit="return check()">

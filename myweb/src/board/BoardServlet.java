@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-//
+
 
 @WebServlet("/board")
 public class BoardServlet extends HttpServlet {
@@ -23,8 +23,10 @@ public class BoardServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		BoardDAO board = new BoardDAO();
 		ArrayList<BoardVO> datas = board.getAll();
-		board.close();
+		ArrayList<BoardVO> filedatas = board.getfiles();
+ 		board.close();
 		request.setAttribute("datas", datas);
+		request.setAttribute("filedatas", filedatas);
 		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/Board.jsp");
 		dp.forward(request, response);
 		System.out.println("forward완료");

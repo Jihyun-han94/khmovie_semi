@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import = "java.util.ArrayList,board.BoardVO" %>
+    <%@ page import = "java.util.ArrayList,board.BoardVO,board.BoardDAO" %>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,43 +23,18 @@
 	</form>
  	<h2 id="text">관람후기</h2>
     <hr id="hr">
+
+	
 	<div class="container">
-	<div class="item1"><a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image"
-            class="img-responsive"></a></div>
-	<div class="item2"><a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image"
-            class="img-responsive"></a></div>
-	<div class="item3"><a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image"
-            class="img-responsive"></a></div>
-	<div class="item4"><a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image"
-            class="img-responsive"></a></div>
-	<div class="item5"><a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image"
-            class="img-responsive"></a></div>
-	<div class="item6"><a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image"
-            class="img-responsive"></a></div>
-	<div class="item7"><a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image"
-            class="img-responsive"></a></div>
-	<div class="item8"><a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image"
-            class="img-responsive"></a></div>
-            <div class="item5"><a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image"
-            class="img-responsive"></a></div>
-	<div class="item9"><a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image"
-            class="img-responsive"></a></div>
-	<div class="item10"><a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image"
-            class="img-responsive"></a></div>
-	<div class="item11"><a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image"
-            class="img-responsive"></a></div>
-    <div class="item12"><a href="#x" class="thumbnail"><img src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image"
-            class="img-responsive"></a></div>        
-	</div>
-	<div class="table">
-	<table>
-	<% ArrayList<BoardVO> datas = (ArrayList<BoardVO>)request.getAttribute("datas");
-		for(BoardVO data: datas){%>
-	<tr>
-	<td><%=data.getB_TITLE() %></td>
-	</tr>
+	
+	<% 
+		ArrayList<BoardVO> filedatas = (ArrayList<BoardVO>)request.getAttribute("filedatas");
+		for(BoardVO filedata: filedatas){%>
+	
+	<div class=item><a href="<%=request.getContextPath() %>/moviereview?B_TITLE=<%=filedata.getMovietitle()%>&filename=<%=filedata.getFileName() %>"><img width="200px" height="287px" src="upload/<%=filedata.getFileRealName() %>"></a></div>
+	
 	<% }%>
-	</table>
+	
 	</div>	
 	<footer class="footer"></footer>
 </body>
