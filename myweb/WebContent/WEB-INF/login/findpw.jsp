@@ -4,9 +4,9 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<%@ include file="/WEB-INF/module/css_js.jsp" %>
 	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/main.css">
 	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/find.css">
-	<%@ include file="/WEB-INF/module/css_js.jsp" %>
 <title>아이디 찾기</title>
 </head>
 <body>

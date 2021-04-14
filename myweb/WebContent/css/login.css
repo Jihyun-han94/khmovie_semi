@@ -3,13 +3,13 @@
 section.login
 {
 	width: 500px; height: 330px;
-	border: 3px solid #1D2316; border-radius: 5px;
-	margin: 20px auto;
+	border: 3px solid white; border-radius: 5px;
+	margin: 100px auto; background-color: white;
 }
 div.login{ margin: 10px; }
-p.find { margin: 0 0px; font-size: 10pt; color: #1D2316; display: inline; font-weight: bold; border: 2px solid #1D2316; padding: 5px; border-radius: 3px;}
-p.login-res { margin: 0 20px; font-size: 10pt; color: red; display: inline; font-weight: bold; }
-label.login{ font-size: 20pt; font-weight: bold; }
+p.find { margin: 0 0px; font-size: 10pt; color: #1D2316; display: inline; font-weight: 800; border: 2px solid #1D2316; padding: 5px; border-radius: 3px;}
+p.login-res { margin: 0 20px; font-size: 10pt; color: red; display: inline; font-weight: 800; }
+label.login{ font-size: 20pt; font-weight: 800; }
 .input{margin: 5px 25px; }
 input.id, input.pw {
 	margin: 0 20px;
@@ -25,7 +25,7 @@ button.login-bnt, input.find-bnt{
 	padding: auto;
 	border: 3px solid #1D2316;
 	border-radius: 5px;
-	color: white; font-weight: bold;
+	color: white; font-weight: 800;
 	background-color: #1D2316;
 }
 label.login-bnt{ float: right; }
