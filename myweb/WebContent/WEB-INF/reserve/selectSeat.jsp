@@ -85,10 +85,10 @@
 				 		}
 				   }
 
-				   String[] seatArrA = {"A-1", "A-2", "A-3", "A-4", "A-5"};
-				   String[] seatArrB = {"B-1", "B-2", "B-3", "B-4", "B-5"};
-				   String[] seatArrC = {"C-1", "C-2", "C-3", "C-4", "C-5"};
-				   String[] seatArrD = {"D-1", "D-2", "D-3", "D-4", "D-5"};
+				   String[] seatArrA = {"A-1", "A-2", "A-3", "A-4"};
+				   String[] seatArrB = {"B-1", "B-2", "B-3", "B-4"};
+				   String[] seatArrC = {"C-1", "C-2", "C-3", "C-4"};
+				   String[] seatArrD = {"D-1", "D-2", "D-3", "D-4"};
 				%>
 				  
 				  <span class="seatLine">A열</span> 
