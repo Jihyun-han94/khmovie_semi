@@ -22,10 +22,7 @@ public class RegisterResServlet extends HttpServlet {
     public RegisterResServlet() {
         
     }
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
-		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/register/registerres.jsp");
-		dp.forward(request, response);
-	}
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		

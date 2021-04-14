@@ -1,7 +1,6 @@
 @charset "UTF-8";
 @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
-html { font-family: 'Hanna', sans-serif; }
-
+html{ font-family: 'Hanna', sans-serif; }
 section.find{
 	width: 500px; height: auto;
 	border: 3px solid #1D2316; border-radius: 5px;

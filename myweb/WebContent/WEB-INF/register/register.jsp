@@ -18,7 +18,7 @@
 		<form action="./register/res" method="post" name="register" onsubmit="return check()">
 		<h1 class="title">회원가입</h1>
 		<hr class="register">
-			<div class="register"><label>아이디<p>4~12자의 영소문자, 숫자만 사용할 수 있습니다.</p></label>
+			<div class="register"><label>아이디<p>4~12자의 영문 대소문자, 숫자만 사용할 수 있습니다.</p></label>
 			<p id="id-check" class="id-check" ></p>
 			</div>
 			<div class="register">
