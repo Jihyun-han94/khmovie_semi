@@ -60,13 +60,8 @@
 		<%@ include file="/WEB-INF/module/mypage_lnb_nav.jsp" %>
 	</div>
 	<%
-<<<<<<< HEAD
-		MypageVO userinfo = (MypageVO) request.getAttribute("userinfo"); %>
-		
-=======
 		MypageVO userinfo = (MypageVO) request.getAttribute("userinfo");
 	%>
->>>>>>> aa9d4359c83b9c26209ada6f8923628eef84c8ab
 	<div id="contents">
 		<h2 class="tit">개인 정보 수정</h2>
 		<form name="mbInfoForm" action="infoupdate" method="post" onsubmit="return check()">
