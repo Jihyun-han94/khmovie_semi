@@ -22,7 +22,6 @@
 	</div>
 
 	<div id="contents">
-		<!-- my-page-main -->
 	<div class="my-page-main">
 
 		<div class="my-page-info ">
@@ -47,7 +46,6 @@
 					</div>
 				</div>
 			</div>
-			<!--// top -->
 		</div>
 	</div>
 	

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import mypage.MypageDAO;
+
 @WebServlet("/complete")
 public class Reserve_5_complete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -46,6 +48,8 @@ public class Reserve_5_complete extends HttpServlet {
 				// 인자로 user_id도 넣어줘야 함.
 				reserve.setTicketStatus(ticketID);
 			}
+			
+			
 			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/complete.jsp");
 			dp.forward(request, response);
 			
