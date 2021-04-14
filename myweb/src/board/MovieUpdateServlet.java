@@ -51,14 +51,13 @@ public class MovieUpdateServlet extends HttpServlet {
 		String B_CONTEXT = multi.getParameter("B_CONTEXT");
 		
 		
-		String file_sys_name = multi.getFilesystemName("file");
-		String file_cli_name = multi.getOriginalFileName("file");
+		String fileRealName = multi.getFilesystemName("file");
+		String fileName = multi.getOriginalFileName("file");
 		
 		
-		System.out.println(file_sys_name);
-		System.out.println(file_cli_name);
+		BoardVO filedata = new BoardVO(B_TITLE,fileName, fileRealName);
 		
-		new BoardDAO().upload(B_TITLE,file_cli_name, file_sys_name);
+		new BoardDAO().upload(filedata);
 		
 		
 		//확인
@@ -80,7 +79,7 @@ public class MovieUpdateServlet extends HttpServlet {
 		board.close();
 		
 		String encodedTitle = URLEncoder.encode(B_TITLE, "UTF-8");
-		String encodedName = URLEncoder.encode(file_sys_name,"UTF-8");
+		String encodedName = URLEncoder.encode(fileRealName,"UTF-8");
 		
 		
 		//MovieReviewServlet으로 redirect
