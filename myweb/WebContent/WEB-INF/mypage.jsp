@@ -51,10 +51,7 @@
             %>
 
 <div id="contents">
-
-	<!-- my-page-main -->
 	<div class="my-page-main">
-
 		<div class="my-page-info ">
 			<!-- top -->
 			<div class="top">
@@ -81,20 +78,18 @@
 			</div>
 			<!--// top -->
 		</div>
-		<!--// my-magabox-info -->
 
 
 		<div id="myBokd">
 			<div class="tit-util mt70">
 				<h2 class="tit small">나의 예매내역</h2>
 
-				<a href="/myreserve" class="more">더보기 <i class="iconset ico-arr-right-gray"></i></a>
+				<a href="/myreserve" class="more">더보기 ></a>
 			</div>
 
-			<!-- my-reserve-history -->
 			<div class="my-reserve-history">
 				<ul>
-					<li class="no-result">
+					<li>
 						<table>
 							<tbody>
 								<tr>
@@ -109,17 +104,15 @@
 					</li>
 				</ul>
 			</div>
-			<!--// my-reserve-history -->
 		</div>
 
 		<div id="myBokd">
 			<div class="tit-util mt70">
 				<h2 class="tit small">나의 리뷰내역</h2>
 
-				<a href="/myreview" class="more">더보기 <i class="iconset ico-arr-right-gray"></i></a>
+				<a href="/myreview" class="more">더보기 ></a>
 			</div>
 
-			<!-- my-reserve-history -->
 			<div class="my-reserve-history">
 				<ul>
 					<li class="no-result">
@@ -129,10 +122,8 @@
 					</li>
 				</ul>
 			</div>
-			<!--// my-reserve-history -->
 		</div>
 	</div>
-	<!--// my-page-main -->
 </div>
 </div>
 </body>

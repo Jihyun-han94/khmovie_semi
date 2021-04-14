@@ -308,4 +308,16 @@ public class ReserveDAO {
 		}
 		return ticketList;
 	}
+	
+	
+	public int purchase(String userid) {
+		int result = 0;
+		
+		String sql = "";
+		
+		
+		
+		return result;
+	}
+	
 }

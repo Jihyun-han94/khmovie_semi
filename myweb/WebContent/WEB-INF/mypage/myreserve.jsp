@@ -25,7 +25,7 @@
 		<h2 class="tit">예매/구매 내역</h2>
 		
 		<!-- 예매내역 -->
-		<div id="myBokdArea" class="tab-cont">
+		<div id="myBokdArea">
 
 			<!-- 예매 조회 조건 -->
 			<div class="board-list-search mt20">
@@ -51,8 +51,7 @@
 										<option value="202007">2020년 7월</option>
 								</select>
 
-								<button type="button" class="button gray-line small ml05" name="search">
-									<i class="iconset ico-search-gray"></i> 조회 
+								<button type="button" class="button search" name="search"> 조회 
 								</button>
 							</td>
 						</tr>
@@ -77,7 +76,7 @@
                         <td>영화 제목</td>
                         <td>상영관 위치</td>
                         <td>2020-02-08 15:20</td>
-                        <td><button type="button" class="button gray-line small ml05" name="more">자세히</button></td>
+                        <td><button type="button" class="button small" name="more">자세히</button></td>
                     </tr>
             </tbody>
         </table>

@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet {
 				cookie.setMaxAge(60*60);
 				response.addCookie(cookie);
 			}
-			response.sendRedirect(request.getContextPath());
+			response.sendRedirect(request.getContextPath()+"/main");
 		} else {
 			response.setCharacterEncoding("UTF-8");
 			request.setAttribute("loginchek", "아이디와 비밀번호를 확인해주세요.");
