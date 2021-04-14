@@ -1,9 +1,9 @@
-package comment.model;
+package comment;
 
 import java.sql.Timestamp;
 
 public class CommentVO {
-	//��� VO
+	//한줄평 VO
 	private int cnum;
 	private String cid;
 	private int cparentnum;

@@ -1,4 +1,4 @@
-package comment.model;
+package comment;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-import comment.model.CommentVO;
+
+import comment.CommentVO;
 
 public class CommentDAO {
 	private CommentDAO() {
@@ -80,7 +81,7 @@ public class CommentDAO {
 			closeConnection(con);
 		}
 	}
-	//��� DAO
+	//한줄평 DAO
 	public void commentWrite(CommentVO mVo) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -272,7 +273,7 @@ public class CommentDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				CommentVO mVo = new CommentVO();
-				mVo.setB_Num(rs.getInt("b_num")); //�Խ��� �ѹ�
+				//mVo.setB_Num(rs.getInt("b_num")); //게시글 연결
 				mVo.setCcount(rs.getInt("c_count"));
 				clist.add(mVo);
 			}
