@@ -18,7 +18,7 @@
 <script type="text/javascript"
     src="<%=request.getContextPath() %>/static/bootstrap-4.6.0/js/bootstrap.min.js"></script>
 
-<%@ include file="/WEB-INF/module/top_nav_login.jsp" %>
+<%@ include file="/WEB-INF/module/top_nav.jsp" %>
 <link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/Movie.css">    
 </head>
 <body>
@@ -31,14 +31,14 @@
 	%>
 	
 	<div class="container">
-	<div class="poster"><img id="img" src="upload/<%=filename %>"></div>
-	<div class="contents">
-	<p class="title"><%=data.getB_TITLE() %></p>
-	<p class="direct">감독 : <%=data.getB_DIRECT() %></p>
-	<p class="acctist">출연진 : <%=data.getB_ARTIST() %></p>
-	<p>줄거리</p>
-	<p class="context"><%=data.getB_CONTEXT() %></p>
-	</div>
+	    <div class="poster"><img id="img" src="upload/<%=filename %>"></div>
+	    <div class="contents">
+	        <p class="title"><%=data.getB_TITLE() %></p>
+	        <p class="direct">감독 : <%=data.getB_DIRECT() %></p>
+	        <p class="acctist">출연진 : <%=data.getB_ARTIST() %></p>
+	        <p>줄거리</p>
+	        <p class="context"><%=data.getB_CONTEXT() %></p>
+	    </div>
 	</div>
 </body>
 </html>

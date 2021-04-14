@@ -1,5 +1,8 @@
-CREATE USER myweb IDENTIFIED BY admin;
+-- DB 연결 정보
+-- IP : localhost
+-- Port : 1521
 
+CREATE USER myweb IDENTIFIED BY admin;
 GRANT CONNECT, RESOURCE, DBA TO MYWEB;
 
 CREATE TABLE Movie (
