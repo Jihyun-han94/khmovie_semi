@@ -82,18 +82,18 @@ function idConfirm(){
     if (id.length < 4 || id.length > 12) {
     	document.getElementById('id-check').innerHTML='4글자이상 12글자 이하로 입력해주세요.';
         document.getElementById('id-check').style.color='red';
-        return false;
     } else {
-    	if(!/(?=.*\d)(?=.*[a-z]).{4,12}/.test(id)){
-    		document.getElementById('id-check').innerHTML='숫자와 영소문자만 입력해주세요.';
-            document.getElementById('id-check').style.color='red';
-            return false;
-   		}
-    	else {
-    		document.getElementById('id-check').innerHTML='아이디 중복 확인을 해주세요.';
-            document.getElementById('id-check').style.color='green';
-            return true;
-    	}
+    	for (var i = 0; i < document.getElementById('userid').value.length; i++) {
+            ch = document.getElementById('userid').value.charAt(i)
+            if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z')&&!(ch >= 'A' && ch <= 'Z')) {
+            	document.getElementById('id-check').innerHTML='영문 대소문자, 숫자만 사용할 수 있습니다.';
+                document.getElementById('id-check').style.color='red';
+            }else{
+            	document.getElementById('id-check').innerHTML='아이디 중복검사를 해주세요.';
+                document.getElementById('id-check').style.color='green';
+            }
+        }
+    	
     }
 }
 

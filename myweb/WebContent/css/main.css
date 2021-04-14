@@ -1,8 +1,10 @@
 @charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+html { font-family: 'Hanna', sans-serif; }
 
 body{
     background-color: #1D2316;
-    font-family: '나눔스퀘어_ac';
+    font-family: 'Hanna', sans-serif;
 }
 /* issue
 .login{
@@ -39,7 +41,7 @@ body{
     text-align: center;
     margin-top: 2em;
     font-size: 18px;
-    font-family: '나눔스퀘어_ac';
+    font-family: 'Hanna', sans-serif;
     margin-bottom: 0;
     
 }
@@ -58,7 +60,7 @@ body{
     color: white;
     text-align: center;
     font-size: 18px;
-    font-family: '나눔스퀘어_ac';
+    font-family: 'Hanna', sans-serif;
     margin-top: 16.5em;
     margin-bottom: 0;
     
