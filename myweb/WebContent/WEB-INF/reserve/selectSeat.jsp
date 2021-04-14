@@ -42,7 +42,7 @@
 	}
 	
 	.ckbox {
-		margin-left: 90px;
+		margin-left: 100px;
 	}
 	
 	.seatLine {
