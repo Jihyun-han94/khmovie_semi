@@ -3,13 +3,14 @@ package comment.model;
 import java.sql.Timestamp;
 
 public class CommentVO {
-	//´ñ±Û VO
+	//ï¿½ï¿½ï¿½ VO
 	private int cnum;
 	private String cid;
 	private int cparentnum;
 	private String ccontent;
 	private Timestamp cdate;
 	private int ccount;
+	
 	public int getCnum() {
 		return cnum;
 	}

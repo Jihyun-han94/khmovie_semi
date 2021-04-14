@@ -132,7 +132,7 @@ public class CommentDAO {
 		return list;
 	}*/
 
-	// ��� ������ ó���ϴ� ���� 
+	
 	public ArrayList<CommentVO> commentView(String num,int page) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -166,7 +166,7 @@ public class CommentDAO {
 		return list;
 	}
 
-	//����� �����ϴ��� Ȯ���ϴ� ����
+	
 	public int commentCheck(String num) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -258,7 +258,7 @@ public class CommentDAO {
 		
 	}
 	
-	//��ۼ� ��ȸ
+
 	public ArrayList<CommentVO> commentCount() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -283,7 +283,7 @@ public class CommentDAO {
 		}
 		return clist;
 	}
-	//��� ����¡ó�� ����
+
 	
 			public int commentTotalCount(String num) {
 				Connection con = null;
