@@ -229,15 +229,18 @@ public class ReserveDAO {
 		return res;
 	}
 	
-	public ArrayList<TicketVO> getMyTList(String user_id) {
-		ArrayList<TicketVO> ticketList = new ArrayList<>();
+	public ArrayList<TicketVO> getMyRList(String user_id, String date) {
+		ArrayList<TicketVO> reserveList = new ArrayList<>();
 		String sql = "";
-		sql += "SELECT ti.ticketID, ti.title, ti.holdDate, ti.time, ti.seatNum, ts.user_id, ts.Btime";
-		sql += " FROM (SELECT theaterName FROM ticket ti, ticket_schedule tsc WHERE ti.scheduleID = tsc.scheduleID) thName";
-		sql += " JOIN ticket_status ts ON (thName)";
-		sql += " WHERE ti.ticketID = ts.ticketID";
+		sql += "SELECT ts.Btime, ts.ticketID, tt.title, tt.theaterName, tt.holdDate, tt.time_schedule, tt.seatNum, ts.user_id";
+		sql += "	FROM";
+		sql += "	(SELECT Btime, user_id, ticketID FROM (SELECT TO_CHAR(Btime, 'yyyymmdd') AS Btime, user_id, ticketID FROM ticket_status) ts WHERE Btime like ?) ts,"; 
+		sql += "	(SELECT ti.ticketID, ti.title, ths.theaterName, ti.holdDate, ths.time_schedule, ths.seatNum";
+		sql += "		FROM ticket ti, theater_schedule ths WHERE ti.scheduleID = ths.scheduleID) tt";
+		sql += " WHERE ts.ticketID = tt.ticketID";
 		sql += " AND ts.user_id = ?";
-		sql += " ORDER BY ts.Btime";
+		sql += " AND ts.Btime LIKE '%" + date + "%'";
+		sql += " ORDER BY ts.ticketID";
 		try {
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, user_id);
@@ -245,11 +248,11 @@ public class ReserveDAO {
 			while(res.next()) {
 				TicketVO ticket = new TicketVO();
 				ticket.setInfo(res);
-				ticketList.add(ticket);
+				reserveList.add(ticket);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return ticketList;
+		return reserveList;
 	}
 }

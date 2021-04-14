@@ -21,6 +21,7 @@ public class ReserveMainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		CkLogin ckLogin = new CkLogin(request, response);
 		
 		if(session.getAttribute("login") != null) {
 			if(session.getAttribute("login").equals("true")) {
@@ -40,10 +41,10 @@ public class ReserveMainServlet extends HttpServlet {
 				RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/selectMovie.jsp");
 				dp.forward(request, response);
 			} else {
-				CkLogin ckLogin = new CkLogin(request, response);
+				ckLogin.alert();
 			}
 		} else {
-			CkLogin ckLogin = new CkLogin(request, response);
+			ckLogin.alert();
 		}
 	}
 }

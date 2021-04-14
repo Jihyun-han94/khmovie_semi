@@ -19,7 +19,7 @@
 	<select name="select">
 		<option>예매일자</option>
 		<% for(TicketVO ticket : ticketList) { %>
-				<option value="<%=ticket.getBTime() %>" onclick=getData(this);><%=ticket.getBTime() %></option>
+				<option value="<%= %>" onclick=getData(this);><%= %></option>
 		<% } %>
 	</select>
 </body>
