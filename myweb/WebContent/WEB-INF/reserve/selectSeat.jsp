@@ -12,14 +12,6 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/reserve.css">
 </head>
 <style>
-	/*
-	.selectSeat, .reserveStatus {
-		width: 600px;
-		border-radius: 5px;
-		box-shadow: 5px 5px 5px lightgray;
-	}
-	*/
-	
 	div.reserveStatus>span:first-child {
 		font-size: small;
 		color: rgb(157, 157, 157);
@@ -102,76 +94,54 @@
 				  <span class="seatLine">A열</span> 
 				<%
 				   for(int i = 0; i < seatArrA.length; i++) {
-					   if(seatNumList.contains(seatArrA[i])) { %>
+					   if(seatNumList.contains(seatArrA[i])) {
+				%>
 						   <input type="checkbox" name="seatNum" value="<%=seatArrA[i] %>">
 				<%	   } else { %>
 						   <input type="checkbox" name="seatNum" value="<%=seatArrA[i] %>" disabled>
-				<%     }
+				<%
+					   }
 				   }
 				%>
 					<br>
 					<span class="seatLine">B열</span>
 				<%			   
 				   for(int i = 0; i < seatArrB.length; i++) {
-					   if(seatNumList.contains(seatArrB[i])) { %>
+					   if(seatNumList.contains(seatArrB[i])) {
+				%>
 						   <input type="checkbox" name="seatNum" value="<%=seatArrB[i] %>">
 				<%	   } else { %>
 						   <input type="checkbox" name="seatNum" value="<%=seatArrB[i] %>" disabled>
-				<%     }
+				<%
+				       }
 				   }
 				%>
 					<br>
 					<span class="seatLine">C열</span>
 				<%
 				   for(int i = 0; i < seatArrC.length; i++) {
-					   if(seatNumList.contains(seatArrC[i])) { %>
+					   if(seatNumList.contains(seatArrC[i])) {
+				%>
 						   <input type="checkbox" name="seatNum" value="<%=seatArrC[i] %>">
 				<%	   } else { %>
 						   <input type="checkbox" name="seatNum" value="<%=seatArrC[i] %>" disabled>
-				<%     }
+				<%
+					   }
 				   }
 				%>
 					<br>
 					<span class="seatLine">D열</span>
 				<%
 				   for(int i = 0; i < seatArrD.length; i++) {
-					   if(seatNumList.contains(seatArrD[i])) { %>
+					   if(seatNumList.contains(seatArrD[i])) {
+				%>
 						   <input type="checkbox" name="seatNum" value="<%=seatArrD[i] %>">
 				<%	   } else { %>
 						   <input type="checkbox" name="seatNum" value="<%=seatArrD[i] %>" disabled>
-				<%     }
+				<%
+					   }
 				   }
 				%>
-				<%--				
-				   for(int j = 0; seatNumArr.length; j++) {
-				   		if(j % 5 != 0) { %>
-				   			<input type="checkbox" name="seatNum" value="<%=seatNumArr[j] %>">	   
-				   <%	} else { %>
-				   		<input type="checkbox" name="seatNum" value="<%=seatNumArr[j] %>">
-				   		<br>
-				   		<span>열</span>	   
-				   }
-						
-					String label;
-					for(String seatNum : seatNumList) {
-						if(seatNum.indexOf('A') != -1) {
-							label = "A열";
-						} else if(seatNum.indexOf('B') != -1) { 
-							label = "B열";
-						} else if(seatNum.indexOf('C') != -1) { 
-							label = "C열";
-				 		}
-				--%>
-				<%--
-					for(int i = 1; i < seatNumList.size() + 1; i++) {
-						if(i % 5 == 0) {
-							<input type="checkbox" name="seatNum" value="<%=seatNumList.get(i - 1) %>">
-							<br>	
-				<%		} else { %>
-							<input type="checkbox" name="seatNum" value="<%=seatNumList.get(i - 1) %>">
-				<%		}
-					}
-				--%>
 				</div>
 				<br>
 				<button id="submit" type="submit" class="btn btn-outline-light btn-sm">예매하기</button>

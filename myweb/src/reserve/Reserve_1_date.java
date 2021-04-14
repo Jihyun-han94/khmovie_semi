@@ -49,48 +49,27 @@ public class Reserve_1_date extends HttpServlet {
 				session.setAttribute("title", title);
 						
 				ReserveDAO reserve = new ReserveDAO();
-				String availStart = reserve.getAvailStart(title);
-				String availEnd = reserve.getAvailEnd(title);
+				ArrayList<String> dateList = reserve.getDateList(title);
+				ArrayList<String> availList = new ArrayList<>();
 				
 				// price 받아서 세션에 저장
 				int price = reserve.getPrice(title);
 				session.setAttribute("price", price);
 
-				ArrayList<String> dateList = new ArrayList<>();
-				
+				// 예매일 기준 오늘날짜 받아오기(String으로 변환)
+				Date todayD = new Date();
 				final String DATE_PATTERN = "yy-MM-dd";
 				SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
-				Date availStart_Date = new Date();
-				Date availEnd_Date = new Date();
-				try {
-					availStart_Date = sdf.parse(availStart);
-					availEnd_Date = sdf.parse(availEnd);
-				} catch (ParseException e) {
-					e.printStackTrace();
-				}
+				String today = sdf.format(todayD);
 				
-				dateList.clear();
-				// 예매일 기준 오늘날짜 받아오기
-				Date today_Date = new Date();
-				String today = sdf.format(today_Date);
-				try {
-					today_Date = sdf.parse(today);
-				} catch (ParseException e) {
-					e.printStackTrace();
-				}
-				Date curr_date = availStart_Date;
-				while(curr_date.compareTo(availEnd_Date) <= 0) {
-					// 오늘 날짜 이후의 상영일만 추출
-					if(curr_date.compareTo(today_Date) >= 0 ) {
-						dateList.add(sdf.format(curr_date));
+				// 예매일과 상영일 비교하여 예매가능한 날짜만 추출
+				for(String date: dateList) {
+					if(date.compareTo(today) >= 0) {
+						availList.add(date);
 					}
-					Calendar c = Calendar.getInstance();
-					c.setTime(curr_date);
-					c.add(Calendar.DAY_OF_MONTH, 1);
-					curr_date = c.getTime();
 				}
 				
-				request.setAttribute("dateList", dateList);
+				request.setAttribute("availList", availList);
 				
 				RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/selectDate.jsp");
 				dp.forward(request, response);

@@ -48,7 +48,9 @@ public class Reserve_3_time extends HttpServlet {
 					case "konUniv":
 						theaterName = "건대입구";
 				}
-								session.setAttribute("theaterName", theaterName);
+				
+				session.setAttribute("theaterName", theaterName);
+				
 				String title = (String)session.getAttribute("title");
 				String date = (String)session.getAttribute("date");
 				

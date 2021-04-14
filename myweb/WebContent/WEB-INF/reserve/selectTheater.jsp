@@ -10,14 +10,6 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/reserve.css">
 </head>
 <style>
-	/*
-	.selectTheater, .reserveStatus {
-		width: 600px;
-		border-radius: 5px;
-		box-shadow: 5px 5px 5px lightgray;
-	}
-	*/
-	
 	div.reserveStatus>span:first-child, div.reserveStatus>span:last-child {
 		font-size: small;
 		color: rgb(157, 157, 157);

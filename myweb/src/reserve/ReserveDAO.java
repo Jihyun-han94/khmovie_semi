@@ -32,41 +32,24 @@ public class ReserveDAO {
 		return movieList;
 	}
 	
-	public String getAvailStart(String title) {
-		String availStart = "";
-		String sql = "";
-		sql += "SELECT distinct holdDate FROM ticket WHERE title = ? AND ROWNUM = 1";
-		sql += " ORDER BY holdDate ASC";
-		try {
-			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, title);
-			ResultSet res = pstat.executeQuery();
-			while(res.next()) {
-				availStart = res.getString("holdDate");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return availStart;
-	}
-	
-	public String getAvailEnd(String title) {
-		String availEnd = "";
+	public ArrayList<String> getDateList(String title) {
+		String date = "";
+		ArrayList<String> dateList = new ArrayList<>();
 		String sql = "";
 		sql += "SELECT * FROM";
 		sql += " (SELECT distinct holdDate FROM ticket WHERE title = ?";
-		sql += " ORDER BY holdDate DESC) WHERE ROWNUM = 1";
+		sql += " ORDER BY holdDate ASC)";
 		try {
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, title);
 			ResultSet res = pstat.executeQuery();
 			while(res.next()) {
-				availEnd = res.getString("holdDate");
+				dateList.add(res.getString("holdDate"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return availEnd;
+		return dateList;
 	}
 	
 	public int getPrice(String title) {
