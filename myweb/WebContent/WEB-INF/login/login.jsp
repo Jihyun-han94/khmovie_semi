@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/main.css">
-	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/login.css">
 	<%@ include file="/WEB-INF/module/css_js.jsp" %>
+	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/login.css">
+	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/main.css">
 <title>로그인</title>
 </head>
 <body>

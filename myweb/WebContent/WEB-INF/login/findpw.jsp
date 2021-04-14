@@ -4,10 +4,10 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<%@ include file="/WEB-INF/module/css_js.jsp" %>
 	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/main.css">
 	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/find.css">
-	<%@ include file="/WEB-INF/module/css_js.jsp" %>
-<title>아이디 찾기</title>
+<title>비밀번호 찾기</title>
 </head>
 <body>
 	<header>
@@ -106,8 +106,8 @@ function keyCheck(){
 	}
 }
 
-function findpwpage() {
-	window.location.href="<%=request.getContextPath() %>/login/findpw";
+function findidpage() {
+	window.location.href="<%=request.getContextPath() %>/login/findid";
 }
 function loginpage() {
 	window.location.href="<%=request.getContextPath() %>/login";
