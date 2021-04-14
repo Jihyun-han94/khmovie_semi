@@ -106,7 +106,7 @@ function keyCheck(){
 	}
 }
 
-function findpwpage() {
+function findidpage() {
 	window.location.href="<%=request.getContextPath() %>/login/findid";
 }
 function loginpage() {
