@@ -15,7 +15,7 @@
               <a class="nav-link" href="#">예매</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">관람후기</a>
+              <a class="nav-link" href="<%=request.getContextPath() %>/board">관람후기</a>
             </li>
             <li class="login">
               <a class="nav-link" href="#">로그인</a>

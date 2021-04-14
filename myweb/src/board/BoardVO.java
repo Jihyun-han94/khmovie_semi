@@ -12,6 +12,18 @@ public class BoardVO {
 	private String B_CONTEXT ;
 	private Date CREATE_DATE ;
 	private Date UPDATE_DATE ;
+	private String movietitle;
+	private String fileName;
+	private String fileRealName;
+	private int filenum;
+	
+	public BoardVO(String movietitle, String fileName, String fileRealName) {
+		this.filenum = -1;
+		this.movietitle = movietitle;
+		this.fileName = fileName;
+		this.fileRealName = fileRealName;
+	}
+	
 	
 	
 	public BoardVO(int B_NUM, String B_ID, String B_TITLE, String B_DIRECT,String B_ARTIST, String B_CONTEXT, Date CREATE_DATE, Date UPDATE_DATE) {
@@ -84,4 +96,52 @@ public class BoardVO {
 		UPDATE_DATE = uPDATE_DATE;
 	}
 
+
+
+
+	public String getMovietitle() {
+		return movietitle;
+	}
+	
+	
+	
+	public void setMovietitle(String movietitle) {
+		this.movietitle = movietitle;
+	}
+	
+	
+	
+	public String getFileName() {
+		return fileName;
+	}
+	
+	
+	
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	
+	
+	
+	public String getFileRealName() {
+		return fileRealName;
+	}
+	
+	
+	
+	public void setFileRealName(String fileRealName) {
+		this.fileRealName = fileRealName;
+	}
+	
+	
+	
+	public int getFilenum() {
+		return filenum;
+	}
+	
+	
+	
+	public void setFilenum(int filenum) {
+		this.filenum = filenum;
+	}
 }

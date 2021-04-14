@@ -17,7 +17,7 @@
     src="<%=request.getContextPath() %>/static/jquery/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
     src="<%=request.getContextPath() %>/static/bootstrap-4.6.0/js/bootstrap.min.js"></script>
-<%@ include file="/WEB-INF/module/top_nav_login.jsp" %>
+<%@ include file="/WEB-INF/module/top_nav.jsp" %>
 <link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/Movie.css">    
 </head>
 <body>
