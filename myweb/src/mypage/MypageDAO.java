@@ -21,8 +21,7 @@ public class MypageDAO {
 		MypageVO m = null;
 		try {
 			// SQL 질의문 실행 //stat로 sql 불러 올 때 실행되지 않음.
-			this.pstat = this.conn.prepareStatement(sql);
-			ResultSet res = this.pstat.executeQuery();
+			ResultSet res = this.stat.executeQuery(sql);
 			if(res.next()) {
 				m = new MypageVO(
 						res.getString("user_id"), res.getString("user_pw"), res.getString("user_name"),
@@ -104,8 +103,9 @@ public class MypageDAO {
 	public void close() {
 		// 모든 JDBC 관련 생성 객체 정보 close()
 		try {
-			this.pstat.close();
-			this.conn.close();
+			if(this.stat != null) this.stat.close();
+			if (this.pstat != null) this.pstat.close();
+			if (this.conn != null) this.conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

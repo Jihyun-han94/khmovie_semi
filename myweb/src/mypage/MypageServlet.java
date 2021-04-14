@@ -28,12 +28,13 @@ public class MypageServlet extends HttpServlet {
 		
 		MypageDAO member = new MypageDAO();
 		MypageVO mv = member.getRecord(userid);
-		member.close();
 		
 		String name = mv.getUserName();
 		int grade = mv.getGrade();
 	    request.setAttribute("name", name);
 	    request.setAttribute("grade", grade);
+	    
+	    member.close();
 		
 		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/mypage.jsp");
 		dp.forward(request, response);

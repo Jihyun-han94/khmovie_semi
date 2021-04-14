@@ -28,13 +28,13 @@ public class MYinfoDeleteServlet extends HttpServlet {
 		int res = member.deleteData(userid);
 		member.close(); 
 		
-		if(res != 1) {
+		if(res != 0) {
 			session.invalidate();
-			response.sendRedirect("../register");
+			response.sendRedirect("/register");
 		}
 		else {
 			System.out.println(">>delete 실패");
-			response.sendRedirect("../mypage");
+			response.sendRedirect("/mypage");
 		}
 		
 	}
