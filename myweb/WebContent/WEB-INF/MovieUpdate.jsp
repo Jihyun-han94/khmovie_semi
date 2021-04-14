@@ -22,10 +22,18 @@
 	<h2 id="text">Review</h2>
     <hr id="hr">
     <div class="container">
+    <% String userid = (String)request.getAttribute("userid"); %>	
+    	<% if(userid == null){
+    	%>	
+    	<script type="text/javascript">
+    	alert("로그인 후 이용가능 합니다.");
+    	window.location.href="<%=request.getContextPath() %>/login";
+    	</script> 
+    	<%} %>
 	<form action="./update" method="post" class="inputform" enctype="multipart/form-data" accept-charset="utf-8">
 	 	<div class="form-group">
               <label for="input1">아이디</label><br>
-            <input type="text" id="input1" name="B_ID" placeholder="아이디를 입력해주세요.">
+            <input type="text" id="input1" name="B_ID" placeholder="아이디를 입력해주세요." value=<%=userid %>>
           </div>
         <div class="form-group">
               <label for="input1">제목</label><br>

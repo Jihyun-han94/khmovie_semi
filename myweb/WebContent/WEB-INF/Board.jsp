@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import = "java.util.ArrayList,board.BoardVO,board.BoardDAO" %>
- 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +17,7 @@
 <link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/board.css">   
 </head>
 <body>
+	
 	<h2 id="text2">kh무비에 없는 영화를 등록해주세요!</h2>
 	<form action="./update" method ="get">
 	<button id="btn" type="submit">등록하기</button>
