@@ -91,9 +91,8 @@ public class CommentDAO {
 		try {
 			con = getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, mVo.getCid());
+			pstmt.setString(1, mVo.getUserid());
 			pstmt.setString(2, mVo.getCcontent());
-			pstmt.setInt(3, mVo.getCparentnum());
 			pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -154,7 +153,7 @@ public class CommentDAO {
 			while (rs.next()) {
 				CommentVO mVo = new CommentVO();
 				mVo.setCnum(rs.getInt("c_num"));
-				mVo.setCid(rs.getString("c_id"));
+				mVo.setUserid(rs.getString("U_serid"));
 				mVo.setCcontent(rs.getString("c_content"));
 				mVo.setCdate(rs.getTimestamp("c_date"));
 				list.add(mVo);
@@ -198,7 +197,7 @@ public class CommentDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		CommentVO sVo = new CommentVO();
+		CommentVO mVo = new CommentVO();
 		
 		String sql = "select * from s_comment where c_num = ?";
 		
@@ -208,16 +207,15 @@ public class CommentDAO {
 			pstmt.setString(1, cnum);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				sVo.setCcontent(rs.getString("c_content"));
-				sVo.setCid(rs.getString("c_id"));
-				sVo.setCparentnum(rs.getInt("parentnum"));
+				mVo.setCcontent(rs.getString("c_content"));
+				mVo.setUserid(rs.getString("U_serid"));
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			closeConnection(con);
 		}
-		return sVo;
+		return mVo;
 	}
 	
 	public void commentUpdate(String cnum, String ccontent) {
@@ -273,8 +271,7 @@ public class CommentDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				CommentVO mVo = new CommentVO();
-				//mVo.setB_Num(rs.getInt("b_num")); //게시글 연결
-				mVo.setCcount(rs.getInt("c_count"));
+				mVo.setBnum(rs.getInt("b_num"));
 				clist.add(mVo);
 			}
 		}catch(Exception e) {

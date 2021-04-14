@@ -5,29 +5,27 @@ import java.sql.Timestamp;
 public class CommentVO {
 	//한줄평 VO
 	private int cnum;
-	private String cid;
-	private int cparentnum;
+	private int bnum;
+	private String userid;
 	private String ccontent;
 	private Timestamp cdate;
-	private int ccount;
-	
 	public int getCnum() {
 		return cnum;
 	}
 	public void setCnum(int cnum) {
 		this.cnum = cnum;
 	}
-	public String getCid() {
-		return cid;
+	public int getBnum() {
+		return bnum;
 	}
-	public void setCid(String cid) {
-		this.cid = cid;
+	public void setBnum(int bnum) {
+		this.bnum = bnum;
 	}
-	public int getCparentnum() {
-		return cparentnum;
+	public String getUserid() {
+		return userid;
 	}
-	public void setCparentnum(int cparentnum) {
-		this.cparentnum = cparentnum;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	public String getCcontent() {
 		return ccontent;
@@ -35,17 +33,12 @@ public class CommentVO {
 	public void setCcontent(String ccontent) {
 		this.ccontent = ccontent;
 	}
-	
 	public Timestamp getCdate() {
 		return cdate;
 	}
 	public void setCdate(Timestamp cdate) {
 		this.cdate = cdate;
 	}
-	public int getCcount() {
-		return ccount;
-	}
-	public void setCcount(int ccount) {
-		this.ccount = ccount;
-	}
+	
+	
 }

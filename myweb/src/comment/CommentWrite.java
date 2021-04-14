@@ -17,8 +17,6 @@ public class CommentWrite implements Action {
         
         //mVo.setCid(mVo.getId());//아이디 값 가져오기
         mVo.setCcontent(request.getParameter("c_content"));
-        mVo.setCparentnum(Integer.parseInt(request.getParameter("pnum")));
-        
         
         CommentDAO mDao = CommentDAO.getInstance();
         mDao.hitDown(request.getParameter("pnum"));

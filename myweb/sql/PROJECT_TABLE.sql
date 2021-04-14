@@ -72,7 +72,7 @@ CREATE TABLE BOARD_COMMENT
   BNUM NUMBER,                      -- 게시판 참조용 번호
   CDATE DATE,                       -- 댓글 날짜
   USERID VARCHAR2(10),              -- 작성자
-  COMMENT VARCHAR2(2000) NOT NULL,  -- 댓글 내용
+  CCONTENT VARCHAR2(2000) NOT NULL  -- 댓글 내용
 );
 
 create sequence COMMENT_SEQ;
