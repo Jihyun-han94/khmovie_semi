@@ -38,16 +38,17 @@
 							<th scope="row">날짜별 </th>
 							<td>
 								<select name="selYM" class="selectpicker small" onchange="getRList(this)">
-										<option value="4/21">2021년 4월</option>
-										<option value="3-21">2021년 3월</option>
-										<option value="2-21">2021년 2월</option>
-										<option value="1-21">2021년 1월</option>
-										<option value="12-20">2020년 12월</option>
-										<option value="11-20">2020년 11월</option>
-										<option value="10-20">2020년 10월</option>
-										<option value="9-20">2020년 9월</option>
-										<option value="8-20">2020년 8월</option>
-										<option value="7-20">2020년 7월</option>
+										<option value="날짜선택">날짜선택</option>
+										<option value="2104">2021년 4월</option>
+										<option value="2103">2021년 3월</option>
+										<option value="2102">2021년 2월</option>
+										<option value="2101">2021년 1월</option>
+										<option value="2012">2020년 12월</option>
+										<option value="2011">2020년 11월</option>
+										<option value="2010">2020년 10월</option>
+										<option value="2009">2020년 9월</option>
+										<option value="2008">2020년 8월</option>
+										<option value="2007">2020년 7월</option>
 								</select>
 							<!-- 
 								<button type="button" class="button gray-line small ml05" name="search">
@@ -88,6 +89,8 @@
 </body>
 <script>
 	function getRList(element) {
+		$("#tbody").empty();
+
 		$.ajax({
 			url: "<%=request.getContextPath() %>/getRList",
 			type: "get",
@@ -96,32 +99,20 @@
 				date: $(element).val()
 			},
 			success: function(data) {
-				let reserve = data.reserve;
-				let length = Object.keys(reserve).length;
-				
+				let length = Object.keys(data).length;
 				let html = "";
-				let arr = new Array(); 
-				for(let i = 0; i < length; i++) {
-					arr.push(reserve[i]);
-				}
-				console.log('성공');
 				
-				for(let j = 0; j < arr.length; j++) {
-					for(key in arr) {
-						html += "<tr>";
-						html += "<td>" + arr[key].ticketID + "</td>";
-						html += "<td>" + arr[key].title + "</td>";
-						html += "<td>" + arr[key].theaterName + "</td>";
-						html += "<td>" + arr[key].holdDate + "</td>";
-						html += "<td>" + arr[key].time_schedule + "</td>";
-						html += "<td>" + arr[key].seatNum + "</td>";
-						html += "<td>" + arr[key].user_id + "</td>";
-						html += "</tr>";
-						
-						$("#tbody").empty();
-						$("#tbody").append(html);
-					}
-				}
+				$.each(data, function() {
+					html += "<tr>";
+					html += "<td>" + this.ticketID + "</td>";
+					html += "<td>" + this.title + "</td>";
+					html += "<td>" + this.theaterName + "</td>";
+					html += "<td>" + this.holdDate + " " + this.time_schedule + " " + this.seatNum + "</td>";
+					html += "</tr>";
+					
+					$("#tbody").empty();
+					$("#tbody").append(html);
+				});
 			}
 		});
 	}
