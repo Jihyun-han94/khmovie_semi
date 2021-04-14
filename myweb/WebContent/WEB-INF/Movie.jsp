@@ -33,11 +33,12 @@
 	<div class="poster"><img id="img" src="upload/<%=filename %>"></div>
 	<div class="contents">
 	<p class="title"><%=data.getB_TITLE() %></p>
-	<p class="direct">감독 : <%=data.getB_DIRECT() %></p>
-	<p class="acctist">출연진 : <%=data.getB_ARTIST() %></p>
+	<p class="direct">감독 : <%=data.getB_ARTIST() %></p>
+	<p class="acctist">출연진 : <%=data.getB_CONTEXT() %></p>
 	<p>줄거리</p>
-	<p class="context"><%=data.getB_CONTEXT() %></p>
+	<p class="context"><%=data.getB_DIRECT() %></p>
 	</div>
 	</div>
+	<footer class="footer"></footer>
 </body>
 </html>

@@ -8,11 +8,8 @@ body{
 
 
 .item{
-    position: absolute;
-    top: 27%;
-    left: 50%;
-    margin-top: -51px;
-    margin-left: -415px;
+    margin-top: 20px;
+    margin-left: 275px;
     background-color: #1D2316;
     width: 1000px;
     height: 250px;
@@ -27,10 +24,9 @@ body{
 }
 #text{
     color: white;
-    text-align: center;
     margin-top: 2em;
+    margin-left : 655px;
     font-size: 18px;
-    font-family: 'Hanna', sans-serif;
     margin-bottom: 0;
     
 }
@@ -39,19 +35,18 @@ body{
     display: block;
     width: 100px;
     margin-top: 0.4em;
-    margin-left: auto;
-    margin-right: auto;
+	margin-left : 640px;
     border-style: inset;
     border-width: 0.5px;
     
 }
 #text2{
     color: white;
-    text-align: center;
     font-size: 18px;
    	font-family: 'Hanna', sans-serif;
-    margin-top: 16.5em;
-    margin-bottom: 0;
+    margin-top: 50px;
+    margin-left:660px;
+    
     
 }
 #hr2{
@@ -59,17 +54,13 @@ body{
     display: block;
     width: 100px;
     margin-top: 0.4em;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left : 640px;
     border-style: inset;
     border-width: 0.5px;  
 }
 .item2{
-    position: absolute;
-    top: 72.3%;
-    left: 50%;
-    margin-top: -51px;
-    margin-left: -415px;
+ 	margin-top: 20px;
+    margin-left: 275px;
     background-color: #1D2316;
     width: 1000px;
     height: 250px;
@@ -82,37 +73,28 @@ body{
     height: 250px;
     margin-right: 4px;
 }
-#hr3{
-    color: grey;
-    margin-top : -1px;
-    border-style: inset;
-    border-width: 0.8px;
-}
+
 
 #text3{
     color: white;
-    text-align: center;
+    margin-top: 50px;
+    margin-left:650px;
     font-size: 18px;
-    font-family: 'Hanna', sans-serif;
-    margin-top: 14.5em;
 }
 #hr4{
     color: white;
     display: block;
     width: 100px;
     margin-top: 0.4em;
-    margin-left: auto;
-    margin-right: auto;
     border-style: inset;
-    border-width: 0.5px;  
+    border-width: 0.5px; 
+    margin-left : 640px; 
 }
 
 .item3{
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-top: 80px;
-    margin-left: -370px;
+  
+ 	margin-top: 20px;
+    margin-left: 330px;
     background-color:#1D2316;
     width: 783px;
     height: 250px;

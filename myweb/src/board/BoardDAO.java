@@ -106,7 +106,7 @@ public class BoardDAO {
 
 	public ArrayList<BoardVO> getfiles(){
 		String sql ="";
-	    sql += "SELECT * FROM FILE_T";
+	    sql += "SELECT * FROM FILE_t";
 	      sql += " WHERE filenum<=12";
 	      
 		ArrayList<BoardVO> records = new ArrayList<BoardVO>();

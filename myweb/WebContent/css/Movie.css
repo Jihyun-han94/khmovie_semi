@@ -11,7 +11,7 @@ body{
 
 .container{
 	display : line-block;
-	width: 1200px;
+	width: 1700px;
 	margin: 0px auto;
 }
 
@@ -19,7 +19,7 @@ body{
 	display: block;
 	float: left;
 	width: 300px;
-	margin-left:230px;
+	margin-left:170px;
 	margin-right:10px;
 }
 
@@ -29,7 +29,7 @@ body{
 
 .contents {
 	display: block;
-	width: 700px;
+	width: 900px;
 	margin: 50px auto 0px 20px;
 
 	
@@ -37,4 +37,11 @@ body{
 
 .title{
 	font-size : 25px;
+}
+.footer{
+    background-color: #f8f8fa;
+    width: 100%;
+    top: 100%;
+    margin-top: 35em;
+    height: 100px;
 }
