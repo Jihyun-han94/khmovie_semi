@@ -1,5 +1,10 @@
 @charset "UTF-8";
-
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+html { font-family: 'Hanna', sans-serif; }
+body{
+   
+    font-family: 'Hanna', sans-serif;
+}
 .container{
 	width:840px;
 	height:878.33px;
@@ -39,7 +44,7 @@
     text-align: center;
     margin-top: 1em;
     font-size: 23px;
-    font-family: '나눔스퀘어_ac';
+ 
     margin-bottom: 0;
     
 }
@@ -59,7 +64,6 @@
     margin-left:830px;
     margin-top: 1em;
     font-size: 15px;
-    font-family: '나눔스퀘어_ac';
     margin-bottom: -1.5em; 
 }
 

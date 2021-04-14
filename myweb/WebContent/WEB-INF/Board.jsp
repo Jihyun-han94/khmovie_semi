@@ -31,7 +31,7 @@
 		ArrayList<BoardVO> filedatas = (ArrayList<BoardVO>)request.getAttribute("filedatas");
 		for(BoardVO filedata: filedatas){%>
 	
-	<div class=item><img width="200px" height="287px" src="upload/<%=filedata.getFileRealName() %>"></div>
+	<div class=item><a href="<%=request.getContextPath() %>/moviereview?B_TITLE=<%=filedata.getMovietitle()%>&filename=<%=filedata.getFileName() %>"><img width="200px" height="287px" src="upload/<%=filedata.getFileRealName() %>"></a></div>
 	
 	<% }%>
 	

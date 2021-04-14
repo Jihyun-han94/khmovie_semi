@@ -86,5 +86,6 @@ CREATE TABLE FILE_T(
     fileRealName VARCHAR(200)
 );
 
-
+--DROP SEQUENCE file_seq;
+--DROP TABLE FILE_T;
 COMMIT;
