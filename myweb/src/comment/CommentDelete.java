@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import comment.*;
 
 public class CommentDelete implements Action {
-	// ´ñ±Û »èÁ¦ Ã³¸® 
-	// CommentVO ºÎºĞ ´Ù¸¥ºĞµé°Å¶û °°ÀÌ ÇÕÃÄ¼­ °ª ÀĞ¾î¿À±â.(CommentDTO)Æ÷ÇÔ
+	// ëŒ“ê¸€ ì‚­ì œ ì²˜ë¦¬ 
+	// CommentVO ë¶€ë¶„ ë‹¤ë¥¸ë¶„ë“¤ê±°ë‘ ê°™ì´ í•©ì³ì„œ ê°’ ì½ì–´ì˜¤ê¸°.(CommentDTO)í¬í•¨
 	 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

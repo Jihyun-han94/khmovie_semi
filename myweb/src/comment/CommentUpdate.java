@@ -20,7 +20,7 @@ public class CommentUpdate implements Action{
         String cnum = request.getParameter("cnum");
         
         if(command.equals("comment_edit_form")) {
-        	//¼öÁ¤ÆûÀ¸·Î º¸³»±â.
+        	//ìˆ˜ì •í¼ìœ¼ë¡œ ë³´ë‚´ê¸°.
             
             url = "board/commentUpdate.jsp";
             CommentDAO mDao = CommentDAO.getInstance();

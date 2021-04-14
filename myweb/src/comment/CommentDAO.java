@@ -80,7 +80,7 @@ public class CommentDAO {
 			closeConnection(con);
 		}
 	}
-	//´ñ±Û DAO
+	//ëŒ“ê¸€ DAO
 	public void commentWrite(CommentVO mVo) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -102,7 +102,7 @@ public class CommentDAO {
 		}
 
 	}
-	// ´ñ±Û ÆäÀÌÁö Ã³¸®ÇÏ´Â Äõ¸® 
+	// ëŒ“ê¸€ í˜ì´ì§€ ì²˜ë¦¬í•˜ëŠ” ì¿¼ë¦¬ 
 	/*public ArrayList<CommentVO> commentView(String num,int page) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -137,7 +137,7 @@ public class CommentDAO {
 	}
 	*/
 
-	//´ñ±ÛÀÌ Á¸ÀçÇÏ´ÂÁö È®ÀÎÇÏ´Â Äõ¸®
+	//ëŒ“ê¸€ì´ ì¡´ì¬í•˜ëŠ”ì§€ í™•ì¸í•˜ëŠ” ì¿¼ë¦¬
 	public int commentCheck(String num) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -189,7 +189,7 @@ public class CommentDAO {
 		}
 		return mVo;
 	}
-	//´ñ±Û ¼öÁ¤
+	//ëŒ“ê¸€ ìˆ˜ì •
 	public void commentUpdate(String cnum, String ccontent) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -209,7 +209,7 @@ public class CommentDAO {
 			closeConnection(con);
 		}
 	}
-	//´ñ±Û »èÁ¦
+	//ëŒ“ê¸€ ì‚­ì œ
 	public void commentDelete(String cnum) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -229,7 +229,7 @@ public class CommentDAO {
 		
 	}
 	
-	//´ñ±Û¼ö Á¶È¸
+	//ëŒ“ê¸€ìˆ˜ ì¡°íšŒ
 	public ArrayList<CommentVO> commentCount() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -243,7 +243,7 @@ public class CommentDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				CommentVO mVo = new CommentVO();
-			//	mVo.setB_Num(rs.getInt("b_num")); //°Ô½ÃÆÇ ³Ñ¹ö
+			//	mVo.setB_Num(rs.getInt("b_num")); //ê²Œì‹œíŒ ë„˜ë²„
 				mVo.setCcount(rs.getInt("c_count"));
 				clist.add(mVo);
 			}
@@ -254,7 +254,7 @@ public class CommentDAO {
 		}
 		return clist;
 	}
-	//´ñ±Û ÆäÀÌÂ¡Ã³¸® Äõ¸®
+	//ëŒ“ê¸€ í˜ì´ì§•ì²˜ë¦¬ ì¿¼ë¦¬
 	/*
 			public int commentTotalCount(String num) {
 				Connection con = null;

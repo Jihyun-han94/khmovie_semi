@@ -3,7 +3,7 @@ package comment;
 import java.sql.Timestamp;
 
 public class CommentVO {
-	//´ñ±Û VO
+	//ëŒ“ê¸€ VO
 	private int cnum;
 	private String cid;
 	private int cparentnum;

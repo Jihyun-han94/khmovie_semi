@@ -19,7 +19,7 @@ public class BoardView implements Action {
 		CommentDAO mDao = CommentDAO.getInstance();
 		CommentVO mVo = new CommentVO();
 		
-		//°Ô½Ã±ÛÀ» Å¬¸¯ÇßÀ»¶§ º¸¿©ÁÙ Á¤º¸¸¦ °¡Áö°í¿È
+		//ê²Œì‹œê¸€ì„ í´ë¦­í–ˆì„ë•Œ ë³´ì—¬ì¤„ ì •ë³´ë¥¼ ê°€ì§€ê³ ì˜´
 		//mVo = mDao.selectOneBoard(num);
 		request.setAttribute("mVo", mVo);
 		request.getRequestDispatcher(url).forward(request, response);

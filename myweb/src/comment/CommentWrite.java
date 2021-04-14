@@ -10,8 +10,8 @@ import javax.servlet.http.HttpSession;
 import comment.*;
 
 public class CommentWrite implements Action {
-	 //´ñ±Û ÀÛ¼º½Ã ·Î±×ÀÎ µÇ¾îÀÖ´Â ¼¼¼Ç °ª¿¡¼­ ¾ÆÀÌµğ °ªÀ» °¡Á®¿À°í
-	// ´ñ±Û³»¿ëÀ» ÀúÀåÇÔ.
+	 //ëŒ“ê¸€ ì‘ì„±ì‹œ ë¡œê·¸ì¸ ë˜ì–´ìˆëŠ” ì„¸ì…˜ ê°’ì—ì„œ ì•„ì´ë”” ê°’ì„ ê°€ì ¸ì˜¤ê³ 
+	// ëŒ“ê¸€ë‚´ìš©ì„ ì €ì¥í•¨.
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  
@@ -19,7 +19,7 @@ public class CommentWrite implements Action {
         HttpSession session = request.getSession();
         mVo = (CommentVO) session.getAttribute("sessionId");
         
-        //mVo.setCid(mVo.getId());//¾ÆÀÌµğ °ª°¡Á®¿À±â 
+        //mVo.setCid(mVo.getId());//ì•„ì´ë”” ê°’ê°€ì ¸ì˜¤ê¸° 
         mVo.setCcontent(request.getParameter("c_content"));
         mVo.setCparentnum(Integer.parseInt(request.getParameter("pnum")));
         
