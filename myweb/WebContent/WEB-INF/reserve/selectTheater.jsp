@@ -47,7 +47,7 @@
 					valList.add("deungchon"); break;
 				case "강변":
 					valList.add("gangbyeon"); break;
-				case "건대입구":
+				case "건대":
 					valList.add("konUniv");
 			}
 		}
