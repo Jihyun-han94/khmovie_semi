@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -25,6 +26,9 @@ public class MovieUpdateServlet extends HttpServlet {
     }
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String userid = (String) session.getAttribute("username");
+		request.setAttribute("userid", userid);
 		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/MovieUpdate.jsp");
 		dp.forward(request, response);
 		System.out.println("forward완료");
@@ -33,7 +37,6 @@ public class MovieUpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-	
 		System.out.println(request.getServletContext().getRealPath(File.separator));
 		MultipartRequest multi = new MultipartRequest(request, request.getServletContext().getRealPath(File.separator)+"\\upload",
 				1024*1024*5,
