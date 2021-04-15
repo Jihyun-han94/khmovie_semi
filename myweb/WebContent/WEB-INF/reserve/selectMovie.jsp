@@ -14,7 +14,6 @@
 <style>
 	div.reserveStatus>span:first-child {
 		font-size: large;
-		font-weight: bold;
 		color: skyblue;
 	}
 	

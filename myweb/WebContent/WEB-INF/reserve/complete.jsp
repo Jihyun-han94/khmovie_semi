@@ -61,8 +61,8 @@
 		int totalPrice = (Integer)session.getAttribute("totalPrice");
 	%>
 	<section>
-		<h6>예매가 정상적으로 접수되었습니다.</h6>
-		<p><b>예매내역 확인</b></p>
+		<p>예매가 정상적으로 접수되었습니다.</p>
+		<p>예매내역 확인</p>
 		<table>
 			<tr>
 				<th>영화제목</th>

@@ -17,7 +17,6 @@
 	
 	div.reserveStatus>span:nth-child(2) {
 		font-size: large;
-		font-weight: bold;
 		color: skyblue;
 	}
 </style>
