@@ -1,6 +1,6 @@
-package comment.action;
+package comment;
 
-import comment.action.*;
+import comment.*;
 
 public class ActionControl {
 	private ActionControl() {

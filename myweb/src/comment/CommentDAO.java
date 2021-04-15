@@ -1,4 +1,4 @@
-package comment.model;
+package comment;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-import comment.model.CommentVO;
+
+import comment.CommentVO;
 
 public class CommentDAO {
 	private CommentDAO() {
@@ -80,7 +81,6 @@ public class CommentDAO {
 			closeConnection(con);
 		}
 	}
-	//��� DAO
 	public void commentWrite(CommentVO mVo) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -90,9 +90,8 @@ public class CommentDAO {
 		try {
 			con = getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, mVo.getCid());
+			pstmt.setString(1, mVo.getUserid());
 			pstmt.setString(2, mVo.getCcontent());
-			pstmt.setInt(3, mVo.getCparentnum());
 			pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -103,36 +102,6 @@ public class CommentDAO {
 
 	}
 
-	/*public ArrayList<CommentVO> commentView(String num) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		ArrayList<CommentVO> list = new ArrayList<>();
-		String sql = "select c.c_num, c.c_id, c.c_content, c.c_time from s_board b, s_comment c "
-				+ "where b.num = c.parentnum and b.num = ? "
-				+ "order by 4 desc";
-		try {
-			con = getConnection();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, num);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				CommentVO mVo = new CommentVO();
-				mVo.setCnum(rs.getInt("c_num"));
-				mVo.setCid(rs.getString("c_id"));
-				mVo.setCcontent(rs.getString("c_content"));
-				mVo.setCtime(rs.getTimestamp("c_date"));
-				list.add(mVo);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeConnection(con);
-		}
-		return list;
-	}*/
-
-	// ��� ������ ó���ϴ� ���� 
 	public ArrayList<CommentVO> commentView(String num,int page) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -153,7 +122,7 @@ public class CommentDAO {
 			while (rs.next()) {
 				CommentVO mVo = new CommentVO();
 				mVo.setCnum(rs.getInt("c_num"));
-				mVo.setCid(rs.getString("c_id"));
+				mVo.setUserid(rs.getString("U_serid"));
 				mVo.setCcontent(rs.getString("c_content"));
 				mVo.setCdate(rs.getTimestamp("c_date"));
 				list.add(mVo);
@@ -165,8 +134,6 @@ public class CommentDAO {
 		}
 		return list;
 	}
-
-	//����� �����ϴ��� Ȯ���ϴ� ����
 	public int commentCheck(String num) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -190,8 +157,7 @@ public class CommentDAO {
 			closeConnection(con);
 		}
 		return result;
-	}
-	
+	}	
 
 	public CommentVO selectComment(String cnum) {
 		Connection con = null;
@@ -208,8 +174,7 @@ public class CommentDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				sVo.setCcontent(rs.getString("c_content"));
-				sVo.setCid(rs.getString("c_id"));
-				sVo.setCparentnum(rs.getInt("parentnum"));
+				sVo.setUserid(rs.getString("U_serid"));
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -257,8 +222,6 @@ public class CommentDAO {
 		}
 		
 	}
-	
-	//��ۼ� ��ȸ
 	public ArrayList<CommentVO> commentCount() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -272,8 +235,7 @@ public class CommentDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				CommentVO mVo = new CommentVO();
-				mVo.setB_Num(rs.getInt("b_num")); //�Խ��� �ѹ�
-				mVo.setCcount(rs.getInt("c_count"));
+				mVo.setBnum(rs.getInt("b_num")); 
 				clist.add(mVo);
 			}
 		}catch(Exception e) {
@@ -283,8 +245,6 @@ public class CommentDAO {
 		}
 		return clist;
 	}
-	//��� ����¡ó�� ����
-	
 			public int commentTotalCount(String num) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
