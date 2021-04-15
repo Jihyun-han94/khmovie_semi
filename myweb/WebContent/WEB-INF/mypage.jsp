@@ -43,10 +43,11 @@
                 	src = "/img/bronze.png";
                 }
                 
-                String title = "영화 이름";
-                String theater = "영화관 이름";
-                String holddate = "2022-04-04";
-                String seatnum = "I열 30번";
+                String ticketid = (String) request.getAttribute("ticketid");
+                String title = (String) request.getAttribute("title");
+                String theater = (String) request.getAttribute("theater");
+                String holddate = (String) request.getAttribute("holddate");
+                String seatnum = (String) request.getAttribute("seatnum");
 
             %>
 
@@ -93,6 +94,7 @@
 						<table>
 							<tbody>
 								<tr>
+									<td><%=ticketid%></td>
 									<td><%=title%></td>
 									<td><%=theater%></td>
 									<td><%=holddate%></td>

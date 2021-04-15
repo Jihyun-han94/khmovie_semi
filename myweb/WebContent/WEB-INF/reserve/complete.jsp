@@ -94,7 +94,7 @@
 			</tr>
 		</table>
 		<br>
-		<form action = "<%=request.getContextPath() %>">
+		<form action = "<%=request.getContextPath() %>/main">
 			<button id="confirm" type="submit" class="btn btn-light btn-sm">확인</button>
 		</form>
 	</section>

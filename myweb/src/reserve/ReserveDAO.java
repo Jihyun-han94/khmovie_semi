@@ -2,7 +2,6 @@ package reserve;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 
 import main.DBConnection;
 
@@ -33,7 +32,6 @@ public class ReserveDAO {
 	}
 	
 	public ArrayList<String> getDateList(String title) {
-		String date = "";
 		ArrayList<String> dateList = new ArrayList<>();
 		String sql = "";
 		sql += "SELECT * FROM";

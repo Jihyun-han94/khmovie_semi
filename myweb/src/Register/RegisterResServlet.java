@@ -48,7 +48,7 @@ public class RegisterResServlet extends HttpServlet {
 			cookie.setMaxAge(60*60);
 			response.addCookie(cookie);
 			
-			response.sendRedirect(request.getContextPath());
+			response.sendRedirect(request.getContextPath()+"/main");
 		}
 		else {
 			request.setAttribute("msg", "회원가입에 실패하였습니다.");

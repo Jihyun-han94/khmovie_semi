@@ -1,8 +1,10 @@
 package mypage;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import main.DBConnection;
+import reserve.TicketVO;
 
 // DAO(Data Access Object)
 //     데이터 베이스 접속과 관련된 메서드를 정의
@@ -76,6 +78,32 @@ public class MypageDAO {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	public TicketVO getReserve(String user_id) {
+		TicketVO reserve = new TicketVO();
+		String sql = "";
+		sql += "SELECT ts.ticketID, tt.title, tt.theaterName, tt.holdDate, tt.time_schedule, tt.seatNum, ts.user_id";
+		sql += "	FROM";
+		sql += "	(SELECT Btime, user_id, ticketID FROM (SELECT TO_CHAR(Btime, 'yyyymmdd') AS Btime, user_id, ticketID FROM ticket_status)) ts, "; 
+		sql += "	(SELECT ti.ticketID, ti.title, ths.theaterName, ti.holdDate, ths.time_schedule, ths.seatNum";
+		sql += "		FROM ticket ti, theater_schedule ths WHERE ti.scheduleID = ths.scheduleID) tt";
+		sql += " WHERE ts.ticketID = tt.ticketID";
+		sql += " AND ts.user_id = ?";
+		sql += " ORDER BY ts.Btime DESC";
+		try {
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, user_id);
+			ResultSet res = pstat.executeQuery();
+			if(res.next()) {
+				TicketVO ticket = new TicketVO();
+				ticket.setInfo(res);
+				reserve = ticket;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return reserve;
 	}
 	
 	private void connect() {

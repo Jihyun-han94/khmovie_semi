@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import Member.MemberDAO;
 import Member.MemberVO;
+import reserve.TicketVO;
 
 
 @WebServlet("/mypage")
@@ -28,13 +29,19 @@ public class MypageServlet extends HttpServlet {
 		
 		MypageDAO member = new MypageDAO();
 		MypageVO mv = member.getRecord(userid);
+		TicketVO tv = member.getReserve(userid);
 		
-		String name = mv.getUserName();
-		int grade = mv.getGrade();
-	    request.setAttribute("name", name);
-	    request.setAttribute("grade", grade);
+		member.close();
+		
+	    request.setAttribute("name", mv.getUserName());
+	    request.setAttribute("grade", mv.getGrade());
 	    
-	    member.close();
+	    request.setAttribute("ticketid", tv.getTicketID());
+	    request.setAttribute("title", tv.getTitle());
+	    request.setAttribute("theater", tv.getTheaterName());
+	    request.setAttribute("holddate", tv.getHoldDate());
+	    request.setAttribute("seatnum", tv.getSeatNum());
+	    
 		
 		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/mypage.jsp");
 		dp.forward(request, response);

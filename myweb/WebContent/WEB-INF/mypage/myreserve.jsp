@@ -37,7 +37,7 @@
 						<tr>
 							<th scope="row">날짜별 </th>
 							<td>
-								<select name="selYM" class="selectpicker small" onchange="getRList(this)">
+								<select name="select" onchange="getRList(this)">
 										<option value="날짜선택">날짜선택</option>
 										<option value="2104">2021년 4월</option>
 										<option value="2103">2021년 3월</option>
@@ -50,8 +50,6 @@
 										<option value="2008">2020년 8월</option>
 										<option value="2007">2020년 7월</option>
 								</select>
-
-								<button type="button" class="button search" name="search">조회 </button>
 							</td>
 						</tr>
 					</tbody>
@@ -65,19 +63,10 @@
                     <th>작품 제목</th>
                     <th>상영관</th>
                     <th>관람일시</th>
-                    <th></th>
+                    <th>좌석번호</th>
                 </tr>
             </thead>
             <tbody id="tbody">
-           <!-- 
-                    <tr>
-                        <td>123-456-789</td>
-                        <td>영화 제목</td>
-                        <td>상영관 위치</td>
-                        <td>2020-02-08 15:20</td>
-                        <td><button type="button" class="button small" name="more">자세히</button></td>
-                    </tr>
-            -->
             </tbody>
         </table>
 	</div>
@@ -104,7 +93,8 @@
 					html += "<td>" + this.ticketID + "</td>";
 					html += "<td>" + this.title + "</td>";
 					html += "<td>" + this.theaterName + "</td>";
-					html += "<td>" + this.holdDate + " " + this.time_schedule + " " + this.seatNum + "</td>";
+					html += "<td>" + this.holdDate + " " + this.time_schedule + "</td>";
+					html += "<td>" + this.seatNum + "</td>";
 					html += "</tr>";
 					
 					$("#tbody").empty();
