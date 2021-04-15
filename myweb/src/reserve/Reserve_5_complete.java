@@ -70,15 +70,11 @@ public class Reserve_5_complete extends HttpServlet {
 			} else {
 				ckLogin.alert();
 			}
-<<<<<<< HEAD
-			
 			
 			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/complete.jsp");
 			dp.forward(request, response);
 			
 			// close() 다 해야 함.
-=======
->>>>>>> a8bce28a5542765dea136084bbe320f0402835f7
 		} else {
 			ckLogin.alert();
 		}

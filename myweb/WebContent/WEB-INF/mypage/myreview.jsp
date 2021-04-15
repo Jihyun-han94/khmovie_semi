@@ -48,7 +48,7 @@
 										<option value="202007">2020년 7월</option>
 								</select>
 
-								<button type="button" class="button search" name="search">조회 
+								<button type="button" class="button small" name="search">조회 
 								</button>
 							</td>
 						</tr>

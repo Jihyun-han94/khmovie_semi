@@ -58,13 +58,7 @@
 	<div class="lnb-area location-fixed">
 		<%@ include file="/WEB-INF/module/mypage_lnb_nav.jsp" %>
 	</div>
-<<<<<<< HEAD
-	<%
-		MypageVO userinfo = (MypageVO) request.getAttribute("userinfo");
-	%>
-=======
 	<% MypageVO userinfo = (MypageVO) request.getAttribute("userinfo"); %>
->>>>>>> a8bce28a5542765dea136084bbe320f0402835f7
 	<div id="contents">
 		<h2 class="tit">개인 정보 수정</h2>
 		<form name="mbInfoForm" action="infoupdate" method="post" onsubmit="return check()">

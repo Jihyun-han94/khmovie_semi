@@ -6,7 +6,7 @@ public class DBConnection {
 	private String url = "jdbc:oracle:thin:@";
 	private String ip = "localhost";
 	private String port = "1521";
-	private String sid = "xe";
+	private String sid = "orcl";
 	private String username = "myweb";
 	private String password = "admin";
 	private Connection connection = null;

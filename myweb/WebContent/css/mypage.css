@@ -1,24 +1,13 @@
-* {
-    box-sizing: border-box;
+@charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+html { font-family: 'Hanna', sans-serif; }
+body{
+    background-color: #fff;
+    font-family: 'Hanna', sans-serif;
 }
 
 div {
     display: block;
-}
-
-body {
-    overflow: auto;
-    overflow-y: scroll;
-    letter-spacing: 0;
-    line-height: 1.5;
-    font-size: 15px;
-    color: #444;
-    font-weight: 400;
-    font-family: '나눔스퀘어_ac';
-}
-
-html {
-    -webkit-text-size-adjust: 100%;
 }
 
 article, aside, figcaption, figure, footer, header, main, nav, section {
@@ -148,6 +137,12 @@ p {
 
 .my-page-info .top .grade .name {
     font-size: 1.8666em;
+    line-height: 1.3;
+    color: #222;
+}
+
+.my-page-info .top .grade .text {
+    font-size: 1em;
     line-height: 1.3;
     color: #222;
 }
@@ -310,14 +305,15 @@ colgroup {
 
 button {
     display: inline-block;
-    height: 36px;
+    height: 25px;
     margin: 0;
     padding: 0 15px;
     text-align: center;
-    line-height: 34px;
+    line-height: 10px;
     color: #000;
     font-weight: 400;
     border-radius: 4px;
+    font-size: 12px;
     font-family: '나눔스퀘어_ac';
     text-decoration: none;
     vertical-align: middle;
@@ -325,20 +321,12 @@ button {
     cursor: pointer;
 }
 
-.button .large {
-	height: 46px;
-    padding: 0 30px;
-    line-height: 44px;
-    color: #000;
-    border: 0;
-    background: #d8d9db;
-}
-
 .button .small {
-    color: #fff;
+    color: #000;
     line-height: 15px;
     border: 0;
-    background: #d8d9db;
+    background: #d1d5dd;
+    height: 20px;
 }
 
 .button .search {

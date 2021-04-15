@@ -49,16 +49,8 @@
 										<option value="8-20">2020년 8월</option>
 										<option value="7-20">2020년 7월</option>
 								</select>
-<<<<<<< HEAD
 
-								<button type="button" class="button search" name="search"> 조회 
-=======
-							<!-- 
-								<button type="button" class="button gray-line small ml05" name="search">
-									<i class="iconset ico-search-gray"></i> 조회 
->>>>>>> a8bce28a5542765dea136084bbe320f0402835f7
-								</button>
-							-->
+								<button type="button" class="button search" name="search">조회 </button>
 							</td>
 						</tr>
 					</tbody>
