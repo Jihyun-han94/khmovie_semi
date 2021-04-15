@@ -35,10 +35,11 @@
 	              		<a class="nav-link" href="<%=request.getContextPath() %>/register">회원가입</a>
 	            	</li>
 	            <%  } %>
-	            
-	            <li class="nav-item">
+	            <%  if(logined.equals("true")){ %>
+	          	  <li class="nav-item">
 	              		<a class="nav-link" href="<%=request.getContextPath() %>/mypage">마이페이지</a>
 	            	</li>
+	            <%  } %>
           	</ul>
 		</div>
 	</div>

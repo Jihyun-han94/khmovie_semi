@@ -53,7 +53,7 @@
     <hr id="hr4">
     <div class="item3">
       	<div class="col-sm-5">
-      		<a href="#x" class="thumbnail2"><img src="<%=request.getContextPath() %>/static/img/reward.jpg" alt="Image" class="img-responsive"></a>
+      		<a href="<%=request.getContextPath() %>/grade" class="thumbnail2"><img src="<%=request.getContextPath() %>/img/grade.png" alt="Image" class="img-responsive"></a>
       	</div>
 	</div>
     <footer class="footer"></footer>

@@ -2,6 +2,8 @@ package board;
 import java.sql.*;
 import java.util.ArrayList;
 
+import main.DBConnection;
+
 
 
 public class BoardDAO {
@@ -19,17 +21,7 @@ public class BoardDAO {
 		}
 		System.out.println("JDBC 드라이버 로딩 완료!");
 		
-		//접속 정보 작성
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "myweb";
-		String password = "admin";
-		
-		//DB 접속 객체 생성 및 접속 시도
-		try {
-			this.conn = DriverManager.getConnection(url,user,password);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		this.conn = new DBConnection().getConnect();
 		System.out.println("Oracle DB 접속 완료!");
 	}
 	

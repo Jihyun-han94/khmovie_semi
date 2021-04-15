@@ -55,8 +55,8 @@
 					valList.add("deungchon"); break;
 				case "강변":
 					valList.add("gangbyeon"); break;
-				case "건대입구":
-					valList.add("konUniv");
+				case "건대":
+					valList.add("konUniv"); break;
 			}
 		}
 	%>
@@ -67,7 +67,7 @@
 		</div>
 		<br>
 		<div class="container">
-			<form action="./selectTime" method="post" accept-charset="UTF-8">
+			<form action="selectTime" method="post" accept-charset="UTF-8">
 				<% for(int i = 0; i < theaterList.size(); i++) { %>
 					<button type="submit" class="btn btn-outline-light btn-sm" name="theaterName" value="<%=valList.get(i) %>"><%=theaterList.get(i) %></button>
 				<% } %>
