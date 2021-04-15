@@ -8,7 +8,7 @@
 	<%@ include file="/WEB-INF/module/css_js.jsp" %>
 	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/main.css">
 	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/find.css">
-<title>아이디 찾기</title>
+<title>KH무비</title>
 </head>
 <body>
 	<header>
