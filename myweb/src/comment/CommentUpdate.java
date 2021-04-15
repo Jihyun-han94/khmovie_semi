@@ -1,4 +1,4 @@
-package comment.action;
+package comment;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,8 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import comment.model.*;
 
 public class CommentUpdate implements Action{
 	 
@@ -20,7 +18,6 @@ public class CommentUpdate implements Action{
         String cnum = request.getParameter("cnum");
         
         if(command.equals("comment_edit_form")) {
-        	//수정폼으로 보내기.
             
             url = "board/commentUpdate.jsp";
             CommentDAO mDao = CommentDAO.getInstance();

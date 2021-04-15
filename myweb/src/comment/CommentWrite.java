@@ -1,4 +1,4 @@
-package comment.action;
+package comment;
 
 import java.io.IOException;
 
@@ -7,11 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import comment.model.*;
-
 public class CommentWrite implements Action {
-	 //´ñ±Û ÀÛ¼º½Ã ·Î±×ÀÎ µÇ¾îÀÖ´Â ¼¼¼Ç °ª¿¡¼­ ¾ÆÀÌµğ °ªÀ» °¡Á®¿À°í
-	// ´ñ±Û³»¿ëÀ» ÀúÀåÇÔ.
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  
@@ -19,10 +15,8 @@ public class CommentWrite implements Action {
         HttpSession session = request.getSession();
         mVo = (CommentVO) session.getAttribute("sessionId");
         
-        mVo.setCid(mVo.getId());//¾ÆÀÌµğ °ª°¡Á®¿À±â 
+        //mVo.setCid(mVo.getId());//ì•„ì´ë”” ê°’ ê°€ì ¸ì˜¤ê¸°
         mVo.setCcontent(request.getParameter("c_content"));
-        mVo.setCparentnum(Integer.parseInt(request.getParameter("pnum")));
-        
         
         CommentDAO mDao = CommentDAO.getInstance();
         mDao.hitDown(request.getParameter("pnum"));

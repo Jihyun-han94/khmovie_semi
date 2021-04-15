@@ -64,13 +64,13 @@ CREATE TABLE Board_t (
 
 CREATE TABLE BOARD_COMMENT 
 (
-  CNUM NUMBER PRIMARY KEY,
-  CID VARCHAR2(15),
-  CDATE DATE,
-  CPARENTNUM NUMBER,
-  CCONTENT VARCHAR2(500) NOT NULL,
-  CCOUNT NUMBER
+  CNUM NUMBER PRIMARY KEY,          -- 댓글 번호
+  BNUM NUMBER,                      -- 게시판 참조용 번호
+  CDATE DATE,                       -- 댓글 날짜
+  USERID VARCHAR2(10),              -- 작성자
+  CCONTENT VARCHAR2(2000) NOT NULL  -- 댓글 내용
 );
+
 create sequence COMMENT_SEQ;
 
 CREATE SEQUENCE file_seq;
