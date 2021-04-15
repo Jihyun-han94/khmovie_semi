@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>KH무비</title>
 <link type="text/css" rel="stylesheet"
     href="<%=request.getContextPath() %>/static/bootstrap-4.6.0/css/bootstrap.min.css">
 <script type="text/javascript"

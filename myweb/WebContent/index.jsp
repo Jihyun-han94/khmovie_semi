@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>KH무비</title>
 </head>
 <body>
 	<form action="uploadAction.jsp" method="post" enctype="multipart/form-data">

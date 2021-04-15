@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>mypage</title>
+<title>KH무비</title>
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/static/bootstrap-4.6.0/css/bootstrap.min.css">
 <script type="text/javascript" src="<%=request.getContextPath() %>/static/jquery/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/static/bootstrap-4.6.0/js/bootstrap.min.js"></script>
@@ -48,8 +48,6 @@
 										<option value="202007">2020년 7월</option>
 								</select>
 
-								<button type="button" class="button small" name="search">조회 
-								</button>
 							</td>
 						</tr>
 					</tbody>
@@ -68,11 +66,11 @@
             <tbody>
            
                     <tr>
-                        <td>영화 제목</td>
-                        <td>내용 어쩌고 저쩌고</td>
-                        <td>2020-02-08 15:20</td>
-                        <td><button type="button" class="button small" name="edit">수정</button>
-                        <button type="button" class="button small" style="background-color: #FF5252" name="delete">삭제</button></td>
+                        <td>리뷰가 없습니다.</td>
+                        <td></td>
+                        <td></td>
+                        <!--  <td><button type="button" class="button small" name="edit">수정</button>-->
+                        <!-- <button type="button" class="button small" style="background-color: #FF5252" name="delete">삭제</button></td>-->
                     </tr>
             </tbody>
         </table>

@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>회원가입</title>
+	<title>KH무비</title>
 	<%@ include file="/WEB-INF/module/css_js.jsp" %>
 	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/register.css">
 	<link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/main.css">

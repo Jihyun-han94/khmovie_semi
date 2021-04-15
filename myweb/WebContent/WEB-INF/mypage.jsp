@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>mypage</title>
+<title>KH무비</title>
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/static/bootstrap-4.6.0/css/bootstrap.min.css">
 <script type="text/javascript" src="<%=request.getContextPath() %>/static/jquery/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/static/bootstrap-4.6.0/js/bootstrap.min.js"></script>
@@ -48,6 +48,15 @@
                 String theater = (String) request.getAttribute("theater");
                 String holddate = (String) request.getAttribute("holddate");
                 String seatnum = (String) request.getAttribute("seatnum");
+                
+                if(ticketid == null){
+                	ticketid = "예매 내역이 없습니다.";
+                	title = "";
+                	theater = "";
+                	holddate ="";
+                	seatnum = "";
+                }
+                	
 
             %>
 
@@ -117,8 +126,8 @@
 
 			<div class="my-reserve-history">
 				<ul>
-					<li class="no-result">
-						<div class="no-history-reservation">
+					<li>
+						<div>
 							리뷰 내역이 없습니다.
 						</div>
 					</li>

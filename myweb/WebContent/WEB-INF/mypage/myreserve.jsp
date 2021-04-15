@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>mypage</title>
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/mypage.css">
+<title>KH무비</title>
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/static/bootstrap-4.6.0/css/bootstrap.min.css">
 <script type="text/javascript" src="<%=request.getContextPath() %>/static/jquery/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/static/bootstrap-4.6.0/js/bootstrap.min.js"></script>
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/static/bootstrap-4.6.0/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/mypage.css">
 
 </head>
 <body>
