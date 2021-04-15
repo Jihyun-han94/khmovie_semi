@@ -10,14 +10,6 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/reserve.css">
 </head>
 <style>
-	/*
-	.selectDate {
-		width: 600px;
-		border-radius: 5px;
-		box-shadow: 5px 5px 5px lightgray;
-	}
-	*/
-	
 	div.reserveStatus>span:first-child, div.reserveStatus>span:last-child {
 		font-size: small;
 		color: rgb(157, 157, 157);
@@ -33,7 +25,7 @@
 	<header>
 		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
 	</header>
-	<% ArrayList<String> dateList = (ArrayList<String>)request.getAttribute("dateList"); %>
+	<% ArrayList<String> availList = (ArrayList<String>)request.getAttribute("availList"); %>
 	<section>
 		<div class="reserveStatus">
 			<span>영화 선택 ></span>
@@ -42,7 +34,7 @@
 		<br>
 		<div class="container">
 			<form action="./selectTheater" method="post">
-			<% for(String date : dateList) { %>
+			<% for(String date : availList) { %>
 					<button type="submit" class="btn btn-outline-light btn-sm" name="date" value="<%=date %>"><%=date %></button>
 			<% } %>
 			</form>

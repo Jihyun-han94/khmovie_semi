@@ -56,7 +56,6 @@ public class Reserve_5_complete extends HttpServlet {
 					RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/complete.jsp");
 					dp.forward(request, response);
 					
-					// close() 다 해야 함.
 				} else {
 					response.setCharacterEncoding("UTF-8");
 					response.setContentType("text/html; charset=UTF-8");

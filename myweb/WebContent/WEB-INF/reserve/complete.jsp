@@ -35,7 +35,6 @@
 		background-color: orange;
 	}
 	table {
-		margin-top: 20px;
 		margin-left: 25px;
 		color: white;
 	}
@@ -64,7 +63,6 @@
 	<section>
 		<h6>예매가 정상적으로 접수되었습니다.</h6>
 		<p><b>예매내역 확인</b></p>
-		<!-- <p>예매일시: <%=date %> + <%=time %></p> -->
 		<table>
 			<tr>
 				<th>영화제목</th>

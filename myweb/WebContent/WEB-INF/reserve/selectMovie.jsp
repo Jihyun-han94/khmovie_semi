@@ -12,14 +12,6 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/reserve.css">
 </head>
 <style>
-/*
-	.selectMovie {
-		width: 1400px;
-		height: 280px;
-		border-radius: 5px;
-		box-shadow: 2px 2px 5px lightgray;
-	}
-*/
 	div.reserveStatus>span:first-child {
 		font-size: large;
 		font-weight: bold;
@@ -74,9 +66,6 @@
 						<button class="movie" type="submit" name="title" value="<%=valList.get(i) %>">
 							<img src="<%=imgList.get(i) %>" width="150px"; height="210px"; alt="">
 						</button>
-						<!--
-							<span class="imgTxt">예매하기</span></div> span에 링크 적용이 안 돼 우선 패스.
-						-->
 					</div>
 				<% } %>
 			</form>

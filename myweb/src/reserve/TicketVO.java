@@ -12,41 +12,33 @@ public class TicketVO {
 	private String seatNum;
 	private String user_id;
 
-
 	public String getTicketID() {
 		return ticketID;
 	}
-
 
 	public String getTitle() {
 		return title;
 	}
 
-
 	public String getTheaterName() {
 		return theaterName;
 	}
-
 
 	public String getHoldDate() {
 		return holdDate;
 	}
 
-
 	public String getTime_schedule() {
 		return time_schedule;
 	}
-
 
 	public String getSeatNum() {
 		return seatNum;
 	}
 
-
 	public String getUser_id() {
 		return user_id;
 	}
-
 
 	public void setInfo(ResultSet res) {
 		try {

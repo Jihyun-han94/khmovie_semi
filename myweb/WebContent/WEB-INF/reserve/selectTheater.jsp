@@ -9,15 +9,7 @@
 <%@ include file="/WEB-INF/module/css_js.jsp" %>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/reserve.css">
 </head>
-<style>
-	/*
-	.selectTheater, .reserveStatus {
-		width: 600px;
-		border-radius: 5px;
-		box-shadow: 5px 5px 5px lightgray;
-	}
-	*/
-	
+<style>	
 	div.reserveStatus>span:first-child, div.reserveStatus>span:last-child {
 		font-size: small;
 		color: rgb(157, 157, 157);
