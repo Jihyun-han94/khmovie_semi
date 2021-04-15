@@ -9,6 +9,17 @@ public class CommentVO {
 	private String userid;
 	private String ccontent;
 	private Timestamp cdate;
+	
+	public CommentVO() {}
+	
+	public CommentVO(int cnum,int bnum,String userid,String ccontent,
+			Timestamp cdate) {
+		this.cnum=cnum;
+		this.bnum=bnum;
+		this.userid=userid;
+		this.ccontent=ccontent;
+		this.cdate=cdate;
+	}
 	public int getCnum() {
 		return cnum;
 	}
