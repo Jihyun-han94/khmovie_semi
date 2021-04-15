@@ -16,11 +16,10 @@
 		margin-left: 130px;
 		border: 1px solid white;
 	}
-	h6 {
+	#msg {
 		transition: translate(0%, 5%);
 		text-align: center;
 		color: skyblue;
-		font-weight: bold;
 		line-height: 60px;
 	}
 	hr {
@@ -29,7 +28,7 @@
 		background-color: white;
 	}
 
-	p {
+	#sub {
 		text-indent: 23px;
 		color: black;
 		background-color: orange;
@@ -45,7 +44,6 @@
 	#confirm {
 		display: block;
 		margin: 0 auto;
-		font-weight: bold;
 	}
 </style>
 <body>
@@ -61,27 +59,27 @@
 		int totalPrice = (Integer)session.getAttribute("totalPrice");
 	%>
 	<section>
-		<h6>예매가 정상적으로 접수되었습니다.</h6>
-		<p><b>예매내역 확인</b></p>
+		<p id="msg">예매가 정상적으로 접수되었습니다.</p>
+		<p id="sub">예매내역 확인</p>
 		<table>
 			<tr>
-				<th>영화제목</th>
+				<td>영화제목</td>
 				<td><%=title %></td>
 			</tr>
 			<tr>
-				<th>관람극장</th>
+				<td>관람극장</td>
 				<td><%=theaterName %></td>
 			</tr>
 			<tr>
-				<th>관람일시</th>
+				<td>관람일시</td>
 				<td><%=date %>&nbsp;<%=time %></td>
 			</tr>
 			<tr>
-				<th>관람인원</th>
+				<td>관람인원</td>
 				<td><%=seatNumArr.length %>명</td>
 			</tr>
 			<tr>
-				<th>좌석번호</th>
+				<td>좌석번호</td>
 				<td>
 					<% for(int i = 0; i < seatNumArr.length; i++) { %>
 						<%=seatNumArr[i] %>&nbsp;
@@ -89,7 +87,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th>결제금액</th>
+				<td>결제금액</td>
 				<td><%=totalPrice %>원</td>
 			</tr>
 		</table>

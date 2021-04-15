@@ -19,7 +19,6 @@
 	
 	div.reserveStatus>span:last-child {
 		font-size: large;
-		font-weight: bold;
 		color: skyblue;
 	}
 	
