@@ -14,6 +14,10 @@ section {
 	margin-left: 130px;
 }
 
+.container {
+	margin-left: 200px;
+}
+
 .movie {
 	background-color: #1D2316;
 	border: none;
