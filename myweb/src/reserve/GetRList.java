@@ -41,9 +41,10 @@ public class GetRList extends HttpServlet {
 					response.setContentType("application/json charset=utf-8");
 					PrintWriter out = response.getWriter();
 							
-					JSONObject obj = new JSONObject();
+					JSONArray jArray = new JSONArray();
 					for(int i = 0; i < RList.size(); i++) {
 						JSONObject sObject = new JSONObject();
+						sObject.put("Btime", RList.get(i).getBtime());
 						sObject.put("ticketID", RList.get(i).getTicketID());
 						sObject.put("title", RList.get(i).getTitle());
 						sObject.put("theaterName", RList.get(i).getTheaterName());
@@ -51,10 +52,9 @@ public class GetRList extends HttpServlet {
 						sObject.put("time_schedule", RList.get(i).getTime_schedule());
 						sObject.put("seatNum", RList.get(i).getSeatNum());
 						sObject.put("user_id", RList.get(i).getUser_id());
-						obj.put("num" + i, sObject);
+						jArray.add(sObject);
 					}
-					System.out.println(obj);
-					out.print(obj);
+					out.print(jArray);
 				}
 			} else {
 				ckLogin.alert();

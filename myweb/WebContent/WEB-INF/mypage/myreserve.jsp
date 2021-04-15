@@ -59,6 +59,7 @@
 			<table class="table table-hover">
             <thead>
                 <tr>
+                	<th>예매 일시</th>
                 	<th>예매 번호</th>
                     <th>작품 제목</th>
                     <th>상영관</th>
@@ -90,6 +91,7 @@
 				
 				$.each(data, function() {
 					html += "<tr>";
+					html += "<td>" + this.Btime + "</td>";
 					html += "<td>" + this.ticketID + "</td>";
 					html += "<td>" + this.title + "</td>";
 					html += "<td>" + this.theaterName + "</td>";

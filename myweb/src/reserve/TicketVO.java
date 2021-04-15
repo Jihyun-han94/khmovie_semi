@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class TicketVO {
+	private String bTime;
 	private String ticketID;
 	private String title;
 	private String theaterName;
@@ -12,6 +13,10 @@ public class TicketVO {
 	private String seatNum;
 	private String user_id;
 
+	public String getBtime() {
+		return bTime;
+	}
+	
 	public String getTicketID() {
 		return ticketID;
 	}
@@ -42,6 +47,7 @@ public class TicketVO {
 
 	public void setInfo(ResultSet res) {
 		try {
+			this.bTime = res.getString("Btime");
 			this.ticketID = res.getString("ticketID");
 			this.title = res.getString("title");
 			this.theaterName = res.getString("theaterName");
@@ -49,7 +55,6 @@ public class TicketVO {
 			this.time_schedule = res.getString("time_schedule");
 			this.seatNum = res.getString("seatNum");
 			this.user_id = res.getString("user_id");
-			//this.bTime = String.format("%1$tY-%1$tm-%1$td", res.getDate("Btime"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	
