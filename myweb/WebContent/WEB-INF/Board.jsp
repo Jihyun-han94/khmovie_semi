@@ -17,6 +17,25 @@
 <link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/board.css">   
 </head>
 <body>
+<% 		BoardDAO dao = new BoardDAO();
+		//전체 게시물 수
+		int count = dao.selectCnt("FILE_T");
+		String tempStart = request.getParameter("page");
+		int startPage = 0;
+		int lastPage = 12;
+		int onePageCnt = 12;
+		
+		//전체 페이지 수 
+		count = (int)Math.ceil((double)count/(double)onePageCnt);
+		
+		if(tempStart !=null){ //처음에는 실행되지 않는다.
+			startPage = (Integer.parseInt(tempStart)-1)*onePageCnt+1;	
+			System.out.println("startpage:"+startPage);
+			lastPage = Integer.parseInt(tempStart)*12;
+		}
+		ArrayList<BoardVO> records = dao.selectPage(startPage,lastPage);
+				
+	%>
 	
 	<h2 id="text2">kh무비에 없는 영화를 등록해주세요!</h2>
 	<form action="./update" method ="get">
@@ -30,13 +49,18 @@
 	
 	<% 
 		ArrayList<BoardVO> filedatas = (ArrayList<BoardVO>)request.getAttribute("filedatas");
-		for(BoardVO filedata: filedatas){%>
+		for(BoardVO filedata: records){%>
 	
 	<div class=item><a href="<%=request.getContextPath() %>/moviereview?B_TITLE=<%=filedata.getMovietitle()%>&filename=<%=filedata.getFileName() %>"><img width="200px" height="287px" src="upload/<%=filedata.getFileRealName() %>"></a></div>
 	
 	<% }%>
 	
 	</div>	
+	<div class="pagenum">
+	<%for(int i = 1; i<=count; i++){ %>
+		<a href = "./BoardPage?page=<%=i %>">[<%=i %>]</a>
+	<%} %>
+	</div>
 	<footer class="footer"></footer>
 </body>
 </html>
