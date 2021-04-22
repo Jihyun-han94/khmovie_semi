@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+section{
+	margin: 10px; padding: 20px;
+	display: inline;
+}
+
+div.Screening { 
+	border: 3px solid white;
+	border-radius: 2rem;
+	width: auto; height: 400px ;
+	margin: 20px; text-align: center;
+}
+
+label.Screening { font-size: 30px; margin:30px auto; color: white; }
+
+div.movie-list {
+	width: 150px; height: 270px;
+	margin: auto 20px;
+	display:inline;
+}
+div.title { width: 150px; height: 40px; margin: 10px auto; }
+
+button.add-list {
+	display: inline-block;
+	margin: 10px 10px;
+	text-align: center;
+	width: 100px; height: 40px;
+}
+
+div.schedule{
+}

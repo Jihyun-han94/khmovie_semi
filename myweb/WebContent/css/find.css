@@ -9,9 +9,10 @@ section.find{
 }
 
 section.findres{
-	width: 500px; height: 300px;
+	width: 500px; height: auto;
 	border: 3px solid #1D2316; border-radius: 5px;
 	margin: 20px auto; padding: 20px;
+	background-color: white;
 }
 
 label.find-label{ margin: 20px 20px; font-size: 15px; }
@@ -25,11 +26,7 @@ div.info{
 	margin: 10px 0;
 }
 
-span.info-name{ margin: 14px 44px; text-align:  left; }
-span.info-phone{ margin: 14px 20px; text-align:  left; }
-span.info-id{ margin: 14px 39px; text-align:  left; }
-span.info-numkey{ margin: 14px 30px; text-align:  left; }
-input.userinfo{ margin: 14px 10px; border: 2px solid #1D2316; border-radius: 5px; }
+input.userinfo{ border: 2px solid #1D2316; border-radius: 5px; display: inline;}
 div.info-check{ margin: 20px; text-align: center; }
 
 button.find-bnt, input.find-bnt{
@@ -52,7 +49,7 @@ h2.id-res{
 span.numkeyCheck{ display : none;}
 
 input.send-bnt{
-	width: 80px; margin-top: 15px; margin-right: 10px;
+	width: 65px; display: inline;
 	padding: 5px; float: right;
 	font-size: 5pt; font-weight: bold; color: white;
 	border: 2px solid #1D2316;
@@ -60,3 +57,6 @@ input.send-bnt{
 	background-color: #1D2316;
 }
 p.ps{ color: gray; font-size: 12pt; text-align: center;}
+
+div.head{ margin: 10px; padding: 5px; text-align: left; width: 80px; float: left; }
+div.user-input{ margin: 0px 10px; padding: 10px; width: 300px; float: left; }

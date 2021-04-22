@@ -13,7 +13,6 @@ body{
     background-color: #1D2316;
     width: 1000px;
     height: 250px;
-
 }
 .col-sm-3{
     display:inline-table;
@@ -115,4 +114,8 @@ body{
     top: 100%;
     margin-top: 35em;
     height: 100px;
+}
+
+.user-item{
+	float: right;
 }

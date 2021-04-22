@@ -19,21 +19,33 @@
 		<form action="./findid/res" method="post" name="findid" onsubmit="return check()">
 			<label class="find-label">회원 정보에 등록한 휴대전화로 인증</label>
 			<div class="info">
-				<span class="info-name">이  름</span>
-				<input class="userinfo" type="text" name="userName">
+				<div class="head">
+					<span class="info-name">이 름</span>
+				</div>
+				<div class="user-input">
+					<input class="userinfo" type="text" name="userName">
+				</div>
 			</div>
 			<div class="info">
-				<span class="info-phone">핸드폰 번호</span>
-				<input class="userinfo" type="text" name="userPhone" maxlength="13" class="phone_number"
-				oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-				placeholder="예) 010-1234-5678" onKeyup="inputPhoneNumber(this)">
-				<input type="button" class="send-bnt" onclick="PhoneCheck()" value="인증번호 전송">
+				<div class="head">
+					<span class="info-phone">핸드폰 번호</span>
+				</div>
+				<div class="user-input">
+					<input class="userinfo" type="text" name="userPhone" maxlength="13" class="phone_number"
+					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+					placeholder="예) 010-1234-5678" onKeyup="inputPhoneNumber(this)">
+					<input type="button" class="send-bnt" onclick="PhoneCheck()" value="인증번호 전송">
+				</div>
 			</div>
 			<div class="info">
+				<div class="head">
 				<span class="info-numkey">인증 번호</span>
-				<input class="userinfo" type="text" name="numkey" maxlength="5" class="numkey"
-				oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-				<input type="button" class="send-bnt" onclick="keyCheck()" value="인증번호 확인">
+				</div>
+				<div class="user-input">
+					<input class="userinfo" type="text" name="numkey" maxlength="5" class="numkey"
+					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+					<input type="button" class="send-bnt" onclick="keyCheck()" value="인증번호 확인">
+				</div>
 			</div>
 			<p class="ps">인증번호 전송 어려움으로 alert로 대체 구현.</p>
 			<div class="info-check">

@@ -45,7 +45,7 @@ function findidpage() {
 	window.location.href="<%=request.getContextPath() %>/login/findid";
 }
 
-function findidpage() {
+function findpwpage() {
 	window.location.href="<%=request.getContextPath() %>/login/findpw";
 }
 </script>

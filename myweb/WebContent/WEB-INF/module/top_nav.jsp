@@ -20,10 +20,14 @@
              		<a class="nav-link" href="<%=request.getContextPath() %>/reserve">예매</a>
             	</li>
             	<li class="nav-item">
+              		<a class="nav-link" href="<%=request.getContextPath() %>/movie">영화</a>
+            	</li>
+            	<li class="nav-item">
               		<a class="nav-link" href="<%=request.getContextPath() %>/board">관람후기</a>
             	</li>
-            	
-            	<%  if(logined.equals("true")){ %>
+          	</ul>
+          	<ul class="navbar-nav">
+          		<%  if(logined.equals("true")){ %>
             		<li class="login">
               		<a class="nav-link" href="<%=request.getContextPath() %>/logout">로그아웃</a>
 	            	</li>
