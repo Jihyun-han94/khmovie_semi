@@ -1,7 +1,6 @@
 package board;
 import java.sql.*;
 import java.util.ArrayList;
-
 import main.DBConnection;
 
 
@@ -25,7 +24,47 @@ public class BoardDAO {
 		System.out.println("Oracle DB 접속 완료!");
 	}
 	
-
+	//게시물 전체 개수 조회
+	public int selectCnt(String table) {
+		int result = 0;
+		String sql = "SELECT COUNT(*) FROM "+table;
+		try {
+			this.pstat = this.conn.prepareStatement(sql);
+			ResultSet res = this.pstat.executeQuery();
+			if(res.next()) {
+				result = res.getInt(1);
+			}
+			res.close();
+			pstat.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	//페이지당, 12개씩 조회
+	public ArrayList<BoardVO> selectPage(int start, int pagecnt){
+		String sql ="SELECT* FROM (SELECT ROWNUM AS RNUM, E1.* FROM FILE_T E1 WHERE ROWNUM <=?) WHERE ?<=RNUM";
+		
+		ArrayList<BoardVO> records = new ArrayList<BoardVO>();
+		try {
+			this.pstat = this.conn.prepareStatement(sql);
+			this.pstat.setInt(1, pagecnt);
+			this.pstat.setInt(2, start);
+			ResultSet res = pstat.executeQuery();
+			while(res.next()) {
+				records.add(new BoardVO(res.getString("movietitle"),
+						res.getString("fileName"),res.getString("fileRealName")
+						));}
+			res.close();
+			pstat.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return records;
+	}
+	
 	public BoardVO getRecord(String B_TITLE) {
 		
 		String sql = "SELECT * FROM Board_t WHERE B_TITLE=?";
