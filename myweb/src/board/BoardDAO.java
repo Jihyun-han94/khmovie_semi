@@ -24,6 +24,46 @@ public class BoardDAO {
 		System.out.println("Oracle DB 접속 완료!");
 	}
 	
+	//삭제 메소드
+	public int deleteReview(String movietitle) {
+		int result = 0;
+		String sql = "";
+	    sql += "DELETE FROM board_t";
+	    sql += " WHERE B_TITLE = ?";
+	    
+		
+		try {
+			this.pstat = this.conn.prepareStatement(sql);
+			this.pstat.setString(1, movietitle);
+			
+			result = this.pstat.executeUpdate();
+			System.out.println("deltedata 완료");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public int deleteFile(String movietitle) {
+		int result = 0;
+		String sql = "";
+	    sql += "DELETE FROM FILE_T";
+	    sql += " WHERE movietitle = ?";
+	    
+		
+		try {
+			this.pstat = this.conn.prepareStatement(sql);
+			this.pstat.setString(1, movietitle);
+			
+			result = this.pstat.executeUpdate();
+			System.out.println("deltedata 완료");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 	//게시물 전체 개수 조회
 	public int selectCnt(String table) {
 		int result = 0;

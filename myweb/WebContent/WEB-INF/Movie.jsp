@@ -34,9 +34,15 @@
 	<div class="contents">
 	<p class="title"><%=data.getB_TITLE() %></p>
 	<p class="direct">감독 : <%=data.getB_ARTIST() %></p>
-	<p class="acctist">출연진 : <%=data.getB_CONTEXT() %></p>
+	<p class="actist">출연진 : <%=data.getB_CONTEXT() %></p>
 	<p>줄거리</p>
 	<p class="context"><%=data.getB_DIRECT() %></p>
+	</div>
+	<div>
+	<form action="./movie/delete" method="post">
+	<input type="hidden" name="movietitle" value="<%=data.getB_TITLE() %>" readonly>
+	<button type="submit">삭제</button>
+	</form>
 	</div>
 	
 	<!-- 댓글 화면을 만들기 위한 영역 시작 -->
@@ -80,6 +86,7 @@
 		</table>
 	</form>
 	--%>
+    </div>
 	<div align="center">
        <p class="title">REVIEW</p>
         <hr align="center" style="border: solid 3px black; width: 50%;">
@@ -120,7 +127,6 @@
                 <td class="cbtn"><input type="button" value="등록" ></td>
             </tr>
         </table>
-    </div>
 	<!-- 댓글 화면을 만들기 위한 영역 끝 -->
 </body>
 </html>

@@ -11,14 +11,15 @@ body{
 }
 
 .container{
-    display : line-block;
+    display : flex;
+    flex-direction : row;
     width: 1700px;
-    margin: 0px auto;
+    margin: 50px auto;
+    flex-flow :center;
 }
 
 .poster {
-    display: block;
-    float: left;
+  
     width: 300px;
     margin-left: 170px;
     margin-right: 10px;
@@ -29,9 +30,9 @@ body{
 }
 
 .contents {
-    display: block;
-    width: 900px;
-    margin: 50px auto 0px 20px;
+    width: 400px;
+    margin-left : 10px;
+
 }
 
 .title{
