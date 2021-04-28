@@ -10,6 +10,7 @@
 <title>KH무비</title>
 <%@ include file="/WEB-INF/module/css_js.jsp" %>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/reserve.css">
+<script type="text/javascript" src="<%=request.getContextPath() %>/WEB-INF/reserve/reserve.js"></script>
 </head>
 <style>
 	div.reserveStatus>span:first-child {
@@ -54,6 +55,14 @@
 		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
 	</header>
 	<%
+		if (session == null || !session.getAttribute("login").equals("true")) {
+	%>
+		 	<script>
+				alert("로그인 인증이 만료되었습니다.\n다시 로그인 해 주시기 바랍니다.");
+				location.href="<%=request.getContextPath()%>/login";
+			</script>
+	<%
+		}
 		ArrayList<String> seatNumList = (ArrayList<String>)request.getAttribute("seatNumList");
 	%>
 	<section>
@@ -64,7 +73,7 @@
 		<div class="container">
 			<span id="screen">screen</span>
 			<br>
-			<form action="./complete" method="post" accept-charset="UTF-8">
+			<form name="seat" action="./complete" method="post" accept-charset="UTF-8">
 				<div class="ckbox">
 				<%
 				   ArrayList<String> seatNumA = new ArrayList<>();
@@ -143,7 +152,7 @@
 				%>
 				</div>
 				<br>
-				<button id="submit" type="submit" class="btn btn-outline-light btn-sm">예매하기</button>
+				<button id="submit" type="submit" class="btn btn-outline-light btn-sm" onclick="reserve()">예매하기</button>
 			</form>
 		</div>
 	</section>

@@ -21,28 +21,22 @@ public class Reserve_2_theater extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		CkLogin ckLogin = new CkLogin(request, response);
 		
-		if(session.getAttribute("login") != null) {
-			if(session.getAttribute("login").equals("true")) {
-		
-				String date = request.getParameter("date");
-				
-				session.setAttribute("date", date);
-				String title = (String)session.getAttribute("title");
-				
-				ReserveDAO reserve = new ReserveDAO();
-				ArrayList<String> theaterList = reserve.getTheater(title, date);
+		// 로그인이 만료됐을 경우(session null 일 때의 에러) 대비
+		if(session != null && session.getAttribute("login").equals("true")) {
+			String date = request.getParameter("date");
 			
-				request.setAttribute("theaterList", theaterList);
-						
-				RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/selectTheater.jsp");
-				dp.forward(request, response);
-			} else {
-				ckLogin.alert();
-			}
-		} else {
-			ckLogin.alert();
+			session.setAttribute("date", date);
+			String title = (String)session.getAttribute("title");
+			
+			ReserveDAO reserve = new ReserveDAO();
+			ArrayList<String> theaterList = reserve.getTheater(title, date);
+		
+			request.setCharacterEncoding("UTF-8");
+			request.setAttribute("theaterList", theaterList);
 		}
+		
+		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/selectTheater.jsp");
+		dp.forward(request, response);
 	}
 }

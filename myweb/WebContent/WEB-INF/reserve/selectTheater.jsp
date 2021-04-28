@@ -25,31 +25,15 @@
 		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
 	</header>
 	<%
-		ArrayList<String> theaterList = (ArrayList<String>)request.getAttribute("theaterList");
-		ArrayList<String> valList = new ArrayList<>();
-		valList.clear();
-		for(String theater : theaterList) {
-			switch(theater) {
-				case "강남":
-					valList.add("gangnam");	break;
-				case "천호":
-					valList.add("cheonho"); break;
-				case "송파":
-					valList.add("songpa");	break;
-				case "압구정":
-					valList.add("apgujeong");	break;
-				case "미아":
-					valList.add("miah"); break;
-				case "수유":
-					valList.add("sooyu"); break;
-				case "등촌":
-					valList.add("deungchon"); break;
-				case "강변":
-					valList.add("gangbyeon"); break;
-				case "건대":
-					valList.add("konUniv"); break;
-			}
+		if (session == null || !session.getAttribute("login").equals("true")) {
+	%>
+		 	<script>
+				alert("로그인 인증이 만료되었습니다.\n다시 로그인 해 주시기 바랍니다.");
+				location.href="<%=request.getContextPath()%>/login";
+			</script>
+	<%
 		}
+		ArrayList<String> theaterList = (ArrayList<String>)request.getAttribute("theaterList");
 	%>
 	<section>
 		<div class="reserveStatus">
@@ -60,7 +44,7 @@
 		<div class="container">
 			<form action="selectTime" method="post" accept-charset="UTF-8">
 				<% for(int i = 0; i < theaterList.size(); i++) { %>
-					<button type="submit" class="btn btn-outline-light btn-sm" name="theaterName" value="<%=valList.get(i) %>"><%=theaterList.get(i) %></button>
+					<button type="submit" class="btn btn-outline-light btn-sm" name="theaterName" value="<%=theaterList.get(i) %>"><%=theaterList.get(i) %></button>
 				<% } %>
 			</form>
 		</div>

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList,
 				 reserve.ReserveVO" %>
+<%@ page info="reserve" %>
 <!DOCTYPE html>
 <% request.setCharacterEncoding("UTF-8"); %>
 <html>
@@ -27,31 +28,16 @@
 		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
 	</header>
 	<%
-		ArrayList<String> titleList = (ArrayList<String>)request.getAttribute("titleList");
-		ArrayList<String> valList = new ArrayList<>();
-		ArrayList<String> imgList = new ArrayList<>();
-		valList.clear();
-		imgList.clear();
-		for(String title : titleList) {
-			switch(title) {
-				case "감기":
-					valList.add("cold");
-					imgList.add("./static/img/cold.jpg"); break;
-				case "미나리":
-					valList.add("minari");
-					imgList.add("./static/img/minari.jpg"); break;
-				case "비밀의 정원":
-					valList.add("secretGarden");
-					imgList.add("./static/img/secretGarden.png"); break;
-				case "베테랑":
-					valList.add("veteran");
-					imgList.add("./static/img/veteran.png"); break;
-				case "테넷":
-					valList.add("tenet");
-					imgList.add("./static/img/tenet.jpg");
-			}
-		}
+		if (session == null || session.getAttribute("username") == null || !session.getAttribute("login").equals("true")) {
 	%>
+		 	<script>
+				alert("로그인이 필요한 페이지입니다.");
+				location.href="<%=request.getContextPath()%>/login";
+			</script>
+	<%
+		}
+		ArrayList<String> titleList = (ArrayList<String>)request.getAttribute("titleList");
+	%>	
 	<section>
 		<div class="reserveStatus">
 			<span>영화 선택 > </span>
@@ -60,13 +46,13 @@
 		<br>
 		<div class="container">
 			<form action="./selectDate" accept-charset="UTF-8">
-				<% for(int i = 0; i < titleList.size(); i++) { %>
-					<div class="movieItem">
-						<button class="movie" type="submit" name="title" value="<%=valList.get(i) %>">
-							<img src="<%=imgList.get(i) %>" width="150px"; height="210px"; alt="">
-						</button>
-					</div>
+				<div class="movieItem">
+				<% for(String title: titleList) { %>
+					<button class="movie" type="submit" name="title" value="<%=title %>">
+						<img src="<%=request.getContextPath() %>/static/img/<%=title %>.jpg"; width="150px"; height="210px"; alt="">
+					</button>
 				<% } %>
+				</div>
 			</form>
 		</div>
 	</section>

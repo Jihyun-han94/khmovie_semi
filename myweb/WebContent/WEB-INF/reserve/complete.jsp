@@ -51,6 +51,14 @@
 		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
 	</header>
 	<%
+		if (session == null || !session.getAttribute("login").equals("true")) {
+	%>
+		 	<script>
+				alert("로그인 인증이 만료되었습니다.\n다시 로그인 해 주시기 바랍니다.");
+				location.href="<%=request.getContextPath()%>/login";
+			</script>	
+	<%
+		}
 		String title = (String)session.getAttribute("title");
 		String date = (String)session.getAttribute("date");
 		String theaterName = (String)session.getAttribute("theaterName");

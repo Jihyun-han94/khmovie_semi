@@ -24,7 +24,17 @@
 	<header>
 		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
 	</header>
-	<% ArrayList<String> availList = (ArrayList<String>)request.getAttribute("availList"); %>
+	<%
+		if (session == null || !session.getAttribute("login").equals("true")) {
+	%>
+			<script>
+				alert("로그인이 필요한 페이지입니다.");
+				location.href="<%=request.getContextPath()%>/login";
+			</script>
+	<%
+		}
+		ArrayList<String> availList = (ArrayList<String>)request.getAttribute("availList");
+	%>
 	<section>
 		<div class="reserveStatus">
 			<span>영화 선택 ></span>

@@ -21,30 +21,19 @@ public class ReserveMainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		CkLogin ckLogin = new CkLogin(request, response);
 		
-		if(session.getAttribute("login") != null) {
-			if(session.getAttribute("login").equals("true")) {
-				
-				ReserveDAO reserve = new ReserveDAO();
-				ArrayList<ReserveVO> movieList = reserve.getAll();
-				ArrayList<String> titleList = new ArrayList<>();
-				
-				for(ReserveVO movie : movieList) {
-					titleList.add(movie.getTitle());
-				}
-				
-				request.setAttribute("titleList", titleList);
-				
-				request.setCharacterEncoding("UTF-8");
-				
-				RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/selectMovie.jsp");
-				dp.forward(request, response);
-			} else {
-				ckLogin.alert();
-			}
-		} else {
-			ckLogin.alert();
+		ReserveDAO reserve = new ReserveDAO();
+		ArrayList<ReserveVO> movieList = reserve.getAll();
+		ArrayList<String> titleList = new ArrayList<>();
+		
+		for(ReserveVO movie : movieList) {
+			titleList.add(movie.getTitle());
 		}
+		
+		request.setCharacterEncoding("UTF-8");
+		request.setAttribute("titleList", titleList);
+						
+		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/selectMovie.jsp");
+		dp.forward(request, response);
 	}
 }

@@ -21,30 +21,23 @@ public class Reserver_4_seat extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		CkLogin ckLogin = new CkLogin(request, response);
-
-		if(session.getAttribute("login") != null) {
-			if(session.getAttribute("login").equals("true")) {
 		
-				String time = request.getParameter("time");
-				
-				session.setAttribute("time", time);
-				String title = (String)session.getAttribute("title");
-				String date = (String)session.getAttribute("date");
-				String theaterName = (String)session.getAttribute("theaterName");
-		
-				ReserveDAO reserve = new ReserveDAO();
-				ArrayList<String> seatNumList = reserve.getSeatNum(title, date, theaterName, time);
-						
-				request.setAttribute("seatNumList", seatNumList);
-				
-				RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/selectSeat.jsp");
-				dp.forward(request, response);
-			} else {
-				ckLogin.alert();
-			}
-		} else {
-			ckLogin.alert();
+		// 로그인이 만료됐을 경우(session null 일 때의 에러) 대비
+		if(session != null && session.getAttribute("login").equals("true")) {
+			String time = request.getParameter("time");
+			
+			session.setAttribute("time", time);
+			String title = (String)session.getAttribute("title");
+			String date = (String)session.getAttribute("date");
+			String theaterName = (String)session.getAttribute("theaterName");
+	
+			ReserveDAO reserve = new ReserveDAO();
+			ArrayList<String> seatNumList = reserve.getSeatNum(title, date, theaterName, time);
+					
+			request.setAttribute("seatNumList", seatNumList);
 		}
+		
+		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/selectSeat.jsp");
+		dp.forward(request, response);
 	}
 }

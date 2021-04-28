@@ -1251,7 +1251,4 @@ INSERT INTO ticket (ticketID, holdDate, scheduleID, title) VALUES (N.NEXTVAL, '2
 
 
 
-
 COMMIT;
-
-

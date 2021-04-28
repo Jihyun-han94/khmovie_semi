@@ -59,5 +59,11 @@
 	</div>
     <footer class="footer"></footer>
 </body>
-
+<script>
+	$(function() {
+		var servletInfo = getServletInfo();
+		$('a').removeClass('active');
+		$(#+servletInfo).classList.add('active');
+	});
+</script>
 </html>

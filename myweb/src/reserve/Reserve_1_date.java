@@ -25,27 +25,16 @@ public class Reserve_1_date extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		CkLogin ckLogin = new CkLogin(request, response);
 
-		if(session.getAttribute("login") != null) {
-			if(session.getAttribute("login").equals("true")) {
+// main.jsp 에서 이미지를 <form><button><img> 로 하고 doPost로 하면 로그인 해결.
+//		if (session.getAttribute("username") != null && session.getAttribute("login").equals("true")) {
+		
+			// 로그인이 만료됐을 경우(session null 일 때의 에러) 대비
+			if(session != null && session.getAttribute("login").equals("true")) {
 
-				String title = request.getParameter("title");
 				request.setCharacterEncoding("UTF-8");
-				
-				switch(title) {
-					case "cold":
-						title = "감기";	break;
-					case "minari":
-						title = "미나리";	break;
-					case "secretGarden":
-						title = "비밀의 정원"; break;
-					case "veteran":
-						title = "베테랑";	break;
-					case "tenet":
-						title = "테넷";
-				}
-
+				String title = request.getParameter("title");
+	
 				session.setAttribute("title", title);
 						
 				ReserveDAO reserve = new ReserveDAO();
@@ -55,7 +44,7 @@ public class Reserve_1_date extends HttpServlet {
 				// price 받아서 세션에 저장
 				int price = reserve.getPrice(title);
 				session.setAttribute("price", price);
-
+	
 				// 예매일 기준 오늘날짜 받아오기(String으로 변환)
 				Date todayD = new Date();
 				final String DATE_PATTERN = "yy-MM-dd";
@@ -64,20 +53,17 @@ public class Reserve_1_date extends HttpServlet {
 				
 				// 예매일과 상영일 비교하여 예매가능한 날짜만 추출
 				for(String date: dateList) {
-					if(date.compareTo(today) >= 0) {
+					//if(date.compareTo(today) >= 0) {
 						availList.add(date);
-					}
+					//}
 				}
-				
 				request.setAttribute("availList", availList);
-				
-				RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/selectDate.jsp");
-				dp.forward(request, response);
-			} else {
-				ckLogin.alert();
 			}
-		} else {
-			ckLogin.alert();
-		}
+				
+			RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/reserve/selectDate.jsp");
+			dp.forward(request, response);
+//		} else {
+//			response.sendRedirect(request.getContextPath() + "/login");
+//		}
 	}
 }

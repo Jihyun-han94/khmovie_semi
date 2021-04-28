@@ -14,10 +14,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           	<ul class="navbar-nav">
             	<li class="nav-item">
-              		<a class="nav-link active" aria-current="page" href="<%=request.getContextPath() %>/main">Home</a>
+              		<a class="nav-link" aria-current="page" href="<%=request.getContextPath() %>/main">Home</a>
             	</li>
             	<li class="nav-item">
-             		<a class="nav-link" href="<%=request.getContextPath() %>/reserve">예매</a>
+             		<a class="nav-link" id="reserve" href="<%=request.getContextPath() %>/reserve">예매</a>
             	</li>
             	<li class="nav-item">
               		<a class="nav-link" href="<%=request.getContextPath() %>/board">관람후기</a>

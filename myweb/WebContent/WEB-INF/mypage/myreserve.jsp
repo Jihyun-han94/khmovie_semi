@@ -80,7 +80,7 @@
 
 		$.ajax({
 			url: "<%=request.getContextPath() %>/getRList",
-			type: "get",
+			type: "post",
 			datatype: "json",
 			data: {
 				date: $(element).val()
