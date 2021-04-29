@@ -24,6 +24,34 @@ public class BoardDAO {
 		System.out.println("Oracle DB 접속 완료!");
 	}
 	
+	 public int updateData(BoardVO data) {
+	      int result = 0;
+	      String sql = "";
+	      sql += "UPDATE board_t";
+	      sql += "   SET B_TITLE=?";
+	      sql += "     , B_CONTEXT=?";
+	      sql += "     , B_DIRECT=?";
+	      sql += "     , B_ARTIST=?";
+	      sql += " WHERE B_NUM=?";
+	      
+	      try {
+	         this.pstat = this.conn.prepareStatement(sql);
+	         this.pstat.setString(1, data.getB_TITLE());
+	         this.pstat.setString(2, data.getB_CONTEXT());
+	         this.pstat.setString(3, data.getB_DIRECT());
+	         this.pstat.setString(4, data.getB_ARTIST());
+	         this.pstat.setInt(5, data.getB_NUM());
+	         
+	         result = this.pstat.executeUpdate();    // 저장 처리가 완료 되면 1 반환
+	         System.out.println("수정업데이트완료!!!!!!!");
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      }
+	      return result;
+	   }
+	
+	
+	
 	//삭제 메소드
 	public int deleteReview(String movietitle) {
 		int result = 0;
@@ -64,7 +92,7 @@ public class BoardDAO {
 		return result;
 	}
 	
-	//게시물 전체 개수 조회
+	//게시물 전체 개수 조회(페이징용)
 	public int selectCnt(String table) {
 		int result = 0;
 		String sql = "SELECT COUNT(*) FROM "+table;
@@ -83,7 +111,30 @@ public class BoardDAO {
 		return result;
 	}
 	
-	//페이지당, 12개씩 조회
+	//페이지당, 4개씩 조회 (메인페이지용)
+	public ArrayList<BoardVO> selectPage(){
+		String sql ="SELECT* FROM (SELECT ROWNUM AS RNUM, E1.* FROM FILE_T E1 WHERE ROWNUM <=?) WHERE ?<=RNUM";
+		
+		ArrayList<BoardVO> records = new ArrayList<BoardVO>();
+		try {
+			this.pstat = this.conn.prepareStatement(sql);
+			this.pstat.setInt(1, 4);
+			this.pstat.setInt(2, 1);
+			ResultSet res = pstat.executeQuery();
+			while(res.next()) {
+				records.add(new BoardVO(res.getString("movietitle"),
+						res.getString("fileName"),res.getString("fileRealName")
+						));}
+			res.close();
+			pstat.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return records;
+	}
+	
+	
+	//페이지당, 12개씩 조회(board페이지용)
 	public ArrayList<BoardVO> selectPage(int start, int pagecnt){
 		String sql ="SELECT* FROM (SELECT ROWNUM AS RNUM, E1.* FROM FILE_T E1 WHERE ROWNUM <=?) WHERE ?<=RNUM";
 		
@@ -105,6 +156,7 @@ public class BoardDAO {
 		return records;
 	}
 	
+	//영화 제목으로 board_t 조회
 	public BoardVO getRecord(String B_TITLE) {
 		
 		String sql = "SELECT * FROM Board_t WHERE B_TITLE=?";

@@ -43,6 +43,11 @@
 	<input type="hidden" name="movietitle" value="<%=data.getB_TITLE() %>" readonly>
 	<button type="submit">삭제</button>
 	</form>
+	
+	<form action="./movie/update" method="get">
+	<input type="hidden" name="movietitle" value="<%=data.getB_TITLE() %>" readonly>
+	<button type="submit">수정</button>
+	</form>
 	</div>
 	
 	<!-- 댓글 화면을 만들기 위한 영역 시작 -->

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import = "java.util.ArrayList,board.BoardVO,board.BoardDAO" %>
 <!DOCTYPE html>
   <html lang="en">
 
@@ -45,19 +46,15 @@
     <hr id="hr2">
     </div>
     <div class="item2">
-		<div class="col-sm-4">
-	    	<a href="#x" class="thumbnail2"><img width="180px" height="250px" src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image" class="img-responsive"></a>
-    	</div>
-    	<div class="col-sm-4">
-    		<a href="#x" class="thumbnail2"><img width="180px" height="250px" src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image" class="img-responsive"></a>
-      	</div>
-      	<div class="col-sm-4">
-      		<a href="#x" class="thumbnail2"><img width="180px" height="250px" src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image" class="img-responsive"></a>
-      	</div>
-      	<div class="col-sm-4">
-      		<a href="#x" class="thumbnail2"><img width="180px" height="250px" src="<%=request.getContextPath() %>/static/img/poster3.jpg" alt="Image" class="img-responsive"></a>
-      	</div>
+	<%	BoardDAO dao = new BoardDAO();
+		ArrayList<BoardVO> list =dao.selectPage();
+		for(BoardVO filelist : list){
+	%>
+	<div class=col-sm-4><a href="<%=request.getContextPath() %>/moviereview?B_TITLE=<%=filelist.getMovietitle()%>&filename=<%=filelist.getFileName() %>"><img width="180px" height="250px" src="upload/<%=filelist.getFileRealName() %>"></a></div>
+	
+	<% }%>
     </div>
+	
 	<div class="textdiv3">
     <h2 id="text3">등급별 혜택</h2>
     </div>
