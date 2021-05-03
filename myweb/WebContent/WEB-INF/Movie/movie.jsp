@@ -61,9 +61,7 @@
 		<div class="slider">
 			<ul class="slides">
 				<%for(int i = 0; i < movieList.size(); i++) { %>
-					<li>
-						<img class="post-img" src="<%=sliderList.get(i) %>">
-					</li>
+					<li><img class="post-img" src="<%=sliderList.get(i) %>"></li>
 				<%} %>
 			</ul>
 		</div>
