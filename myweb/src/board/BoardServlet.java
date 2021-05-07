@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	
     public BoardServlet() {
         super();
     }

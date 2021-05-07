@@ -24,6 +24,16 @@ public class BoardVO {
 		this.fileRealName = fileRealName;
 	}
 	
+	public BoardVO(int B_NUM, String B_ID, String B_TITLE, String B_DIRECT, String B_ARTIST, String B_CONTEXT) {
+		this.B_NUM = B_NUM;
+		this.B_ID = B_ID;
+		this.B_TITLE = B_TITLE;
+		this.B_DIRECT = B_DIRECT;
+		this.B_ARTIST = B_ARTIST;
+		this.B_CONTEXT = B_CONTEXT;
+		this.CREATE_DATE = null;
+		this.UPDATE_DATE = null;
+	}
 	
 	
 	public BoardVO(int B_NUM, String B_ID, String B_TITLE, String B_DIRECT,String B_ARTIST, String B_CONTEXT, Date CREATE_DATE, Date UPDATE_DATE) {

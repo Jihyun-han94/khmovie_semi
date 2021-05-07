@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="board.BoardVO" %>
-<%@page import="board.BoardDAO" %>
-<%@page import="java.io.File" %>
-<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
-<%@page import="com.oreilly.servlet.MultipartRequest" %>
+<%@ page import="board.BoardDAO" %>
+<%@ page import="Comment.CommentDAO" %>
+<%@ page import="Comment.CommentVO" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.io.File" %>
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
+<%@ page import="com.oreilly.servlet.MultipartRequest" %>
 
 <!DOCTYPE html>
 <html>
@@ -17,110 +20,105 @@
     src="<%=request.getContextPath() %>/static/jquery/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
     src="<%=request.getContextPath() %>/static/bootstrap-4.6.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <%@ include file="/WEB-INF/module/top_nav.jsp" %>
 <link rel="stylesheet" type ="text/css" href="<%=request.getContextPath() %>/css/Movie.css">    
 </head>
 <body>
-	<% String path =request.getServletContext().getRealPath(File.separator)+"\\upload"; %>
-	<% BoardVO data = (BoardVO)request.getAttribute("data"); %>
-	<% String filename = (String)request.getAttribute("filename"); 
+	<
+	<% 
+		String userid = (String)request.getAttribute("userid");
+		System.out.println("userid확인 : "+userid);
+		String path =request.getServletContext().getRealPath(File.separator)+"\\upload";
+		BoardVO data = (BoardVO)request.getAttribute("data"); 
+		String filename = (String)request.getAttribute("filename"); 
 		System.out.println(filename);
 		String directory = application.getRealPath("/upload/")+filename;
 		System.out.println(directory);
 	%>
+	<div class="large_container">
 	
 	<div class="container">
-	<div class="poster"><img id="img" src="upload/<%=filename %>"></div>
-	<div class="contents">
-	<p class="title"><%=data.getB_TITLE() %></p>
-	<p class="direct">감독 : <%=data.getB_ARTIST() %></p>
-	<p class="acctist">출연진 : <%=data.getB_CONTEXT() %></p>
-	<p>줄거리</p>
-	<p class="context"><%=data.getB_DIRECT() %></p>
-	</div>
 	
-	<!-- 댓글 화면을 만들기 위한 영역 시작 -->
-	<%--
-	<table>
-    	<tr>
-        	<th colspan="4">REVIEW</th>
-    	</tr>
-    	<% if(message != null) { %>
-    		<tr>
-    			<td colspan="4"><%=message %></td>
-    		</tr>
-    	<% } else { %>
-    	<!-- 관람자명 | 작성일 | 관람평 내용 | 수정삭제버튼 -->
-    		<% for(CommentVO comment: list) { %>
-	    		<tr>
-	    			<td><%=comment.getUserID() %></td>
-	    			<td><%=comment.getCDate() %></td>
-	    			<td>
-	    				<%=comment.getComment() %>
-	    			</td>
-	    			<td>
-	    				<% if(comment.getUserID() == session.getAttribute("username")) { %>
-	    					<a href="#">수정</a>
-	    					<a href="<%=request.getContextPath() %>/comment/delete?id=<%=comment.getCNum() %>">삭제</a>
-	    				<% } %>
-	    			</td>
-	    		</tr>
-    		<% } %>
-    	<% } %>
-	</table>
-	<form action="BoardServlet" method="post" name="check">
-		<input type="hidden" name="command" value="<%=session.getAttribute("username") %>">
-		<input type="hidden" name= pnum" value="<%=data.getB_NUM() %>">
-		<table>
-	    	<tr>
-	        	<th>한줄평</th>
-	        	<td><textarea rows="3" cols="40" name="c_content"></textarea></td>
-	        	<td><input type="submit" value="입력" onclick="return com_check()"></td>
-	    	</tr>
-		</table>
-	</form>
-	--%>
-	<div align="center">
-       <p class="title">REVIEW</p>
-        <hr align="center" style="border: solid 3px black; width: 50%;">
-        <table>
+		<div class="poster"><img id="img" src="upload/<%=filename %>"></div>
+		
+		<div class="contents">
+		<p class="title"><%=data.getB_TITLE() %></p>
+		<p class="direct">감독 : <%=data.getB_ARTIST() %></p>
+		<p class="actist">출연진 : <%=data.getB_CONTEXT() %></p>
+		<p>줄거리</p>
+		<p class="context"><%=data.getB_DIRECT() %></p>
+		</div>
+		
+		<div>
+		<form action="./movie/delete" method="post">
+		<input type="hidden" name="movietitle" value="<%=data.getB_TITLE() %>" readonly>
+		<button type="submit">삭제</button>
+		</form>
+		
+		<form action="./movie/update" method="get">
+		<input type="hidden" name="movietitle" value="<%=data.getB_TITLE() %>" readonly>
+		<button type="submit">수정</button>
+		</form>
+		</div>
+	
+	</div>
+
+	<div class="review_container">
+       <p class="title" align="center">REVIEW</p>
+       <hr align="center" style="border: solid 3px black; width: 100%;">
+     
+        <table id="listReply">  
+            <% 
+            	CommentDAO comment = new CommentDAO();
+            	ArrayList<CommentVO> datas_c = comment.getAll();
+            	for(CommentVO datas : datas_c){%>
             <tr>
-                <th width="10%" align="left">ID</th>
-                <th width="60%">관람평</th>    
+                <td ><%=datas.getC_USERID() %> : <%=datas.getC_COMMENT() %></td>
             </tr>
+            	
+            <% }%>      
         </table>
-        <table>  
-            <tr>
-                <td width="10%" align="center">userid1</td>
-                <td width="60%">즐거웠습니다.</td>
-                <td width="10%"><input type="button"value="수정"></td>
-                <td><input type="button"value="삭제"></td>
-            </tr>
-        </table>
-        <table>  
-            <tr>
-                <td width="10%" align="center">userid2</td>
-                <td width="60%">감명깊었습니다.</td>
-                <td width="10%"><input type="button"value="수정"></td>
-                <td><input type="button"value="삭제"></td>
-            </tr>
-        </table>
-        <table>  
-            <tr>
-                <td width="10%" align="center">userid3</td>
-                <td width="60%">즐거웠습니다.</td>
-                <td width="10%"><input type="button"value="수정"></td>
-                <td><input type="button"value="삭제"></td>
-            </tr>
-        </table>
-        <table>
-            <tr>
-                <th>관람평</th>
-                <td><textarea rows="3" cols="40"></textarea></td>
-                <td class="cbtn"><input type="button" value="등록" ></td>
-            </tr>
-        </table>
-    </div>
-	<!-- 댓글 화면을 만들기 위한 영역 끝 -->
+ 
+                <div class="reply_div">
+                <label>관람평</label>
+                <textarea class="replyContent" rows="3" cols="40" placeholder="관람평을 작성해주세요."></textarea>
+                <button type="button" class="btnReply">등록버튼</button>
+                </div>
+        </div>
+	 
+	 </div>
 </body>
+<script type="text/javascript">
+
+	let btnReply = document.querySelector('.btnReply');
+	btnReply.addEventListener('click',function(){
+		let content = document.querySelector('.replyContent').value;
+		let B_TITLE = "<%=data.getB_TITLE() %>";
+		let C_USERID = '<%=userid %>';
+		let B_NUM = "<%=data.getB_NUM() %>";
+		
+	
+		$.ajax({
+			url : "<%=request.getContextPath()%>/comment",
+			type : 'post' , datatype : "json",
+			data : {userid : C_USERID , C_COMMENT : content, B_TITLE : B_TITLE , B_NUM : B_NUM},
+			success : function(data){
+				
+				console.log(data);
+				var table = document.getElementById('listReply');
+				var td = document.createElement("TD");
+				td.innerHTML = C_USERID+":"+content;
+				var tr = document.createElement("TR");
+				tr.appendChild(td);
+				table.appendChild(tr);
+				
+			},
+			error : function(){
+				alert('ajax 전송 오류입니다....');
+			}
+		});
+	});
+</script>
+
 </html>
