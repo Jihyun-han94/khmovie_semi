@@ -9,11 +9,16 @@ body{
     font-family: 'Hanna', sans-serif;
     font-size: 18px;
 }
-
+.large_cotainer{
+	width : 1700px;
+	display : block;
+	margin : auto;
+	
+}
 .container{
     display : flex;
     flex-direction : row;
-    width: 1700px;
+    width: 1500px;
     margin: 50px auto;
     flex-flow :center;
 }
@@ -45,4 +50,14 @@ body{
     top: 100%;
     margin-top: 35em;
     height: 100px;
+}
+
+.review_container{
+	width : 800px;
+	margin : 50px auto;
+	
+}
+.reply_div{
+	width :700px;
+	margin : 10px auto;
 }

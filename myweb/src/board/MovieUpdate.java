@@ -32,7 +32,7 @@ public class MovieUpdate extends HttpServlet {
 		String userid = (String) session.getAttribute("username");
 		request.setAttribute("userid", userid);
 		String movietitle = request.getParameter("movietitle");
-		System.out.println("요거"+movietitle);
+	
 		BoardDAO board = new BoardDAO();
 		board.deleteFile(movietitle);
 		BoardVO data = board.getRecord(movietitle);

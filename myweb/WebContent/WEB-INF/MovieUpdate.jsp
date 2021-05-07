@@ -23,13 +23,7 @@
     <hr id="hr">
     <div class="container">
     <% String userid = (String)request.getAttribute("userid"); %>	
-    	<% if(userid == null){
-    	%>	
-    	<script type="text/javascript">
-    	alert("로그인 후 이용가능 합니다.");
-    	window.location.href="<%=request.getContextPath() %>/login";
-    	</script> 
-    	<%} %>
+    		
 	<form action="./update" method="post" class="inputform" enctype="multipart/form-data" accept-charset="utf-8">
 	 	<div class="form-group">
               <label for="input1">아이디</label><br>
