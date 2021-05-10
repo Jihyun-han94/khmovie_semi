@@ -70,13 +70,20 @@
      
         <table id="listReply">  
             <% 
+            	int B_NUM = data.getB_NUM();
+            	System.out.println("디버그!!!!"+B_NUM);
             	CommentDAO comment = new CommentDAO();
-            	ArrayList<CommentVO> datas_c = comment.getAll();
+            	ArrayList<CommentVO> datas_c = comment.getRecord(B_NUM);
+            	if(datas_c !=null){
             	for(CommentVO datas : datas_c){%>
             <tr>
                 <td ><%=datas.getC_USERID() %> : <%=datas.getC_COMMENT() %></td>
             </tr>
-            	
+            <%} %>	
+            <%}else{%>
+            	<tr>
+            	<td>한줄 관람평을 입력해주세요!</td>
+            	</tr>
             <% }%>      
         </table>
  

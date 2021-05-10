@@ -33,6 +33,7 @@ public class BoardServlet extends HttpServlet {
 		RequestDispatcher dp = request.getRequestDispatcher("/WEB-INF/Board.jsp");
 		dp.forward(request, response);
 		System.out.println("forward완료");
+	
 		
 	}
 

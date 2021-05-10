@@ -54,6 +54,35 @@ public class CommentDAO {
 		return records;
 	}
 	
+	public ArrayList<CommentVO> getRecord(int B_NUM) {
+		
+		String sql = "SELECT * FROM COMMENT_t WHERE B_NUM=?";
+		ArrayList<CommentVO> record = new ArrayList<CommentVO>();
+		
+		try {
+			this.pstat = this.conn.prepareStatement(sql);
+			this.pstat.setInt(1,B_NUM);
+			ResultSet res = this.pstat.executeQuery();
+			
+			while(res.next()) {
+				record.add(new CommentVO(
+						res.getInt("B_NUM"), res.getString("B_TITLE"),
+						res.getInt("C_NUM"),res.getString("C_USERID"),
+						res.getString("C_COMMENT"),
+						res.getDate("CREATEDATE"),res.getDate("UPDATEDATE")
+						));
+			
+			}
+			res.close();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return record;
+	}
+	
+	
 	
 	public int saveData(CommentVO data) {
 		int result = 0;
