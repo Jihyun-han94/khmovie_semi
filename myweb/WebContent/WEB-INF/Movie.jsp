@@ -105,9 +105,14 @@
 		let C_USERID = '<%=userid %>';
 		let B_NUM = "<%=data.getB_NUM() %>";
 		
+		//로그인 후 한줄평 입력 가능 
+		if(C_USERID === 'null'){
+			alert("로그인 후 이용 가능합니다.");
+			location.href='/myweb/login';
+		}
 	
 		$.ajax({
-			url : "<%=request.getContextPath()%>/comment",
+			url : "<%=request.getContextPath() %>/comment",
 			type : 'post' , datatype : "json",
 			data : {userid : C_USERID , C_COMMENT : content, B_TITLE : B_TITLE , B_NUM : B_NUM},
 			success : function(data){
